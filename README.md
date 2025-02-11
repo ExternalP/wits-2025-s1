@@ -1,11 +1,36 @@
-# NEED TO ORGANISE TASKS
+# Student Cheat Sheet SaaS Application Mini Project Brief
 
 ### Also on wiki: https://github.com/AdyGCode/wits-2025-s1/wiki
 
 
-# Student Cheat Sheet SaaS Application Mini Project Brief
+<!-- TOC -->
+* [Project Overview](#project-overview)
+  * [Technical Stack](#technical-stack)
+  * [Team Structure and Timeline](#team-structure-and-timeline)
+  * [Development Requirements](#development-requirements)
+  * [Core Infrastructure](#core-infrastructure)
+  * [Data Structure Notes:](#data-structure-notes)
+    * [Packages](#packages-)
+    * [Courses](#courses)
+    * [Clusters](#clusters)
+    * [Units](#units)
+* [Feature Requirements](#feature-requirements)
+  * [1. User Management](#1-user-management)
+  * [2. Authentication & Authorization](#2-authentication--authorization-)
+  * [3. Roles and Permissions](#3-roles-and-permissions)
+    * [3.1 Role Hierarchy](#31-role-hierarchy)
+    * [3.2 Permission Matrix](#32-permission-matrix)
+  * [4. Course Management](#4-course-management)
+  * [5. Session Management](#5-session-management)
+  * [6. Cheat Sheet Generation](#6-cheat-sheet-generation)
+  * [7. System Administration](#7-system-administration)
+  * [8. Data Import/Export](#8-data-importexport)
+  * [9. Image Management](#9-image-management)
+<!-- TOC -->
 
-## Project Overview
+
+
+# Project Overview
 Web-based system for managing student class rosters with photos and personal details, providing lecturers with visual cheat sheets for their sessions.
 
 The project does NOT need a timetabling capability. It acts as a cheat sheet for lecturers.
@@ -48,7 +73,45 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 - Domain email validation system
 - Automated backup system
 
+## Data Structure Notes:
+- Packages (contains multiple courses) - `The general category of a course ie. the diploma of web development is part of the package of IT`
+- Courses (core, specialist, elective units) - `the diploma/certificate`
+- Units (part of courses and clusters)
+- Clusters (1-8 units)
 
+
+### Packages 
+| **National Code** | **Title**                                  | **TGA Status** |
+|-------------------|--------------------------------------------|----------------|
+| BSB               | Business Services Training Package         | Current        |
+| CUA               | Creative Arts and Culture Training Package | Current        |
+- TGA stands for "Training.gov.au"
+
+
+### Courses
+| **National Code** | **AQF Level**     | **Title** | **TGA Status** | **State Code** | **Nominal Hours** | **Type**      | **QA** | **StateCode** | **NatCode** | **NatTitle** | **NatCodeAndTitle**               |
+|-------------------|-------------------|-----------|----------------|----------------|-------------------|---------------|--------|---------------|-------------|--------------|-----------------------------------|
+| CUA40715          | Certificate IV in | Design    | Current        | AZN5           | 665               | Qualification | AZN5   | AZN5          | CUA40715    | Design       | CUA40715 Certificate IV in Design |
+| CUA40113          | Certificate IV in | Dance     | Current        | J697           | 690               | Qualification | J697   | J697          | CUA40113    | Dance        | CUA40113 Certificate IV in Dance  |
+
+
+### Clusters
+| **Code** | **Title**            | **Qualification** | **Qualification State Code** | **Unit1** | **Unit2** | **Unit3** | **Unit4** | **Unit5** | **Unit6** | **Unit7** | **Unit8** |
+|----------|----------------------|-------------------|------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| ADVPROG  | Advanced Programming | ICT50220          | AC21                         | ICTPRG535 | ICTPRG547 |           |           |           |           |           |           |
+| BIGDAT   | Big Data             | ICT50220          | AC21                         | ICTDAT503 | ICTDAT501 | BSBDAT501 | ICTDAT503 |           |           |           |           |
+
+
+### Units
+| **National Code** | **Title**                                       | **TGA Status** | **State Code** | **Nominal Hours** |
+|-------------------|-------------------------------------------------|----------------|----------------|-------------------|
+| BSBMKG402         | Analyse consumer behaviour for specific markets | Replaced       | AUJ44          | 50                |
+| BSBADM101         | Use business equipment and resources            | Current        | AUJ55          | 20                |
+
+
+
+
+# Feature Requirements
 
 ## 1. User Management
 - Profile Requirements:
@@ -70,6 +133,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 - Email verification system
 - Domain whitelist management
 - Password security requirements
+
 
 ## 3. Roles and Permissions
 
@@ -108,9 +172,6 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 | Request Changes          | ✓          | ✓     | ✓     | ✓       |
 
 
-
-# Feature Requirements
-
 ## 4. Course Management
 - Data Structure:
     - Packages (contains multiple courses) - `The general category of a course ie. the diploma of web development is part of the package of IT`
@@ -122,6 +183,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Data validation
     - Error handling
     - Relationship verification
+
 
 ## 5. Session Management
 - Features:
@@ -138,6 +200,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Calendar interface
     - Duration validation
 
+
 ## 6. Cheat Sheet Generation
 - Features:
     - Student photos
@@ -146,7 +209,6 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Session-specific grouping
     - Print optimization
     - Layout customization
-
 
 
 ## 7. System Administration
@@ -162,6 +224,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - System parameters
     - Import/Export settings
 
+
 ## 8. Data Import/Export
 - Import Validation:
     - File format verification
@@ -173,6 +236,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Full system backup
     - Selective data export
     - Multiple format support
+
 
 ## 9. Image Management
 - Upload Requirements:
@@ -191,3 +255,5 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Secure storage location
     - Download prevention
     - Multiple image versions (original, processed, thumbnail)
+
+
