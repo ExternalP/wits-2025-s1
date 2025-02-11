@@ -23,9 +23,57 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 - Collaborative development via GitHub repository
 - Project management through GitHub Projects and Issues
 
-## Roles and Permissions
+## Development Requirements
+- Version Control:
+    - GitHub repository
+    - Branch protection rules
+    - Pull request workflow
+    - Code review process
+- Testing:
+    - Pest testing framework
+    - Required test coverage
+    - Integration tests
+    - Unit tests
+- Documentation:
+    - Code documentation
+    - API documentation
+    - User guides
+    - Setup instructions
 
-### Role Hierarchy
+## Core Infrastructure
+- Laravel 11 based system
+- PHP 8.3 compatibility
+- SQL database (SQLite for development)
+- Secure file storage system
+- Domain email validation system
+- Automated backup system
+
+
+
+## 1. User Management
+- Profile Requirements:
+    - Given and/or Family name (at least one required)
+    - Preferred name (optional)
+    - Preferred pronouns
+    - Valid email from approved domain
+    - Profile photo
+- Change request system for updates
+- Email verification and bounce checking
+
+
+## 2. Authentication & Authorization 
+- Role-based access control:
+    - Super Admin: Full system access
+    - Admin: System management
+    - Staff: Class management
+    - Student: Personal profile access
+- Email verification system
+- Domain whitelist management
+- Password security requirements
+
+## 3. Roles and Permissions
+
+### 3.1 Role Hierarchy
 - Super Admin
     - System configuration
     - Role management
@@ -43,7 +91,7 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Change requests
     - Photo submission
 
-### Permission Matrix
+### 3.2 Permission Matrix
 | Permission               | SuperAdmin | Admin | Staff | Student |
 | ------------------------ | ---------- | ----- | ----- | ------- |
 | System Configuration     | ✓          | -     | -     | -       |
@@ -59,37 +107,74 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 | Edit Own Profile         | ✓          | ✓     | ✓     | ✓       |
 | Request Changes          | ✓          | ✓     | ✓     | ✓       |
 
+
+
 # Feature Requirements
 
-## Core Infrastructure
-- Laravel 11 based system
-- PHP 8.3 compatibility
-- SQL database (SQLite for development)
-- Secure file storage system
-- Domain email validation system
-- Automated backup system
+## 4. Course Management
+- Data Structure:
+    - Packages (contains multiple courses) - `The general category of a course ie. the diploma of web development is part of the package of IT`
+    - Courses (core, specialist, elective units) - `the diploma/certificate`
+    - Units (part of courses and clusters)
+    - Clusters (1-8 units)
+- Import Capabilities:
+    - CSV/Excel file support
+    - Data validation
+    - Error handling
+    - Relationship verification
 
-## Authentication & Authorization
-- Role-based access control:
-    - Super Admin: Full system access
-    - Admin: System management
-    - Staff: Class management
-    - Student: Personal profile access
-- Email verification system
-- Domain whitelist management
-- Password security requirements
+## 5. Session Management
+- Features:
+    - Course/Cluster assignment
+    - Start/End dates
+    - Duration tracking
+    - Lecturer assignment
+- Import Options:
+    - CSV/Excel import
+    - ICS feed integration
+    - Manual entry
+- Scheduling:
+    - Conflict detection
+    - Calendar interface
+    - Duration validation
 
-## User Management
-- Profile Requirements:
-    - Given and/or Family name (at least one required)
-    - Preferred name (optional)
-    - Preferred pronouns
-    - Valid email from approved domain
-    - Profile photo
-- Change request system for updates
-- Email verification and bounce checking
+## 6. Cheat Sheet Generation
+- Features:
+    - Student photos
+    - Names (Given, Family, Preferred)
+    - Pronouns
+    - Session-specific grouping
+    - Print optimization
+    - Layout customization
 
-## Image Management
+
+
+## 7. System Administration
+- Backup Management:
+    - Daily automated backups
+    - 30-day retention
+    - Monthly archives
+    - Annual archives
+    - Integrity verification
+- System Configuration:
+    - Email domain management
+    - Role/Permission settings
+    - System parameters
+    - Import/Export settings
+
+## 8. Data Import/Export
+- Import Validation:
+    - File format verification
+    - Schema validation
+    - Data type checking
+    - Relationship integrity
+    - Error reporting
+- Export Features:
+    - Full system backup
+    - Selective data export
+    - Multiple format support
+
+## 9. Image Management
 - Upload Requirements:
     - PNG/JPG formats only
     - Size: 250KB maximum
@@ -106,81 +191,3 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Secure storage location
     - Download prevention
     - Multiple image versions (original, processed, thumbnail)
-
-## Course Management
-- Data Structure:
-    - Packages (contains multiple courses)
-    - Courses (core, specialist, elective units)
-    - Units (part of courses and clusters)
-    - Clusters (1-8 units)
-- Import Capabilities:
-    - CSV/Excel file support
-    - Data validation
-    - Error handling
-    - Relationship verification
-
-## Session Management
-- Features:
-    - Course/Cluster assignment
-    - Start/End dates
-    - Duration tracking
-    - Lecturer assignment
-- Import Options:
-    - CSV/Excel import
-    - ICS feed integration
-    - Manual entry
-- Scheduling:
-    - Conflict detection
-    - Calendar interface
-    - Duration validation
-
-## Cheat Sheet Generation
-- Features:
-    - Student photos
-    - Names (Given, Family, Preferred)
-    - Pronouns
-    - Session-specific grouping
-    - Print optimization
-    - Layout customization
-
-## Data Import/Export
-- Import Validation:
-    - File format verification
-    - Schema validation
-    - Data type checking
-    - Relationship integrity
-    - Error reporting
-- Export Features:
-    - Full system backup
-    - Selective data export
-    - Multiple format support
-
-## System Administration
-- Backup Management:
-    - Daily automated backups
-    - 30-day retention
-    - Monthly archives
-    - Annual archives
-    - Integrity verification
-- System Configuration:
-    - Email domain management
-    - Role/Permission settings
-    - System parameters
-    - Import/Export settings
-
-## Development Requirements
-- Version Control:
-    - GitHub repository
-    - Branch protection rules
-    - Pull request workflow
-    - Code review process
-- Testing:
-    - Pest testing framework
-    - Required test coverage
-    - Integration tests
-    - Unit tests
-- Documentation:
-    - Code documentation
-    - API documentation
-    - User guides
-    - Setup instructions
