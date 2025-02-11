@@ -1,6 +1,3 @@
-# NEED TO ORGANISE TASKS
-
-
 # Student Cheat Sheet SaaS Application Mini Project Brief
 
 ## Project Overview
