@@ -19,6 +19,11 @@ return new class extends Migration
          */
         Schema::create('units', function (Blueprint $table) {
             $table->id();
+            $table->string('national_code');//->unique();
+            $table->string('title');
+            $table->string('tga_status')->default('current');
+            $table->string('state_code');//->unique();
+            $table->integer('nominal_hours');
             $table->timestamps();
         });
     }
