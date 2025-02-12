@@ -19,6 +19,18 @@ return new class extends Migration
          */
         Schema::create('clusters', function (Blueprint $table) {
             $table->id();
+            $table->string('code');//->unique();
+            $table->string('title');
+            $table->string('qualification');
+            $table->string('state_code');//->unique();
+            $table->string('unit1')->nullable();
+            $table->string('unit2')->nullable();
+            $table->string('unit3')->nullable();
+            $table->string('unit4')->nullable();
+            $table->string('unit5')->nullable();
+            $table->string('unit6')->nullable();
+            $table->string('unit7')->nullable();
+            $table->string('unit8')->nullable();
             $table->timestamps();
         });
     }
