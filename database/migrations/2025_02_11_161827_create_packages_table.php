@@ -20,9 +20,9 @@ return new class extends Migration
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
             //$table->char('national_code', 3)->unique();
-            $table->string('national_code');//->unique();
+            $table->string('national_code');
             $table->string('title');
-            $table->string('tga_status')->default('current');
+            $table->string('tga_status')->default('Current');
             $table->timestamps();
         });
     }

@@ -19,20 +19,23 @@ return new class extends Migration
          */
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->string('national_code');//->unique(); // Same as NatCode
+            $table->string('national_code');
             $table->string('aqf_level');
-            $table->string('title'); // Same as NatTitle
-            $table->string('tga_status')->default('current');
-            $table->string('state_code');//->unique(); // There are 2 State Codes & same as QA
+            $table->string('title');
+            $table->string('tga_status')->default('Current');
+            // state_code should be unique excluding courses where tga_status == 'Expired'
+            $table->string('state_code');
             $table->integer('nominal_hours');
             $table->string('type');
-            // TODO: Ask Adrian what to do about repeated/unnecessary fields in CSV file.
-            //$table->string('qa');
-            //$table->string('statecode');
-            //$table->string('natcode');
-            //$table->string('nattitle');
-            //$table->string('NatCodeAndTitle');
             $table->timestamps();
+            $table->foreignId('package_id')->constrained('packages');
+
+            // Adrian said to ignore the duplicate fields.
+            //$table->string('qa'); // Same as state_code & statecode
+            //$table->string('statecode'); // Same as state_code & QA
+            //$table->string('natcode'); // Same as national_code
+            //$table->string('nattitle'); // Same as title
+            //$table->string('NatCodeAndTitle');
         });
     }
 
