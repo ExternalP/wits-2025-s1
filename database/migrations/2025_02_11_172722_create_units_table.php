@@ -19,10 +19,10 @@ return new class extends Migration
          */
         Schema::create('units', function (Blueprint $table) {
             $table->id();
-            $table->string('national_code');//->unique();
+            $table->string('national_code');
             $table->string('title');
-            $table->string('tga_status')->default('current');
-            $table->string('state_code');//->unique();
+            $table->string('tga_status')->default('Current');
+            $table->string('state_code');
             $table->integer('nominal_hours');
             $table->timestamps();
         });

@@ -5,6 +5,7 @@
         "This file is @generated automatically"
     ],
     "content-hash": "6b4dbe3eb8d2202710402f6636f5dcb5",
+    //"content-hash": "093e6ca8d3fa6ac366a1107aaf10c56a",
     "packages": [
         {
             "name": "brick/math",
@@ -3301,6 +3302,18 @@
         },
         {
             "name": "spatie/laravel-permission",
+            // "version": "6.15.0",
+            // "source": {
+              // "type": "git",
+              // "url": "https://github.com/spatie/laravel-permission.git",
+              // "reference": "86074fcfd127f9fa7bcdf550b7c938e3beb0d65f"
+            // },
+            // "dist": {
+              // "type": "zip",
+              // "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/86074fcfd127f9fa7bcdf550b7c938e3beb0d65f",
+              // "reference": "86074fcfd127f9fa7bcdf550b7c938e3beb0d65f",
+            // "shasum": ""
+            // },
             "version": "6.16.0",
             "source": {
                 "type": "git",
@@ -3373,6 +3386,7 @@
             "support": {
                 "issues": "https://github.com/spatie/laravel-permission/issues",
                 "source": "https://github.com/spatie/laravel-permission/tree/6.16.0"
+                //"source": "https://github.com/spatie/laravel-permission/tree/6.15.0"
             },
             "funding": [
                 {
