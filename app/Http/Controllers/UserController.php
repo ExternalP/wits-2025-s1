@@ -2,7 +2,7 @@
 
 /**
  * Assessment Title: WITS-2025-S1
- * Cluster:          SaaS: Part 2 – Back End Development 
+ * Cluster:          SaaS: Part 2 – Back End Development
  * Qualification:    ICT50220 Diploma of Information Technology (Advanced Programming)
  * Name:             Luis Alvarez Suarez
  * Student ID:       20114831
@@ -40,13 +40,23 @@ class UserController extends Controller
     use AuthorizesRequests;
 
     /**
-     *Get all users and send them to the view.
+     * Display a listing of the resource.
+     *
      */
     public function index()
     {
+        $users = User::paginate(6);
+        $message = session('message', null);
+        return view('users.index', compact(['users','message']));
+    }
+    /**
+     *Get all users and send them to the view.
+     */
+    public function home()
+    {
         $currentUser = Auth::user();
 
-        if ($currentUser->hasRole(['Superuser', 'Administrator'])) {
+        if ($currentUser->hasRole(['SuperAdmin'])) {
             $users = User::all();
         } else {
             $users = User::where('user_id', $currentUser->id)
@@ -58,9 +68,7 @@ class UserController extends Controller
             $this->authorize('view', $user);
         }
 
-        return view('users.home', [
-            'users' => $users
-        ]);
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -310,7 +318,7 @@ class UserController extends Controller
     }
 
     /**
-     * Restore trashed users              
+     * Restore trashed users
      */
 
     public function restore($id)
