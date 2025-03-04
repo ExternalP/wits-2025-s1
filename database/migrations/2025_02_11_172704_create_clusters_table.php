@@ -24,15 +24,8 @@ return new class extends Migration
             $table->string('title');
             $table->string('qualification');
             $table->string('state_code');
+            $table->foreignId('course_id')->constrained('courses');//->cascadeOnDelete();
             $table->timestamps();
-            // $table->string('unit1')->nullable();
-            // $table->string('unit2')->nullable();
-            // $table->string('unit3')->nullable();
-            // $table->string('unit4')->nullable();
-            // $table->string('unit5')->nullable();
-            // $table->string('unit6')->nullable();
-            // $table->string('unit7')->nullable();
-            // $table->string('unit8')->nullable();
         });
     }
 

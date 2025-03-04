@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class Course extends Model
@@ -32,21 +33,34 @@ class Course extends Model
     }
 
     /**
-     * @return BelongsToMany
+     * @return HasMany
      */
-    public function clusters(): BelongsToMany
+    public function clusters(): HasMany
     {
-        return $this->belongsToMany(Cluster::class, 'course_cluster',
-            'course_id', 'cluster_id')
-            ->withTimestamps();
-            // ->using(CourseCluster::class);
-            // ->withPivot([]);
+        return $this->hasMany(Cluster::class);
     }
 
+    /**
+     * @return BelongsToMany
+     */
     public function units(): BelongsToMany
     {
         return $this->belongsToMany(Unit::class, 'course_unit',
             'course_id', 'unit_id')
             ->withTimestamps();
     }
+
+    /*public function clusters(): BelongsToMany
+    {
+        return $this->belongsToMany(Cluster::class, 'course_cluster',
+            'course_id', 'cluster_id')
+            ->withTimestamps();
+            // ->using(CourseCluster::class);
+            // ->withPivot([]);
+    }*/
+
+    /*public function units(): HasMany
+    {
+        return $this->hasMany(Unit::class);
+    }*/
 }
