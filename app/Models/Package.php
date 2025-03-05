@@ -18,6 +18,6 @@ class Package extends Model
     ];
 
     public function courses(): HasMany {
-        return $this->hasMany(Course::class);
+        return $this->hasMany(Course::class, 'course_id', 'id');
     }
 }

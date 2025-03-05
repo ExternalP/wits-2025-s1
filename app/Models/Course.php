@@ -37,7 +37,7 @@ class Course extends Model
      */
     public function clusters(): HasMany
     {
-        return $this->hasMany(Cluster::class);
+        return $this->hasMany(Cluster::class, 'course_id', 'id');
     }
 
     /**

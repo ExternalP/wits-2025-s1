@@ -18,14 +18,15 @@ class Cluster extends Model
         'title',
         'qualification',
         'state_code',
+        'course_id',
     ];
 
     /**
      * @return BelongsTo
      */
-    public function courses(): BelongsTo
+    public function course(): BelongsTo
     {
-        return $this->belongsTo(Course::class);
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }
 
     /**
