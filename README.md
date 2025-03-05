@@ -26,6 +26,7 @@
   * [7. System Administration](#7-system-administration)
   * [8. Data Import/Export](#8-data-importexport)
   * [9. Image Management](#9-image-management)
+* [Dev Tools](#dev-tools)
 <!-- TOC -->
 
 
@@ -255,5 +256,11 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
     - Secure storage location
     - Download prevention
     - Multiple image versions (original, processed, thumbnail)
+
+
+# Dev Tools
+- laravel-ide-helper: https://github.com/barryvdh/laravel-ide-helper \
+  (helps with laravel autocompletion)
+- 
 
 

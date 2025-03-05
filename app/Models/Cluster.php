@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Cluster extends Model
 {
@@ -16,24 +18,39 @@ class Cluster extends Model
         'title',
         'qualification',
         'state_code',
+        'course_id',
     ];
+
+    /**
+     * @return BelongsTo
+     */
+    public function course(): BelongsTo
+    {
+        return $this->belongsTo(Course::class, 'course_id', 'id');
+    }
 
     /**
      * @return BelongsToMany
      */
-    public function courses(): BelongsToMany
-    {
-        return $this->belongsToMany(Course::class, 'course_cluster',
-            'cluster_id', 'course_id')
-            ->withTimestamps();
-        // ->using(CourseCluster::class);
-        // ->withPivot([]);
-    }
-
     public function units(): BelongsToMany
     {
         return $this->belongsToMany(Unit::class, 'cluster_unit',
             'cluster_id', 'unit_id')
             ->withTimestamps();
     }
+
+
+    /*public function courses(): BelongsToMany
+    {
+        return $this->belongsToMany(Course::class, 'course_cluster',
+            'cluster_id', 'course_id')
+            ->withTimestamps();
+        // ->using(CourseCluster::class);
+        // ->withPivot([]);
+    }*/
+
+    /*public function units(): HasMany
+    {
+        return $this->hasMany(Unit::class);
+    }*/
 }
