@@ -90,17 +90,19 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 
 
 ### Courses
-| **National Code** | **AQF Level**     | **Title** | **TGA Status** | **State Code** | **Nominal Hours** | **Type**      | **QA** | **StateCode** | **NatCode** | **NatTitle** | **NatCodeAndTitle**               |
-|-------------------|-------------------|-----------|----------------|----------------|-------------------|---------------|--------|---------------|-------------|--------------|-----------------------------------|
-| CUA40715          | Certificate IV in | Design    | Current        | AZN5           | 665               | Qualification | AZN5   | AZN5          | CUA40715    | Design       | CUA40715 Certificate IV in Design |
-| CUA40113          | Certificate IV in | Dance     | Current        | J697           | 690               | Qualification | J697   | J697          | CUA40113    | Dance        | CUA40113 Certificate IV in Dance  |
+| **National Code** | **AQF Level**     | **Title** | **TGA Status** | **State Code** | **Nominal Hours** | **Type**      | **Package ID** |
+|-------------------|-------------------|-----------|----------------|----------------|-------------------|---------------|----------------|
+| CUA40715          | Certificate IV in | Design    | Current        | AZN5           | 665               | Qualification | 2              |
+| CUA40113          | Certificate IV in | Dance     | Current        | J697           | 690               | Qualification | 2              |
+- Has pivot table course_unit to track units in course
 
 
 ### Clusters
-| **Code** | **Title**            | **Qualification** | **Qualification State Code** | **Unit1** | **Unit2** | **Unit3** | **Unit4** | **Unit5** | **Unit6** | **Unit7** | **Unit8** |
-|----------|----------------------|-------------------|------------------------------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| ADVPROG  | Advanced Programming | ICT50220          | AC21                         | ICTPRG535 | ICTPRG547 |           |           |           |           |           |           |
-| BIGDAT   | Big Data             | ICT50220          | AC21                         | ICTDAT503 | ICTDAT501 | BSBDAT501 | ICTDAT503 |           |           |           |           |
+| **Code** | **Title**            | **Qualification** | **State Code** | **Course ID** |
+|----------|----------------------|-------------------|----------------|---------------|
+| ADVPROG  | Advanced Programming | ICT50220          | AC21           | 253           |
+| BIGDAT   | Big Data             | ICT50220          | AC21           | 253           |
+- Has pivot table cluster_unit to track units in cluster
 
 
 ### Units
@@ -108,7 +110,8 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 |-------------------|-------------------------------------------------|----------------|----------------|-------------------|
 | BSBMKG402         | Analyse consumer behaviour for specific markets | Replaced       | AUJ44          | 50                |
 | BSBADM101         | Use business equipment and resources            | Current        | AUJ55          | 20                |
-
+- Has pivot table course_unit to track units in course
+- Has pivot table cluster_unit to track units in cluster
 
 
 

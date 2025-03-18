@@ -34,6 +34,7 @@ class CourseSeeder extends Seeder
     {
         $seedData = [
             [
+                "id" => "1",
                 "package_id" => "1",
                 "national_code" => "BSB10115",
                 "aqf_level" => "Certificate I in",
@@ -44,6 +45,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "2",
                 "package_id" => "1",
                 "national_code" => "BSB20115",
                 "aqf_level" => "Certificate II in",
@@ -54,6 +56,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "3",
                 "package_id" => "1",
                 "national_code" => "BSB20215",
                 "aqf_level" => "Certificate II in",
@@ -64,6 +67,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "4",
                 "package_id" => "1",
                 "national_code" => "BSB30115",
                 "aqf_level" => "Certificate III in",
@@ -74,6 +78,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "5",
                 "package_id" => "1",
                 "national_code" => "BSB30215",
                 "aqf_level" => "Certificate III in",
@@ -84,6 +89,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "6",
                 "package_id" => "1",
                 "national_code" => "BSB30315",
                 "aqf_level" => "Certificate III in",
@@ -94,6 +100,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "7",
                 "package_id" => "1",
                 "national_code" => "BSB30415",
                 "aqf_level" => "Certificate III in",
@@ -104,6 +111,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "8",
                 "package_id" => "1",
                 "national_code" => "BSB30515",
                 "aqf_level" => "Certificate III in",
@@ -114,6 +122,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "9",
                 "package_id" => "1",
                 "national_code" => "BSB30615",
                 "aqf_level" => "Certificate III in",
@@ -124,6 +133,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "10",
                 "package_id" => "1",
                 "national_code" => "BSB30715",
                 "aqf_level" => "Certificate III in",
@@ -134,6 +144,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "11",
                 "package_id" => "1",
                 "national_code" => "BSB30815",
                 "aqf_level" => "Certificate III in",
@@ -144,6 +155,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "12",
                 "package_id" => "1",
                 "national_code" => "BSB30915",
                 "aqf_level" => "Certificate III in",
@@ -154,6 +166,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "13",
                 "package_id" => "1",
                 "national_code" => "BSB31015",
                 "aqf_level" => "Certificate III in",
@@ -164,6 +177,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "14",
                 "package_id" => "1",
                 "national_code" => "BSB31115",
                 "aqf_level" => "Certificate III in",
@@ -174,6 +188,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "15",
                 "package_id" => "1",
                 "national_code" => "BSB31215",
                 "aqf_level" => "Certificate III in",
@@ -184,6 +199,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "16",
                 "package_id" => "1",
                 "national_code" => "BSB40115",
                 "aqf_level" => "Certificate IV in",
@@ -194,6 +210,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "17",
                 "package_id" => "1",
                 "national_code" => "BSB40215",
                 "aqf_level" => "Certificate IV in",
@@ -204,6 +221,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "18",
                 "package_id" => "1",
                 "national_code" => "BSB40315",
                 "aqf_level" => "Certificate IV in",
@@ -214,6 +232,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "19",
                 "package_id" => "1",
                 "national_code" => "BSB40415",
                 "aqf_level" => "Certificate IV in",
@@ -224,6 +243,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "20",
                 "package_id" => "1",
                 "national_code" => "BSB40515",
                 "aqf_level" => "Certificate IV in",
@@ -234,6 +254,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "21",
                 "package_id" => "1",
                 "national_code" => "BSB40615",
                 "aqf_level" => "Certificate IV in",
@@ -244,6 +265,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "22",
                 "package_id" => "1",
                 "national_code" => "BSB40715",
                 "aqf_level" => "Certificate IV in",
@@ -254,6 +276,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "23",
                 "package_id" => "1",
                 "national_code" => "BSB40915",
                 "aqf_level" => "Certificate IV in",
@@ -264,6 +287,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "24",
                 "package_id" => "1",
                 "national_code" => "BSB41015",
                 "aqf_level" => "Certificate IV in",
@@ -274,6 +298,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "25",
                 "package_id" => "1",
                 "national_code" => "BSB41115",
                 "aqf_level" => "Certificate IV in",
@@ -284,6 +309,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "26",
                 "package_id" => "1",
                 "national_code" => "BSB41315",
                 "aqf_level" => "Certificate IV in",
@@ -294,6 +320,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "27",
                 "package_id" => "1",
                 "national_code" => "BSB41415",
                 "aqf_level" => "Certificate IV in",
@@ -304,6 +331,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "28",
                 "package_id" => "1",
                 "national_code" => "BSB41515",
                 "aqf_level" => "Certificate IV in",
@@ -314,6 +342,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "29",
                 "package_id" => "1",
                 "national_code" => "BSB41615",
                 "aqf_level" => "Certificate IV in",
@@ -324,6 +353,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "30",
                 "package_id" => "1",
                 "national_code" => "BSB41715",
                 "aqf_level" => "Certificate IV in",
@@ -334,6 +364,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "31",
                 "package_id" => "1",
                 "national_code" => "BSB41915",
                 "aqf_level" => "Certificate IV in",
@@ -344,6 +375,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "32",
                 "package_id" => "1",
                 "national_code" => "BSB42015",
                 "aqf_level" => "Certificate IV in",
@@ -354,6 +386,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "33",
                 "package_id" => "1",
                 "national_code" => "BSB42115",
                 "aqf_level" => "Certificate IV in",
@@ -364,6 +397,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "34",
                 "package_id" => "1",
                 "national_code" => "BSB42215",
                 "aqf_level" => "Certificate IV in",
@@ -374,6 +408,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "35",
                 "package_id" => "1",
                 "national_code" => "BSB42315",
                 "aqf_level" => "Certificate IV in",
@@ -384,6 +419,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "36",
                 "package_id" => "1",
                 "national_code" => "BSB42415",
                 "aqf_level" => "Certificate IV in",
@@ -394,6 +430,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "37",
                 "package_id" => "1",
                 "national_code" => "BSB42515",
                 "aqf_level" => "Certificate IV in",
@@ -404,6 +441,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "38",
                 "package_id" => "1",
                 "national_code" => "BSB42615",
                 "aqf_level" => "Certificate IV in",
@@ -414,6 +452,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "39",
                 "package_id" => "1",
                 "national_code" => "BSB50115",
                 "aqf_level" => "Diploma of",
@@ -424,6 +463,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "40",
                 "package_id" => "1",
                 "national_code" => "BSB50215",
                 "aqf_level" => "Diploma of",
@@ -434,6 +474,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "41",
                 "package_id" => "1",
                 "national_code" => "BSB50315",
                 "aqf_level" => "Diploma of",
@@ -444,6 +485,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "42",
                 "package_id" => "1",
                 "national_code" => "BSB50415",
                 "aqf_level" => "Diploma of",
@@ -454,6 +496,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "43",
                 "package_id" => "1",
                 "national_code" => "BSB50515",
                 "aqf_level" => "Diploma of",
@@ -464,6 +507,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "44",
                 "package_id" => "1",
                 "national_code" => "BSB50615",
                 "aqf_level" => "Diploma of",
@@ -474,6 +518,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "45",
                 "package_id" => "1",
                 "national_code" => "BSB50715",
                 "aqf_level" => "Diploma of",
@@ -484,6 +529,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "46",
                 "package_id" => "1",
                 "national_code" => "BSB50815",
                 "aqf_level" => "Diploma of",
@@ -494,6 +540,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "47",
                 "package_id" => "1",
                 "national_code" => "BSB51215",
                 "aqf_level" => "Diploma of",
@@ -504,6 +551,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "48",
                 "package_id" => "1",
                 "national_code" => "BSB51315",
                 "aqf_level" => "Diploma of",
@@ -514,6 +562,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "49",
                 "package_id" => "1",
                 "national_code" => "BSB51415",
                 "aqf_level" => "Diploma of",
@@ -524,6 +573,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "50",
                 "package_id" => "1",
                 "national_code" => "BSB51515",
                 "aqf_level" => "Diploma of",
@@ -534,6 +584,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "51",
                 "package_id" => "1",
                 "national_code" => "BSB51615",
                 "aqf_level" => "Diploma of",
@@ -544,6 +595,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "52",
                 "package_id" => "1",
                 "national_code" => "BSB51715",
                 "aqf_level" => "Diploma of",
@@ -554,6 +606,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "53",
                 "package_id" => "1",
                 "national_code" => "BSB51915",
                 "aqf_level" => "Diploma of",
@@ -564,6 +617,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "54",
                 "package_id" => "1",
                 "national_code" => "BSB52015",
                 "aqf_level" => "Diploma of",
@@ -574,6 +628,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "55",
                 "package_id" => "1",
                 "national_code" => "BSB52115",
                 "aqf_level" => "Diploma of",
@@ -584,6 +639,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "56",
                 "package_id" => "1",
                 "national_code" => "BSB52215",
                 "aqf_level" => "Diploma of",
@@ -594,6 +650,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "57",
                 "package_id" => "1",
                 "national_code" => "BSB52315",
                 "aqf_level" => "Diploma of",
@@ -604,6 +661,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "58",
                 "package_id" => "1",
                 "national_code" => "BSB52415",
                 "aqf_level" => "Diploma of",
@@ -614,6 +672,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "59",
                 "package_id" => "1",
                 "national_code" => "BSB60115",
                 "aqf_level" => "Advanced Diploma of",
@@ -624,6 +683,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "60",
                 "package_id" => "1",
                 "national_code" => "BSB60215",
                 "aqf_level" => "Advanced Diploma of",
@@ -634,6 +694,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "61",
                 "package_id" => "1",
                 "national_code" => "BSB60515",
                 "aqf_level" => "Advanced Diploma of",
@@ -644,6 +705,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "62",
                 "package_id" => "1",
                 "national_code" => "BSB60615",
                 "aqf_level" => "Advanced Diploma of",
@@ -654,6 +716,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "63",
                 "package_id" => "1",
                 "national_code" => "BSB60815",
                 "aqf_level" => "Advanced Diploma of",
@@ -664,6 +727,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "64",
                 "package_id" => "1",
                 "national_code" => "BSB60915",
                 "aqf_level" => "Advanced Diploma of",
@@ -674,6 +738,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "65",
                 "package_id" => "1",
                 "national_code" => "BSB61015",
                 "aqf_level" => "Advanced Diploma of",
@@ -684,6 +749,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "66",
                 "package_id" => "1",
                 "national_code" => "BSB61115",
                 "aqf_level" => "Advanced Diploma of",
@@ -694,6 +760,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "67",
                 "package_id" => "1",
                 "national_code" => "BSB61215",
                 "aqf_level" => "Advanced Diploma of",
@@ -704,6 +771,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "68",
                 "package_id" => "1",
                 "national_code" => "BSB61315",
                 "aqf_level" => "Advanced Diploma of",
@@ -714,6 +782,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "69",
                 "package_id" => "1",
                 "national_code" => "BSB80215",
                 "aqf_level" => "Graduate Diploma of",
@@ -724,6 +793,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "70",
                 "package_id" => "1",
                 "national_code" => "BSB80315",
                 "aqf_level" => "Graduate Certificate In",
@@ -734,6 +804,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "71",
                 "package_id" => "1",
                 "national_code" => "BSB80415",
                 "aqf_level" => "Graduate Diploma of",
@@ -744,6 +815,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "72",
                 "package_id" => "1",
                 "national_code" => "BSB80515",
                 "aqf_level" => "Graduate Certificate In",
@@ -754,6 +826,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "73",
                 "package_id" => "1",
                 "national_code" => "BSB80615",
                 "aqf_level" => "Graduate Diploma of",
@@ -764,6 +837,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "74",
                 "package_id" => "2",
                 "national_code" => "CUA10113",
                 "aqf_level" => "Certificate I in",
@@ -774,6 +848,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "75",
                 "package_id" => "2",
                 "national_code" => "CUA10113",
                 "aqf_level" => "Certificate I in",
@@ -784,6 +859,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "76",
                 "package_id" => "2",
                 "national_code" => "CUA10215",
                 "aqf_level" => "Certificate I in",
@@ -794,6 +870,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "77",
                 "package_id" => "2",
                 "national_code" => "CUA10215",
                 "aqf_level" => "Certificate I in",
@@ -804,6 +881,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "78",
                 "package_id" => "2",
                 "national_code" => "CUA10315",
                 "aqf_level" => "Certificate I in",
@@ -814,6 +892,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "79",
                 "package_id" => "2",
                 "national_code" => "CUA10315",
                 "aqf_level" => "Certificate I in",
@@ -824,6 +903,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "80",
                 "package_id" => "2",
                 "national_code" => "CUA20113",
                 "aqf_level" => "Certificate II in",
@@ -834,6 +914,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "81",
                 "package_id" => "2",
                 "national_code" => "CUA20113",
                 "aqf_level" => "Certificate II in",
@@ -844,6 +925,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "82",
                 "package_id" => "2",
                 "national_code" => "CUA20215",
                 "aqf_level" => "Certificate II in",
@@ -854,6 +936,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "83",
                 "package_id" => "2",
                 "national_code" => "CUA20215",
                 "aqf_level" => "Certificate II in",
@@ -864,6 +947,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "84",
                 "package_id" => "2",
                 "national_code" => "CUA20315",
                 "aqf_level" => "Certificate II in",
@@ -874,6 +958,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "85",
                 "package_id" => "2",
                 "national_code" => "CUA20315",
                 "aqf_level" => "Certificate II in",
@@ -884,6 +969,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "86",
                 "package_id" => "2",
                 "national_code" => "CUA20415",
                 "aqf_level" => "Certificate II in",
@@ -894,6 +980,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "87",
                 "package_id" => "2",
                 "national_code" => "CUA20415",
                 "aqf_level" => "Certificate II in",
@@ -904,6 +991,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "88",
                 "package_id" => "2",
                 "national_code" => "CUA20515",
                 "aqf_level" => "Certificate II in",
@@ -914,6 +1002,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "89",
                 "package_id" => "2",
                 "national_code" => "CUA20515",
                 "aqf_level" => "Certificate II in",
@@ -924,6 +1013,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "90",
                 "package_id" => "2",
                 "national_code" => "CUA20615",
                 "aqf_level" => "Certificate II in",
@@ -934,6 +1024,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "91",
                 "package_id" => "2",
                 "national_code" => "CUA20615",
                 "aqf_level" => "Certificate II in",
@@ -944,6 +1035,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "92",
                 "package_id" => "2",
                 "national_code" => "CUA20715",
                 "aqf_level" => "Certificate II in",
@@ -954,6 +1046,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "93",
                 "package_id" => "2",
                 "national_code" => "CUA20715",
                 "aqf_level" => "Certificate II in",
@@ -964,6 +1057,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "94",
                 "package_id" => "2",
                 "national_code" => "CUA30113",
                 "aqf_level" => "Certificate III in",
@@ -974,6 +1068,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "95",
                 "package_id" => "2",
                 "national_code" => "CUA30113",
                 "aqf_level" => "Certificate III in",
@@ -984,6 +1079,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "96",
                 "package_id" => "2",
                 "national_code" => "CUA30213",
                 "aqf_level" => "Certificate III in",
@@ -994,6 +1090,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "97",
                 "package_id" => "2",
                 "national_code" => "CUA30213",
                 "aqf_level" => "Certificate III in",
@@ -1004,6 +1101,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "98",
                 "package_id" => "2",
                 "national_code" => "CUA30313",
                 "aqf_level" => "Certificate III in",
@@ -1014,6 +1112,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "99",
                 "package_id" => "2",
                 "national_code" => "CUA30313",
                 "aqf_level" => "Certificate III in",
@@ -1024,6 +1123,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "100",
                 "package_id" => "2",
                 "national_code" => "CUA30415",
                 "aqf_level" => "Certificate III in",
@@ -1034,6 +1134,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "101",
                 "package_id" => "2",
                 "national_code" => "CUA30415",
                 "aqf_level" => "Certificate III in",
@@ -1044,6 +1145,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "102",
                 "package_id" => "2",
                 "national_code" => "CUA30515",
                 "aqf_level" => "Certificate III in",
@@ -1054,6 +1156,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "103",
                 "package_id" => "2",
                 "national_code" => "CUA30515",
                 "aqf_level" => "Certificate III in",
@@ -1064,6 +1167,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "104",
                 "package_id" => "2",
                 "national_code" => "CUA30615",
                 "aqf_level" => "Certificate III in",
@@ -1074,6 +1178,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "105",
                 "package_id" => "2",
                 "national_code" => "CUA30615",
                 "aqf_level" => "Certificate III in",
@@ -1084,6 +1189,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "106",
                 "package_id" => "2",
                 "national_code" => "CUA30715",
                 "aqf_level" => "Certificate III in",
@@ -1094,6 +1200,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "107",
                 "package_id" => "2",
                 "national_code" => "CUA30715",
                 "aqf_level" => "Certificate III in",
@@ -1104,6 +1211,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "108",
                 "package_id" => "2",
                 "national_code" => "CUA30815",
                 "aqf_level" => "Certificate III in",
@@ -1114,6 +1222,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "109",
                 "package_id" => "2",
                 "national_code" => "CUA30815",
                 "aqf_level" => "Certificate III in",
@@ -1124,6 +1233,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "110",
                 "package_id" => "2",
                 "national_code" => "CUA30915",
                 "aqf_level" => "Certificate III in",
@@ -1134,6 +1244,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "111",
                 "package_id" => "2",
                 "national_code" => "CUA30915",
                 "aqf_level" => "Certificate III in",
@@ -1144,6 +1255,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "112",
                 "package_id" => "2",
                 "national_code" => "CUA31015",
                 "aqf_level" => "Certificate III in",
@@ -1154,6 +1266,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "113",
                 "package_id" => "2",
                 "national_code" => "CUA31015",
                 "aqf_level" => "Certificate III in",
@@ -1164,6 +1277,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "114",
                 "package_id" => "2",
                 "national_code" => "CUA31115",
                 "aqf_level" => "Certificate III in",
@@ -1174,6 +1288,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "115",
                 "package_id" => "2",
                 "national_code" => "CUA31115",
                 "aqf_level" => "Certificate III in",
@@ -1184,6 +1299,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "116",
                 "package_id" => "2",
                 "national_code" => "CUA40113",
                 "aqf_level" => "Certificate IV in",
@@ -1194,6 +1310,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "117",
                 "package_id" => "2",
                 "national_code" => "CUA40113",
                 "aqf_level" => "Certificate IV in",
@@ -1204,6 +1321,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "118",
                 "package_id" => "2",
                 "national_code" => "CUA40213",
                 "aqf_level" => "Certificate IV in",
@@ -1214,6 +1332,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "119",
                 "package_id" => "2",
                 "national_code" => "CUA40213",
                 "aqf_level" => "Certificate IV in",
@@ -1224,6 +1343,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "120",
                 "package_id" => "2",
                 "national_code" => "CUA40313",
                 "aqf_level" => "Certificate IV in",
@@ -1234,6 +1354,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "121",
                 "package_id" => "2",
                 "national_code" => "CUA40313",
                 "aqf_level" => "Certificate IV in",
@@ -1244,6 +1365,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "122",
                 "package_id" => "2",
                 "national_code" => "CUA40415",
                 "aqf_level" => "Certificate IV in",
@@ -1254,6 +1376,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "123",
                 "package_id" => "2",
                 "national_code" => "CUA40415",
                 "aqf_level" => "Certificate IV in",
@@ -1264,6 +1387,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "124",
                 "package_id" => "2",
                 "national_code" => "CUA40513",
                 "aqf_level" => "Certificate IV in",
@@ -1274,6 +1398,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "125",
                 "package_id" => "2",
                 "national_code" => "CUA40513",
                 "aqf_level" => "Certificate IV in",
@@ -1284,6 +1409,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "126",
                 "package_id" => "2",
                 "national_code" => "CUA40615",
                 "aqf_level" => "Certificate IV in",
@@ -1294,6 +1420,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "127",
                 "package_id" => "2",
                 "national_code" => "CUA40615",
                 "aqf_level" => "Certificate IV in",
@@ -1304,6 +1431,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "128",
                 "package_id" => "2",
                 "national_code" => "CUA40715",
                 "aqf_level" => "Certificate IV in",
@@ -1314,6 +1442,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "129",
                 "package_id" => "2",
                 "national_code" => "CUA40715",
                 "aqf_level" => "Certificate IV in",
@@ -1324,6 +1453,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "130",
                 "package_id" => "2",
                 "national_code" => "CUA40815",
                 "aqf_level" => "Certificate IV in",
@@ -1334,6 +1464,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "131",
                 "package_id" => "2",
                 "national_code" => "CUA40815",
                 "aqf_level" => "Certificate IV in",
@@ -1344,6 +1475,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "132",
                 "package_id" => "2",
                 "national_code" => "CUA40915",
                 "aqf_level" => "Certificate IV in",
@@ -1354,6 +1486,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "133",
                 "package_id" => "2",
                 "national_code" => "CUA40915",
                 "aqf_level" => "Certificate IV in",
@@ -1364,6 +1497,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "134",
                 "package_id" => "2",
                 "national_code" => "CUA41015",
                 "aqf_level" => "Certificate IV in",
@@ -1374,6 +1508,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "135",
                 "package_id" => "2",
                 "national_code" => "CUA41015",
                 "aqf_level" => "Certificate IV in",
@@ -1384,6 +1519,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "136",
                 "package_id" => "2",
                 "national_code" => "CUA41115",
                 "aqf_level" => "Certificate IV in",
@@ -1394,6 +1530,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "137",
                 "package_id" => "2",
                 "national_code" => "CUA41115",
                 "aqf_level" => "Certificate IV in",
@@ -1404,6 +1541,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "138",
                 "package_id" => "2",
                 "national_code" => "CUA41215",
                 "aqf_level" => "Certificate IV in",
@@ -1414,6 +1552,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "139",
                 "package_id" => "2",
                 "national_code" => "CUA41215",
                 "aqf_level" => "Certificate IV in",
@@ -1424,6 +1563,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "140",
                 "package_id" => "2",
                 "national_code" => "CUA41315",
                 "aqf_level" => "Certificate IV in",
@@ -1434,6 +1574,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "141",
                 "package_id" => "2",
                 "national_code" => "CUA41315",
                 "aqf_level" => "Certificate IV in",
@@ -1444,6 +1585,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "142",
                 "package_id" => "2",
                 "national_code" => "CUA50113",
                 "aqf_level" => "Diploma of",
@@ -1454,6 +1596,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "143",
                 "package_id" => "2",
                 "national_code" => "CUA50113",
                 "aqf_level" => "Diploma of",
@@ -1464,6 +1607,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "144",
                 "package_id" => "2",
                 "national_code" => "CUA50213",
                 "aqf_level" => "Diploma of",
@@ -1474,6 +1618,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "145",
                 "package_id" => "2",
                 "national_code" => "CUA50213",
                 "aqf_level" => "Diploma of",
@@ -1484,6 +1629,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "146",
                 "package_id" => "2",
                 "national_code" => "CUA50313",
                 "aqf_level" => "Diploma of",
@@ -1494,6 +1640,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "147",
                 "package_id" => "2",
                 "national_code" => "CUA50313",
                 "aqf_level" => "Diploma of",
@@ -1504,6 +1651,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "148",
                 "package_id" => "2",
                 "national_code" => "CUA50415",
                 "aqf_level" => "Diploma of",
@@ -1514,6 +1662,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "149",
                 "package_id" => "2",
                 "national_code" => "CUA50415",
                 "aqf_level" => "Diploma of",
@@ -1524,6 +1673,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "150",
                 "package_id" => "2",
                 "national_code" => "CUA50513",
                 "aqf_level" => "Diploma of",
@@ -1534,6 +1684,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "151",
                 "package_id" => "2",
                 "national_code" => "CUA50513",
                 "aqf_level" => "Diploma of",
@@ -1544,6 +1695,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "152",
                 "package_id" => "2",
                 "national_code" => "CUA50615",
                 "aqf_level" => "Diploma of",
@@ -1554,6 +1706,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "153",
                 "package_id" => "2",
                 "national_code" => "CUA50615",
                 "aqf_level" => "Diploma of",
@@ -1564,6 +1717,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "154",
                 "package_id" => "2",
                 "national_code" => "CUA50715",
                 "aqf_level" => "Diploma of",
@@ -1574,6 +1728,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "155",
                 "package_id" => "2",
                 "national_code" => "CUA50715",
                 "aqf_level" => "Diploma of",
@@ -1584,6 +1739,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "156",
                 "package_id" => "2",
                 "national_code" => "CUA50815",
                 "aqf_level" => "Diploma of",
@@ -1594,6 +1750,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "157",
                 "package_id" => "2",
                 "national_code" => "CUA50815",
                 "aqf_level" => "Diploma of",
@@ -1604,6 +1761,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "158",
                 "package_id" => "2",
                 "national_code" => "CUA50915",
                 "aqf_level" => "Diploma of",
@@ -1614,6 +1772,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "159",
                 "package_id" => "2",
                 "national_code" => "CUA50915",
                 "aqf_level" => "Diploma of",
@@ -1624,6 +1783,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "160",
                 "package_id" => "2",
                 "national_code" => "CUA51015",
                 "aqf_level" => "Diploma of",
@@ -1634,6 +1794,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "161",
                 "package_id" => "2",
                 "national_code" => "CUA51015",
                 "aqf_level" => "Diploma of",
@@ -1644,6 +1805,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "162",
                 "package_id" => "2",
                 "national_code" => "CUA51115",
                 "aqf_level" => "Diploma of",
@@ -1654,6 +1816,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "163",
                 "package_id" => "2",
                 "national_code" => "CUA51115",
                 "aqf_level" => "Diploma of",
@@ -1664,6 +1827,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "164",
                 "package_id" => "2",
                 "national_code" => "CUA51215",
                 "aqf_level" => "Diploma of",
@@ -1674,6 +1838,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "165",
                 "package_id" => "2",
                 "national_code" => "CUA51215",
                 "aqf_level" => "Diploma of",
@@ -1684,6 +1849,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "166",
                 "package_id" => "2",
                 "national_code" => "CUA60113",
                 "aqf_level" => "Advanced Diploma of",
@@ -1694,6 +1860,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "167",
                 "package_id" => "2",
                 "national_code" => "CUA60113",
                 "aqf_level" => "Advanced Diploma of",
@@ -1704,6 +1871,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "168",
                 "package_id" => "2",
                 "national_code" => "CUA60213",
                 "aqf_level" => "Advanced Diploma of",
@@ -1714,6 +1882,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "169",
                 "package_id" => "2",
                 "national_code" => "CUA60213",
                 "aqf_level" => "Advanced Diploma of",
@@ -1724,6 +1893,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "170",
                 "package_id" => "2",
                 "national_code" => "CUA60315",
                 "aqf_level" => "Advanced Diploma of",
@@ -1734,6 +1904,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "171",
                 "package_id" => "2",
                 "national_code" => "CUA60315",
                 "aqf_level" => "Advanced Diploma of",
@@ -1744,6 +1915,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "172",
                 "package_id" => "2",
                 "national_code" => "CUA60415",
                 "aqf_level" => "Advanced Diploma of",
@@ -1754,6 +1926,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "173",
                 "package_id" => "2",
                 "national_code" => "CUA60415",
                 "aqf_level" => "Advanced Diploma of",
@@ -1764,6 +1937,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "174",
                 "package_id" => "2",
                 "national_code" => "CUA60515",
                 "aqf_level" => "Advanced Diploma of",
@@ -1774,6 +1948,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "175",
                 "package_id" => "2",
                 "national_code" => "CUA60515",
                 "aqf_level" => "Advanced Diploma of",
@@ -1784,6 +1959,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "176",
                 "package_id" => "2",
                 "national_code" => "CUA60615",
                 "aqf_level" => "Advanced Diploma of",
@@ -1794,6 +1970,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "177",
                 "package_id" => "2",
                 "national_code" => "CUA60615",
                 "aqf_level" => "Advanced Diploma of",
@@ -1804,6 +1981,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "178",
                 "package_id" => "2",
                 "national_code" => "CUA60715",
                 "aqf_level" => "Advanced Diploma of",
@@ -1814,6 +1992,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "179",
                 "package_id" => "2",
                 "national_code" => "CUA60715",
                 "aqf_level" => "Advanced Diploma of",
@@ -1824,6 +2003,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "180",
                 "package_id" => "3",
                 "national_code" => "FNS10115",
                 "aqf_level" => "Certificate I in",
@@ -1834,6 +2014,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "181",
                 "package_id" => "3",
                 "national_code" => "FNS20115",
                 "aqf_level" => "Certificate II in",
@@ -1844,6 +2025,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "182",
                 "package_id" => "3",
                 "national_code" => "FNS30115",
                 "aqf_level" => "Certificate III in",
@@ -1854,6 +2036,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "183",
                 "package_id" => "3",
                 "national_code" => "FNS30215",
                 "aqf_level" => "Certificate III in",
@@ -1864,6 +2047,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "184",
                 "package_id" => "3",
                 "national_code" => "FNS30315",
                 "aqf_level" => "Certificate III in",
@@ -1874,6 +2058,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "185",
                 "package_id" => "3",
                 "national_code" => "FNS30515",
                 "aqf_level" => "Certificate III in",
@@ -1884,6 +2069,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "186",
                 "package_id" => "3",
                 "national_code" => "FNS30615",
                 "aqf_level" => "Certificate III in",
@@ -1894,6 +2080,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "187",
                 "package_id" => "3",
                 "national_code" => "FNS40115",
                 "aqf_level" => "Certificate IV in",
@@ -1904,6 +2091,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "188",
                 "package_id" => "3",
                 "national_code" => "FNS40215",
                 "aqf_level" => "Certificate IV in",
@@ -1914,6 +2102,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "189",
                 "package_id" => "3",
                 "national_code" => "FNS40615",
                 "aqf_level" => "Certificate IV in",
@@ -1924,6 +2113,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "190",
                 "package_id" => "3",
                 "national_code" => "FNS40715",
                 "aqf_level" => "Certificate IV in",
@@ -1934,6 +2124,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "191",
                 "package_id" => "3",
                 "national_code" => "FNS40815",
                 "aqf_level" => "Certificate IV in",
@@ -1944,6 +2135,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "192",
                 "package_id" => "3",
                 "national_code" => "FNS40915",
                 "aqf_level" => "Certificate IV in",
@@ -1954,6 +2146,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "193",
                 "package_id" => "3",
                 "national_code" => "FNS41115",
                 "aqf_level" => "Certificate IV in",
@@ -1964,6 +2157,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "194",
                 "package_id" => "3",
                 "national_code" => "FNS41415",
                 "aqf_level" => "Certificate IV in",
@@ -1974,6 +2168,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "195",
                 "package_id" => "3",
                 "national_code" => "FNS41515",
                 "aqf_level" => "Certificate IV in",
@@ -1984,6 +2179,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "196",
                 "package_id" => "3",
                 "national_code" => "FNS41715",
                 "aqf_level" => "Certificate IV in",
@@ -1994,6 +2190,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "197",
                 "package_id" => "3",
                 "national_code" => "FNS41815",
                 "aqf_level" => "Certificate IV in",
@@ -2004,6 +2201,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "198",
                 "package_id" => "3",
                 "national_code" => "FNS42015",
                 "aqf_level" => "Certificate IV in",
@@ -2014,6 +2212,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "199",
                 "package_id" => "3",
                 "national_code" => "FNS50215",
                 "aqf_level" => "Diploma of",
@@ -2024,6 +2223,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "200",
                 "package_id" => "3",
                 "national_code" => "FNS50315",
                 "aqf_level" => "Diploma of",
@@ -2034,6 +2234,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "201",
                 "package_id" => "3",
                 "national_code" => "FNS50615",
                 "aqf_level" => "Diploma of",
@@ -2044,6 +2245,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "202",
                 "package_id" => "3",
                 "national_code" => "FNS50715",
                 "aqf_level" => "Diploma of",
@@ -2054,6 +2256,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "203",
                 "package_id" => "3",
                 "national_code" => "FNS50815",
                 "aqf_level" => "Diploma of",
@@ -2064,6 +2267,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "204",
                 "package_id" => "3",
                 "national_code" => "FNS50915",
                 "aqf_level" => "Diploma of",
@@ -2074,6 +2278,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "205",
                 "package_id" => "3",
                 "national_code" => "FNS51015",
                 "aqf_level" => "Diploma of",
@@ -2084,6 +2289,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "206",
                 "package_id" => "3",
                 "national_code" => "FNS51115",
                 "aqf_level" => "Diploma of",
@@ -2094,6 +2300,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "207",
                 "package_id" => "3",
                 "national_code" => "FNS51215",
                 "aqf_level" => "Diploma of",
@@ -2104,6 +2311,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "208",
                 "package_id" => "3",
                 "national_code" => "FNS51315",
                 "aqf_level" => "Diploma of",
@@ -2114,6 +2322,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "209",
                 "package_id" => "3",
                 "national_code" => "FNS51415",
                 "aqf_level" => "Diploma of",
@@ -2124,6 +2333,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "210",
                 "package_id" => "3",
                 "national_code" => "FNS51515",
                 "aqf_level" => "Diploma of",
@@ -2134,6 +2344,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "211",
                 "package_id" => "3",
                 "national_code" => "FNS51615",
                 "aqf_level" => "Diploma of",
@@ -2144,6 +2355,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "212",
                 "package_id" => "3",
                 "national_code" => "FNS51815",
                 "aqf_level" => "Diploma of",
@@ -2154,6 +2366,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "213",
                 "package_id" => "3",
                 "national_code" => "FNS60115",
                 "aqf_level" => "Advanced Diploma of",
@@ -2164,6 +2377,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "214",
                 "package_id" => "3",
                 "national_code" => "FNS60215",
                 "aqf_level" => "Advanced Diploma of",
@@ -2174,6 +2388,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "215",
                 "package_id" => "3",
                 "national_code" => "FNS60415",
                 "aqf_level" => "Advanced Diploma of",
@@ -2184,6 +2399,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "216",
                 "package_id" => "3",
                 "national_code" => "FNS60515",
                 "aqf_level" => "Advanced Diploma of",
@@ -2194,6 +2410,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "217",
                 "package_id" => "3",
                 "national_code" => "FNS60615",
                 "aqf_level" => "Advanced Diploma of",
@@ -2204,6 +2421,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "218",
                 "package_id" => "3",
                 "national_code" => "FNS60715",
                 "aqf_level" => "Advanced Diploma of",
@@ -2214,6 +2432,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "219",
                 "package_id" => "3",
                 "national_code" => "FNS60815",
                 "aqf_level" => "Advanced Diploma of",
@@ -2224,6 +2443,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "220",
                 "package_id" => "4",
                 "national_code" => "ICT10115",
                 "aqf_level" => "Certificate I in",
@@ -2234,6 +2454,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "221",
                 "package_id" => "4",
                 "national_code" => "ICT20115",
                 "aqf_level" => "Certificate II in",
@@ -2244,6 +2465,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "222",
                 "package_id" => "4",
                 "national_code" => "ICT30115",
                 "aqf_level" => "Certificate III in",
@@ -2254,6 +2476,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "223",
                 "package_id" => "4",
                 "national_code" => "ICT40115",
                 "aqf_level" => "Certificate IV in",
@@ -2264,6 +2487,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "224",
                 "package_id" => "4",
                 "national_code" => "ICT40120",
                 "aqf_level" => "Certificate IV in",
@@ -2274,6 +2498,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "225",
                 "package_id" => "4",
                 "national_code" => "ICT40215",
                 "aqf_level" => "Certificate IV in",
@@ -2284,6 +2509,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "226",
                 "package_id" => "4",
                 "national_code" => "ICT40315",
                 "aqf_level" => "Certificate IV in",
@@ -2294,6 +2520,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "227",
                 "package_id" => "4",
                 "national_code" => "ICT40415",
                 "aqf_level" => "Certificate IV in",
@@ -2304,6 +2531,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "228",
                 "package_id" => "4",
                 "national_code" => "ICT40515",
                 "aqf_level" => "Certificate IV in",
@@ -2314,6 +2542,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "229",
                 "package_id" => "4",
                 "national_code" => "ICT40615",
                 "aqf_level" => "Certificate IV in",
@@ -2324,6 +2553,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "230",
                 "package_id" => "4",
                 "national_code" => "ICT40715",
                 "aqf_level" => "Certificate IV in",
@@ -2334,6 +2564,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "231",
                 "package_id" => "4",
                 "national_code" => "ICT40815",
                 "aqf_level" => "Certificate IV in",
@@ -2344,6 +2575,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "232",
                 "package_id" => "4",
                 "national_code" => "ICT40915",
                 "aqf_level" => "Certificate IV in",
@@ -2354,6 +2586,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "233",
                 "package_id" => "4",
                 "national_code" => "ICT41015",
                 "aqf_level" => "Certificate IV in",
@@ -2364,6 +2597,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "234",
                 "package_id" => "4",
                 "national_code" => "ICT50115",
                 "aqf_level" => "Diploma of",
@@ -2374,6 +2608,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "235",
                 "package_id" => "4",
                 "national_code" => "ICT50215",
                 "aqf_level" => "Diploma of",
@@ -2384,6 +2619,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "236",
                 "package_id" => "4",
                 "national_code" => "ICT50315",
                 "aqf_level" => "Diploma of",
@@ -2394,6 +2630,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "237",
                 "package_id" => "4",
                 "national_code" => "ICT50415",
                 "aqf_level" => "Diploma of",
@@ -2404,6 +2641,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "238",
                 "package_id" => "4",
                 "national_code" => "ICT50515",
                 "aqf_level" => "Diploma of",
@@ -2414,6 +2652,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "239",
                 "package_id" => "4",
                 "national_code" => "ICT50615",
                 "aqf_level" => "Diploma of",
@@ -2424,6 +2663,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "240",
                 "package_id" => "4",
                 "national_code" => "ICT50715",
                 "aqf_level" => "Diploma of",
@@ -2434,6 +2674,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "241",
                 "package_id" => "4",
                 "national_code" => "ICT50815",
                 "aqf_level" => "Diploma of",
@@ -2444,6 +2685,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "242",
                 "package_id" => "4",
                 "national_code" => "ICT50915",
                 "aqf_level" => "Diploma of",
@@ -2454,6 +2696,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "243",
                 "package_id" => "4",
                 "national_code" => "ICT60115",
                 "aqf_level" => "Advanced Diploma of",
@@ -2464,6 +2707,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "244",
                 "package_id" => "4",
                 "national_code" => "ICT60215",
                 "aqf_level" => "Advanced Diploma of",
@@ -2474,6 +2718,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "245",
                 "package_id" => "4",
                 "national_code" => "ICT60315",
                 "aqf_level" => "Advanced Diploma of",
@@ -2484,6 +2729,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "246",
                 "package_id" => "4",
                 "national_code" => "ICT60415",
                 "aqf_level" => "Advanced Diploma of",
@@ -2494,6 +2740,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "247",
                 "package_id" => "4",
                 "national_code" => "ICT60515",
                 "aqf_level" => "Advanced Diploma of",
@@ -2504,6 +2751,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "248",
                 "package_id" => "4",
                 "national_code" => "ICT80115",
                 "aqf_level" => "Graduate Certificate In",
@@ -2514,6 +2762,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "249",
                 "package_id" => "4",
                 "national_code" => "ICT80215",
                 "aqf_level" => "Graduate Certificate In",
@@ -2524,6 +2773,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "250",
                 "package_id" => "4",
                 "national_code" => "ICT80315",
                 "aqf_level" => "Graduate Certificate In",
@@ -2534,6 +2784,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "251",
                 "package_id" => "4",
                 "national_code" => "ICT80415",
                 "aqf_level" => "Graduate Diploma of",
@@ -2544,6 +2795,7 @@ class CourseSeeder extends Seeder
                 "type" => "Qualification"
             ],
             [
+                "id" => "252",
                 "package_id" => "4",
                 "national_code" => "ICT80515",
                 "aqf_level" => "Graduate Diploma of",
@@ -2552,7 +2804,18 @@ class CourseSeeder extends Seeder
                 "state_code" => "AWF8",
                 "nominal_hours" => "525",
                 "type" => "Qualification"
-            ]
+            ],
+            [
+                "id" => "253",
+                "package_id" => "4",
+                "national_code" => "ICT50220",
+                "aqf_level" => "Diploma of",
+                "title" => "Information Technology (Advanced Programming)",
+                "tga_status" => "Current",
+                "state_code" => "AC21",
+                "nominal_hours" => "760",
+                "type" => "Qualification"
+            ],
         ];
 
         /* Example SeedData
