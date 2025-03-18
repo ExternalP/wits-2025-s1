@@ -13,9 +13,9 @@ return new class extends Migration
     {
         /**
          * EXAMPLE Courses from "Course 2.csv"
-         * National Code,   AQF Level,          Title,  TGA Status, State Code, Nominal Hours,  Type,           QA,     StateCode,  NatCode,    NatTitle,   NatCodeAndTitle
-         * CUA40715,        Certificate IV in,  Design, Current,    AZN5,       665,            Qualification,  AZN5,   AZN5,       CUA40715,   Design,     CUA40715 Certificate IV in Design
-         * CUA40113,Certificate IV in,Dance,Current,J697,690,Qualification,J697,J697,CUA40113,Dance,CUA40113 Certificate IV in Dance
+         * National Code,   AQF Level,          Title,  TGA Status, State Code, Nominal Hours,  Type
+         * CUA40715,        Certificate IV in,  Design, Current,    AZN5,       665,            Qualification
+         * CUA40113,Certificate IV in,Dance,Current,J697,690,Qualification
          */
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
