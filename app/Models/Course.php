@@ -9,6 +9,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
+/**
+ * @mixin IdeHelperCourse
+ */
 class Course extends Model
 {
     /** @use HasFactory<\Database\Factories\CourseFactory> */
