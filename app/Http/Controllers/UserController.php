@@ -40,34 +40,25 @@ class UserController extends Controller
     use AuthorizesRequests;
 
     /**
-     * Display a listing of the resource.
-     *
+     *Get all users and send them to the view.
      */
     public function index()
     {
-        $users = User::paginate(6);
-        $message = session('message', null);
-        return view('users.index', compact(['users','message']));
-    }
-    /**
-     *Get all users and send them to the view.
-     */
-    public function home()
-    {
         $currentUser = Auth::user();
 
-        if ($currentUser->hasRole(['SuperAdmin'])) {
-            $users = User::all();
+        if (!$currentUser) {
+            return redirect()->route('login')->with('error', 'You must be logged in to view this page.');
+        }
+
+        // Superadmin Can access all user list
+        if ($currentUser->hasRole('SuperAdmin')) {
+            $users = User::paginate(6);
         } else {
+            // register Can access there own data.
             $users = User::where('user_id', $currentUser->id)
                 ->orWhere('id', $currentUser->id)
-                ->get();
+                ->paginate(6);
         }
-
-        foreach ($users as $user) {
-            $this->authorize('view', $user);
-        }
-
         return view('users.index', compact('users'));
     }
 
@@ -91,13 +82,13 @@ class UserController extends Controller
         $keywords = $request->input('keywords', '');
 
         $users = User::where('given_name', 'like', "%{$keywords}%")
-            ->orWhere('family_name', 'like', "%{$keywords}%")
+            ->orWhere('preferred_name', 'like', "%{$keywords}%")
             ->orWhere('email', 'like', "%{$keywords}%")
             ->orderBy('given_name')
-            ->orderBy('family_name')
+            ->orderBy('preferred_name')
             ->get();
 
-        return view('users.home', [
+        return view('users.index', [
             'users' => $users,
             'keywords' => $keywords,
         ]);
@@ -111,14 +102,14 @@ class UserController extends Controller
     {
 
         $user = User::select(
-            'users.nickname as nickname',
             'users.id as id',
             'users.given_name as given_name',
-            'users.family_name as family_name',
+            'users.preferred_name as preferred_name',
             'users.email as email',
+            'users.preferred_pronouns as preferred_pronouns',
             'users.created_at as created_at',
             'users.updated_at as updated_at',
-            'users.user_id as user_id'
+
         )
             ->where('users.id', $id)
             ->first();
@@ -142,9 +133,12 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('users.create', [
-            'roles' => $roles
-        ]);
+        $preferred_pronounses = [
+            'he/him',
+            'she/her',
+        ];
+
+        return view('users.create', compact('roles', 'preferred_pronounses'));
     }
 
     /**
@@ -153,64 +147,25 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $allowedFields = ['nickname', 'given_name', 'family_name', 'email', 'password', 'password_confirmation'];
-
-        $validator = Validator::make($request->all(), [
-            'given_name' => 'required|string',
-            'family_name' => 'required|string',
-            'email' => 'required|email',
-            'role' => 'required|string|exists:roles,name',
-            'password' => 'nullable|string|min:8|confirmed',
-        ], [
-            'given_name.required' => ' given name is required.',
-            'family_name.required' => ' family name is required.',
-            'email.required' => 'email address is required.',
-            'password.min' => 'password must be at least 8 characters.',
+        $validated = $request->validate([
+            'given_name' => ['required', 'min:1', 'max:255', 'string',],
+            'preferred_name' => ['required', 'min:1', 'max:255', 'string',],
+            'preferred_pronouns' => ['required',],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class,],
+            'password' => ['required', 'confirmed', 'min:4', 'max:255'],
+            'roles' => ['required', 'array'],
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
+        $validated['preferred_pronouns'] = implode(',', $validated['preferred_pronouns']);
+        $validated['id'] = Auth::id();
 
-        $newUserData = $request->only($allowedFields);
-        $newUserData['user_id'] = Auth::id();
+        $user = User::create($validated);
 
-        if (empty($newUserData['nickname'])) {
-            $newUserData['nickname'] = $newUserData['given_name'];
-        }
+        $user->syncRoles($request->roles);
 
-        if (!empty($newUserData['password'])) {
-            $newUserData['password'] = Hash::make($newUserData['password']);
-        }
-
-
-        $newUser = new User($newUserData);
-
-
-        $role = Role::findByName($request->input('role'), 'web');
-
-        // Can current user create a Admin user?
-        if (!$this->authorize('create', [$newUser])) {
-            return redirect()->back()
-                ->withErrors(['role' => 'Administrators are not allowed to create users with the Administrator role.'])
-                ->withInput();
-        }
-
-
-        $user = User::create($newUserData);
-
-
-        $user->assignRole($role);
-
-        Session::flash('success', 'User created.');
-
-        return redirect()->route('users.home');
+        return redirect(route('users.index'))
+            ->with('success', 'User created');
     }
-
-
-
 
 
     /**
