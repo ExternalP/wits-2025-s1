@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClusterController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -15,6 +16,13 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('users', UserController::class);
+Route::resource('clusters', \App\Http\Controllers\ClusterController::class);
+
+Route::get('/clusters', [\App\Http\Controllers\ClusterController::class, 'index'])->name('clusters.index');
+Route::get('/clusters/{id}', [\App\Http\Controllers\ClusterController::class, 'show'])->name('clusters.show');
+Route::get('/clusters/{id}/edit', [\App\Http\Controllers\ClusterController::class, 'edit'])->name('clusters.edit');
+Route::delete('/clusters/{id}', [UserController::class, 'destroy'])->name('clusters.destroy');
+
 
 
 Route::middleware('auth')->group(function () {

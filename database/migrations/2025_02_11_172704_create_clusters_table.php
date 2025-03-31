@@ -22,7 +22,7 @@ return new class extends Migration
             // code field is shorthand used to identify clusters.
             $table->string('code');//->unique();
             $table->string('title');
-            $table->string('qualification');
+            $table->string('qualification')->nullable();
             $table->string('state_code');
             $table->foreignId('course_id')->constrained('courses');//->cascadeOnDelete();
             $table->timestamps();
