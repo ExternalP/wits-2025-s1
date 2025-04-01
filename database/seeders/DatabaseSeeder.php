@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cluster;
+use App\Models\Course;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -25,5 +27,9 @@ class DatabaseSeeder extends Seeder
             ClusterSeeder::class,
             UnitSeeder::class,
         ]);
+
+        // Seeds pivot tables for testing.
+        Course::find(1)->units()->attach([1,2,3,4,5]);
+        Cluster::find(1)->units()->attach([1,2,3,4,5]);
     }
 }

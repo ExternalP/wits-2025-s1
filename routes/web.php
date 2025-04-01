@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\UnitController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaticController;
@@ -19,13 +21,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::resource('packages', PackageController::class);
+Route::resource('units', UnitController::class);
 
 Route::resource('users', UserController::class);
-Route::resource('clusters', \App\Http\Controllers\ClusterController::class);
+Route::resource('clusters', ClusterController::class);
 
-Route::get('/clusters', [\App\Http\Controllers\ClusterController::class, 'index'])->name('clusters.index');
-Route::get('/clusters/{id}', [\App\Http\Controllers\ClusterController::class, 'show'])->name('clusters.show');
-Route::get('/clusters/{id}/edit', [\App\Http\Controllers\ClusterController::class, 'edit'])->name('clusters.edit');
+Route::get('/clusters', [ClusterController::class, 'index'])->name('clusters.index');
+Route::get('/clusters/{id}', [ClusterController::class, 'show'])->name('clusters.show');
+Route::get('/clusters/{id}/edit', [ClusterController::class, 'edit'])->name('clusters.edit');
 Route::delete('/clusters/{id}', [UserController::class, 'destroy'])->name('clusters.destroy');
 
 // Course routes for browse, show

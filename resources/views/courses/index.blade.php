@@ -99,7 +99,7 @@
                         @foreach($courses as $course)
                             <tr class="border-b border-zinc-300 dark:border-white/10">
                                 <td class="whitespace-nowrap pl-3 pr-1 py-4">{{ $course->national_code }}</td>
-                                <td class="whitespace-nowrap px-5 py-4 w-full">{{ $course->aqf_level .' '. $course->title }}</td>
+                                <td class="px-5 py-4 w-full">{{ $course->aqf_level .' '. $course->title }}</td>
                                 <td class="whitespace-nowrap py-4">
                                     @if ($course->tga_status == 'Current')
                                         <i class="fa-solid fa-circle-check text-green-600 flex text-center justify-center text-xl"></i>
@@ -143,7 +143,7 @@
 
                         <tfoot>
                         <tr class="bg-zinc-100">
-                            <td colspan="6" class="px-6 py-2">
+                            <td colspan="6" class="px-6 py-2 my-paginator">
                                 @if( $courses->hasPages() )
                                     {{ $courses->links() }}
                                 @elseif( $courses->total() === 0 )

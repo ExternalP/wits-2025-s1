@@ -57,13 +57,6 @@
                                               :selected="old('package_id')"
                                               :options="$packages"
                                     />
-                                    {{--<select id="package_id" name="package_id" required autofocus
-                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
-                                        <option value="{{ old('package_id') }}" selected hidden>{{ old('package_id') }}</option>
-                                        @foreach($packages ?? [] as $package)
-                                            <option value="{{ $package->id }}">{{ $package->title }}</option>
-                                        @endforeach
-                                    </select>--}}
                                     <x-input-error :messages="$errors->get('package_id')" class="mt-2"/>
                                 </div>
 
@@ -73,7 +66,7 @@
                                     </x-input-label>
                                     <x-text-input id="national_code" name="national_code" required autofocus
                                                   class="uppercase"
-                                                  pattern="[A-Za-z0-9]{4,10}"
+                                                  {{--pattern="[A-Za-z0-9]{4,10}"--}}
                                                   placeholder="The first 3 characters should be package code"
                                                   value="{{ old('national_code') }}"/>
                                     <x-input-error :messages="$errors->get('national_code')" class="mt-2"/>
@@ -107,13 +100,6 @@
                                     <x-input-label for="tga_status">
                                         {{ __('TGA Status') }}
                                     </x-input-label>
-                                    {{--<select id="tga_status" name="tga_status" required autofocus
-                                            class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm w-full">
-                                        <option value="{{ old('tga_status') }}" selected hidden>{{ old('tga_status') }}</option>
-                                        <option value="Current" @if(!old('tga_status')) selected @endif>Current</option>
-                                        <option value="Expired" >Expired</option>
-                                        <option value="Replaced" >Replaced</option>
-                                    </select>--}}
                                     <x-select id="tga_status" name="tga_status" required autofocus
                                               class="w-full"
                                               old="tga_status"
@@ -130,7 +116,6 @@
                                     </x-input-label>
                                     <x-text-input id="state_code" name="state_code" autofocus required
                                                   class="uppercase"
-                                                  pattern="[A-Za-z0-9]{4,10}"
                                                   value="{{ old('state_code') }}"/>
                                     <x-input-error :messages="$errors->get('state_code')" class="mt-2"/>
                                 </div>
@@ -153,22 +138,12 @@
                                                   value="{{ old('type') ?? 'Qualification' }}"/>
                                     <x-input-error :messages="$errors->get('type')" class="mt-2"/>
                                 </div>
+
                                 <div class="flex flex-col my-2 pt-2">
                                     <x-input-label for="cluster_id" class="!text-lg">
                                         {{ __('Clusters') }}
                                     </x-input-label>
-                                    {{--<div class="pl-4 p-2 h-40 overflow-y-auto border">
-                                        @foreach($clusters as $cluster)
-                                            <label class="flex">
-                                                <input name="cluster_id[]" type="checkbox" class="mr-2"
-                                                       {{ old("cluster_id[$cluster->id]") ? 'checked' : '' }}
-                                                       --}}{{--{{ in_array($cluster->id, old('cluster_id')) ? 'checked' : '' }}--}}{{--
-                                                       value="{{ $cluster->id }}"/>
-                                                {{ $cluster->title .' - '. $cluster->code  }}
-                                            </label>
-                                        @endforeach
-                                    </div>--}}
-                                    <div class="h-64 overflow-y-auto border">
+                                    <div class="max-h-64 overflow-y-auto border">
                                         <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                             <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
                                             <tr>
@@ -200,7 +175,7 @@
                                     <x-input-label for="unit_id" class="!text-lg">
                                         {{ __('Units') }}
                                     </x-input-label>
-                                    <div class="h-64 overflow-y-auto border">
+                                    <div class="max-h-64 overflow-y-auto border">
                                         <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                             <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
                                             <tr>
@@ -226,7 +201,7 @@
 
                                             <tfoot>
 {{--                                            <tr class="bg-zinc-100">--}}
-{{--                                                <td colspan="6" class="px-3 py-2">--}}
+{{--                                                <td colspan="6" class="px-3 py-2 my-paginator">--}}
 {{--                                                @if( $units->hasPages() )--}}
 {{--                                                    {{ $units->onEachSide(1)->links() }}--}}
 {{--                                                @elseif( $units->total() === 0 )--}}

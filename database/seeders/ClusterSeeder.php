@@ -164,6 +164,9 @@ class ClusterSeeder extends Seeder
                 'state_code' => $clusterData['state_code'],
                 // 'course_id' => $this->getCourseId($clusterData['qualification'])
             ]);
+
+            $courseId = Course::where('national_code', $clusterData['qualification'])->value('id');
+            $cluster->courses()->attach($courseId);
         }
 
 

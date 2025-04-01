@@ -104,7 +104,7 @@ class CourseController extends Controller
         $units = Unit::all()->sortBy('national_code');
         // $units = Unit::select('units.*')->orderBy('national_code')->paginate(100);
 
-        return view('courses.create', compact(['uniqueAqfs', 'packages', 'clusters', 'units',]));
+        return view('courses.create', compact(['packages','clusters','units','uniqueAqfs',]));
     }
 
     /**
@@ -119,19 +119,7 @@ class CourseController extends Controller
         //         ->with('error', 'You are not authorised to perform that action.');
         // }
 
-        $validated = $request->validate([
-            'package_id' => ['required', 'integer', 'exists:packages,id',],
-            'national_code' => ['required', 'string', 'min:4', 'max:10', 'uppercase', 'alpha_num', /*Rule::unique('courses', 'national_code')*/],
-            'aqf_level' => ['required', 'string', 'min:1', 'max:100',],
-            'title' => ['required', 'string', 'min:1', 'max:255',],
-            'tga_status' => ['sometimes', 'nullable', 'string', Rule::in(Course::tgaStatuses())],
-            'state_code' => ['required', 'string', 'min:4', 'max:10', 'uppercase', 'alpha_num',],
-            'nominal_hours' => ['required', 'integer', 'min:0', 'max:10000',],
-            'type' => ['sometimes', 'nullable', 'string', 'min:1', 'max:50',],
-            'cluster_id' => ['sometimes', 'exists:clusters,id',],
-            'unit_id' => ['sometimes', 'exists:units,id',],
-            // 'gggggggg' => ['required', 'string', 'min:000000', 'max:99999',],
-        ]);
+        $validated = $this->validateRequest($request);
 
         $course = Course::create($validated);
 
@@ -155,14 +143,15 @@ class CourseController extends Controller
         // }
 
         $course = Course::with('units', 'clusters')->find($id);
-        $package = Package::find($course->package_id);
-        // $clusters = Cluster::all()->sortBy('title');
-        // $units = Unit::all()->sortBy('national_code');
 
         if (!$course) {
             return redirect(route('courses.index'))
                 ->with('warning', 'Course not found');
         }
+
+        $package = Package::find($course->package_id);
+        // $clusters = Cluster::all()->sortBy('title');
+        // $units = Unit::all()->sortBy('national_code');
 
         return view('courses.show', compact(['course','package',]))
             ->with('success', 'Course found');
@@ -175,26 +164,33 @@ class CourseController extends Controller
      */
     public function edit(string $id): View|RedirectResponse
     {
-        return redirect(route('courses.index'))
-            ->with('error', 'It WORKED');
-            // ->with(formatFlash('warning', 'This is a message!'));
-            // ->with(['type' => 'Warning','message' => 'TEST WARNING']);
-        // $joke = Joke::where('id', '=', $id)->get()->first();
-        //
-        // if (!$joke) {
-        //     return redirect(route('jokes.index'))
-        //         ->with('warning', 'Joke not found');
+        $course = Course::with('clusters', 'units')->find($id);
+
+        if (!$course) {
+            return redirect(route('courses.index'))
+                ->with('warning', 'Course not found');
+        }
+
+        // Authorisation
+        // if (Auth::user()->cannot('course edit')) {
+        //     return redirect(route('courses.index'))
+        //         ->with('error', 'You are not authorised to edit this course');
         // }
-        //
-        // // Authorisation
-        // if (Auth::user()->cannot('joke edit')
-        //     || (Auth::id() != $joke->author_id && Auth::user()->cannot('Client'))) {
-        //     return redirect(route('jokes.index'))
-        //         ->with('error', 'You are not authorised to edit this joke');
-        // }
-        //
-        // return view('jokes.update', compact(['joke',]))
-        //     ->with('success', 'Joke found');
+
+        $otherClusters = Cluster::all()->whereNotIn('id', $course->clusters->pluck('id'));
+        $otherUnits = Unit::all()->whereNotIn('id', $course->units->pluck('id'));
+        // $otherClusters = Cluster::with('courses')
+        //     ->whereDoesntHave('courses', function ($query) use ($id) {
+        //         $query->where('courses.id', $id);
+        //     })->get();
+
+        $packages = Package::all()->keyBy('id')->map(fn ($i) => $i['national_code'] .': '. $i['title']);
+        $uniqueAqfs = Course::uniqueAqfs();
+        $tgaStatuses = Course::tgaStatuses();
+
+        return view('courses.update',
+            compact(['course','otherClusters','otherUnits','packages','uniqueAqfs','tgaStatuses',])
+        )->with('success', 'Course found');
     }
 
     /**
@@ -205,33 +201,30 @@ class CourseController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        // $joke = Joke::whereId($id)->get()->first();
-        //
-        // if (!$joke) {
-        //     return redirect(route('jokes.index'))
-        //         ->with('warning', 'Joke not found');
+        $course = Course::find($id);
+
+        if (!$course) {
+            return redirect(route('courses.index'))
+                ->with('warning', 'Course not found');
+        }
+
+        // Authorisation
+        // if (Auth::user()->cannot('course edit')) {
+        //     return redirect(route('courses.index'))
+        //         ->with('error', 'You are not authorised to edit this course');
         // }
-        //
-        // // Authorisation
-        // if (Auth::user()->cannot('joke edit')
-        //     || (Auth::id() != $joke->author_id && Auth::user()->cannot('Client'))) {
-        //     return redirect(route('jokes.index'))
-        //         ->with('error', 'You are not authorised to edit this joke');
-        // }
-        //
-        // $validated = $request->validate([
-        //     'title' => ['required', 'max:255', 'string',],
-        //     'category' => ['sometimes', 'nullable', 'min:1', 'max:255', 'string',],
-        //     'body' => ['required', 'min:1', 'string',],
-        //     'tags' => ['sometimes', 'nullable', 'string',],
-        // ]);
-        //
-        // $joke->fill($validated);
-        //
-        // $joke->save();
-        //
-        // return redirect(route('jokes.show', compact(['joke', 'id'])))
-        //     ->with('success', 'Joke updated');
+
+        $validated = $this->validateRequest($request);
+
+        $course->fill($validated);
+
+        $course->save();
+
+        $course->clusters()->sync($validated['cluster_id']);
+        $course->units()->sync($validated['unit_id']);
+
+        return redirect(route('courses.show', compact(['course', 'id'])))
+            ->with('success', 'Course updated');
     }
 
     /**
@@ -241,23 +234,50 @@ class CourseController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
-        // $joke = Joke::whereId($id)->get()->first();
-        //
-        // if (!$joke) {
-        //     return redirect(route('jokes.index'))
-        //         ->with('warning', 'Joke not found');
-        // }
-        //
-        // if (Auth::user()->can('joke delete')
-        //     && (Auth::id() == $joke->author_id || Auth::user()->can('Client'))) {
-        //
-        //     $joke->delete();
-        //     return redirect(route('jokes.index'))
-        //         ->with('success', "Joke '{$joke->title}' deleted");
-        // }
-        //
-        // return back()
-        //     ->with('error', 'You are not authorized to delete this joke');
+        $course = Course::find($id);
+
+        if (!$course) {
+            return redirect(route('courses.index'))
+                ->with('warning', 'Course not found');
+        }
+
+        /*if (Auth::user()->cannot('course delete')) {
+            return back()
+                ->with('error', 'You are not authorized to delete this joke');
+        }*/
+
+        $course->clusters()->detach();
+        $course->units()->detach();
+        $course->delete();
+
+        return redirect(route('courses.index'))
+            ->with('success', "Course '$course->aqf_level $course->title' deleted");
     }
 
+
+    /**
+     * Validation for Course inputs.
+     * @param  Request  $request
+     * @return array
+     */
+    private function validateRequest(Request $request): array
+    {
+        $request['national_code'] = strtoupper($request['national_code']);
+        $request['state_code'] = strtoupper($request['state_code']);
+
+        $validated = $request->validate([
+            'package_id' => ['required', 'integer', 'exists:packages,id',],
+            'national_code' => ['required', 'string', 'min:4', 'max:10', 'uppercase', 'alpha_num', /*Rule::unique('courses', 'national_code')*/],
+            'aqf_level' => ['required', 'string', 'min:1', 'max:100',],
+            'title' => ['required', 'string', 'min:1', 'max:255',],
+            'tga_status' => ['sometimes', 'nullable', 'string', Rule::in(Course::tgaStatuses())],
+            'state_code' => ['required', 'string', 'min:4', 'max:10', 'uppercase', 'alpha_num',],
+            'nominal_hours' => ['sometimes', 'nullable', 'integer', 'min:0', 'max:10000',],
+            'type' => ['sometimes', 'nullable', 'string', 'min:1', 'max:50',],
+            'cluster_id' => ['sometimes', 'exists:clusters,id',],
+            'unit_id' => ['sometimes', 'exists:units,id',],
+        ]);
+
+        return $validated;
+    }
 }
