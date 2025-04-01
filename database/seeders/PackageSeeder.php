@@ -1,8 +1,8 @@
 <?php
 /**
  * Seeds (default/initial data) the database with packages.
- * * - Is called by DatabaseSeeder.php
- * * - Initialize before Course, Cluster, Unit & Timetable seeders.
+ * - Is called by DatabaseSeeder.php
+ * - Initialize before Course, Cluster, Unit & Timetable seeders.
  *
  * Filename:        PackageSeeder.php
  * Location:        database/seeders/

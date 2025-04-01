@@ -63,8 +63,8 @@
                                 <x-dropdown-link :href="route('welcome')">
                                     {{ __('Packages - NO ROUTE') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('welcome')">
-                                    {{ __('Courses - NO ROUTE') }}
+                                <x-dropdown-link :href="route('courses.index')">
+                                    {{ __('Courses') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('welcome')">
                                     {{ __('Clusters - NO ROUTE') }}

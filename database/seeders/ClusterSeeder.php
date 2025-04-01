@@ -150,26 +150,26 @@ class ClusterSeeder extends Seeder
 
         foreach ($clusters as $clusterData) {
             // 1. Get course using qualification
-            $course = Course::where('national_code', $clusterData['qualification'])->first();
+            /*$course = Course::where('national_code', $clusterData['qualification'])->first();
 
             if (!$course) {
                 $this->command->error("Missing course: {$clusterData['qualification']}");
                 continue;
-            }
+            }*/
 
             $cluster = Cluster::create([
                 'code' => $clusterData['code'],
                 'title' => $clusterData['title'],
                 'qualification' => $clusterData['qualification'],
                 'state_code' => $clusterData['state_code'],
-                'course_id' => $this->getCourseId($clusterData['qualification'])
+                // 'course_id' => $this->getCourseId($clusterData['qualification'])
             ]);
         }
 
 
     }
 
-    private function getCourseId($qualification)
+    /*private function getCourseId($qualification)
     {
         $course = Course::where('national_code', $qualification)->first();
 
@@ -179,7 +179,7 @@ class ClusterSeeder extends Seeder
         }
 
         return $course->id;
-    }
+    }*/
 
 
 }
