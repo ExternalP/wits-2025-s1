@@ -153,7 +153,6 @@
                                                   value="{{ old('type') ?? 'Qualification' }}"/>
                                     <x-input-error :messages="$errors->get('type')" class="mt-2"/>
                                 </div>
-{{-- TODO: Add Clusters to Course (Need to talk to Adrian) ################################################################### --}}
                                 <div class="flex flex-col my-2 pt-2">
                                     <x-input-label for="cluster_id" class="!text-lg">
                                         {{ __('Clusters') }}
