@@ -26,7 +26,7 @@
 >
     <option value="{{ old($old) ?? $defaultOption[0] }}" selected hidden>{{ old($old) ?? $defaultOption[1] }}</option>
 
-    @if (old($old) || $defaultOption !== ['', ''])
+    @if ((old($old) && $old != '') || $defaultOption !== ['', ''])
         {{ $selected = null }}
     @endif
 

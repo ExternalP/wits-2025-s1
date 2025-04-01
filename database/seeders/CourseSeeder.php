@@ -2820,16 +2820,17 @@ class CourseSeeder extends Seeder
 
         /* Example SeedData
         [
-            "id" => "1",
-            "package_id" => "1",
-            "national_code" => "BSB10115",
-            "aqf_level" => "Certificate I in",
-            "title" => "Business",
+            "id" => "253",
+            "package_id" => "4",
+            "national_code" => "ICT50220",
+            "aqf_level" => "Diploma of",
+            "title" => "Information Technology (Advanced Programming)",
             "tga_status" => "Current",
-            "state_code" => "AVU7",
-            "nominal_hours" => "150",
+            "state_code" => "AC21",
+            "nominal_hours" => "760",
             "type" => "Qualification"
         ],*/
+
         $numRecords = count($seedData);
         $this->command->getOutput()->progressStart($numRecords);
 
@@ -2841,7 +2842,8 @@ class CourseSeeder extends Seeder
         $this->command->getOutput()->progressFinish();
 
         /*Course::truncate();
-        $csvFile = fopen(base_path('storage/app/private/Course_2_v2.csv'), 'r');
+        $filePath = storage_path('/app/private/Course_2_v2.csv');
+        $csvFile = fopen($filePath, 'r');
         $firstline = true;
         while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
             if (! $firstline) {

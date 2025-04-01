@@ -23,5 +23,11 @@ class AppServiceProvider extends ServiceProvider
         // Adds a constraint to the wild card {id} in the routes so it doesn't match
         //  routes without parameters i.e. so "users/{id}" won't overwrite "users/create"
         Route::pattern('id', '[0-9]+');
+        // Route::pattern('user', '[0-9]+');
+        // Route::pattern('package', '[0-9]+');
+        // Route::pattern('course', '[0-9]+');
+        // Route::pattern('cluster', '[0-9]+');
+        // Route::pattern('unit', '[0-9]+');
+        // Route::pattern('timetable', '[0-9]+');
     }
 }

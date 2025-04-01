@@ -60,17 +60,17 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('welcome')">
-                                    {{ __('Packages - NO ROUTE') }}
+                                <x-dropdown-link :href="route('packages.index')">
+                                    {{ __('Packages - UNTESTED ROUTE') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('courses.index')">
                                     {{ __('Courses') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('welcome')">
-                                    {{ __('Clusters - NO ROUTE') }}
+                                <x-dropdown-link :href="route('clusters.index')">
+                                    {{ __('Clusters') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('welcome')">
-                                    {{ __('Units - NO ROUTE') }}
+                                <x-dropdown-link :href="route('units.index')">
+                                    {{ __('Units - UNTESTED ROUTE') }}
                                 </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>

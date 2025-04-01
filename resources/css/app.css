@@ -3,3 +3,21 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* NOTE: Prefix "my-" to identify custom css classes.
+@apply: To use classes within other classes.
+
+@layers: Sets precedence of css classes in case of conflict.
+ base: Low precedence (ie. easy to override)
+  - For stuff like reset rules or default styles of plain HTML elements.
+ components: Medium precedence
+  - For class-based styles you can override with utilities.
+ utilities: Max precedence
+  - Should always take precedence over any other styles.
+*/
+@layer components {
+    .my-paginator > nav > div {
+        @apply sm:flex-col;
+    }
+}
