@@ -20,6 +20,7 @@ export default {
         'bg-green-600',
         'text-green-900',
         'bg-green-100',
+        'col-span-2',
     ],
 
     theme: {

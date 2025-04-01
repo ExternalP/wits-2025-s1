@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('title');
             $table->string('tga_status')->default('Current');
             $table->string('state_code');
-            $table->integer('nominal_hours');
+            $table->integer('nominal_hours')->nullable();
             $table->timestamps();
         });
     }

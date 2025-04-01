@@ -1,8 +1,8 @@
 <?php
 /**
  * Seeds (default/initial data) the database with courses.
- * * - Is called by DatabaseSeeder.php
- * * - PackageSeeder.php must be initialized first due to foreign key.
+ * - Is called by DatabaseSeeder.php
+ * - PackageSeeder.php must be initialized first due to foreign key.
  *
  * Filename:        CourseSeeder.php
  * Location:        database/seeders/
@@ -2494,7 +2494,7 @@ class CourseSeeder extends Seeder
                 "title" => "Information Technology",
                 "tga_status" => "Current",
                 "state_code" => "AC07",
-                "nominal_hours" => "",
+                "nominal_hours" => null,
                 "type" => "Qualification"
             ],
             [
@@ -2820,6 +2820,7 @@ class CourseSeeder extends Seeder
 
         /* Example SeedData
         [
+            "id" => "1",
             "package_id" => "1",
             "national_code" => "BSB10115",
             "aqf_level" => "Certificate I in",
@@ -2838,5 +2839,26 @@ class CourseSeeder extends Seeder
         }
 
         $this->command->getOutput()->progressFinish();
+
+        /*Course::truncate();
+        $csvFile = fopen(base_path('storage/app/private/Course_2_v2.csv'), 'r');
+        $firstline = true;
+        while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
+            if (! $firstline) {
+                Course::create([
+                    'id' => $data['0'],
+                    'package_id' => $data['1'],
+                    'national_code' => $data['2'],
+                    'aqf_level' => $data['3'],
+                    'title' => $data['4'],
+                    'tga_status' => $data['5'],
+                    'state_code' => $data['6'],
+                    'nominal_hours' => $data['7'],
+                    'type' => $data['8'],
+                ]);
+            }
+            $firstline = false;
+        }
+        fclose($csvFile);*/
     }
 }

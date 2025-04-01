@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             PackageSeeder::class,
             CourseSeeder::class,
             ClusterSeeder::class,
+            UnitSeeder::class,
         ]);
     }
 }

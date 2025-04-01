@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('tga_status')->default('Current');
             // state_code should be unique excluding courses where tga_status == 'Expired'
             $table->string('state_code');
-            $table->integer('nominal_hours');
-            $table->string('type');
+            $table->integer('nominal_hours')->nullable();
+            $table->string('type')->default('Qualification');
             $table->timestamps();
             $table->foreignId('package_id')->constrained('packages');
 

@@ -2,7 +2,7 @@
     // 'mainClass' => '',
     // 'headerClass' => 'bg-white shadow',
     'headerClass' => 'bg-zinc-800 text-zinc-200',
-    'mainClass' => 'container grow my-8 mx-auto py-8 shadow shadow-black/25 w-full px-6 bg-white overflow-hidden rounded-lg',
+    'mainClass' => 'container grow my-8 mx-auto py-8 justify-self-center shadow shadow-black/25 w-full px-6 bg-white overflow-hidden rounded-lg',
 ])
 
 <!DOCTYPE html>
