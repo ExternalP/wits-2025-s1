@@ -17,8 +17,7 @@ class UnitSeeder extends Seeder
         $this->command->getOutput()->progressStart();
 
         Unit::truncate();
-        // $csvFile = Storage::get('/app/private/Unit_2.csv');
-        // $filePath = base_path('storage/app/private/Unit_2.csv');
+        // $filePath = storage_path('/app/private/Unit_2_Sample.csv');
         $filePath = storage_path('/app/private/Unit_2.csv');
         $csvFile = fopen($filePath, 'r');
 
@@ -26,11 +25,12 @@ class UnitSeeder extends Seeder
         while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
             if (! $firstline) {
                 Unit::create([
-                    'national_code' => $data['0'] ?: 'NULL',
-                    'title' => rtrim($data['1'], ' '),
-                    'tga_status' => $data['2'] ?: 'Current',
-                    'state_code' => $data['3'] ?: 'NULL',
-                    'nominal_hours' => $data['4'] ?: null,
+                    'id'            =>   $data['0'],
+                    'national_code' =>   $data['1'] ?: 'NULL',
+                    'title'     => rtrim($data['2'], ' '),
+                    'tga_status'    =>   $data['3'] ?: 'Current',
+                    'state_code'    =>   $data['4'] ?: 'NULL',
+                    'nominal_hours' =>   $data['5'] ?: null,
                 ]);
             }
             $firstline = false;
