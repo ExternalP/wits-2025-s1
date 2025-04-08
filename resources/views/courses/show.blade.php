@@ -33,29 +33,38 @@
                         </header>
 
                         <section class="grid grid-cols-6 border-b border-neutral-200 bg-white font-medium text-zinc-800 dark:border-white/10">
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">National Code</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->national_code }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">State Code</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->state_code }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">AQF Level</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->aqf_level }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">Title</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->title }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">TGA Status</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->tga_status }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">Nominal Hours</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->nominal_hours }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">Package</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $package->national_code .': '. $package->title }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">Type</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->type }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">Creation Date</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->created_at }}</p>
-                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 border-b border-zinc-200 dark:border-white/10">Last Updated</p>
-                            <p class="col-span-2 px-6 py-4 border-b border-zinc-200 dark:border-white/10">{{ $course->updated_at != $course->created_at ? $course->updated_at : '' }}</p>
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">National Code</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->national_code }}</p>
 
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">State Code</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->state_code }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">AQF Level</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->aqf_level }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">Title</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->title }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">TGA Status</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->tga_status }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">Nominal Hours</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->nominal_hours }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">Package</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $package->national_code .': '. $package->title }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">Type</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->type }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">Creation Date</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->created_at }}</p>
+
+                            <p class="text-right col-span-1 bg-zinc-300 px-6 py-4 content-center border-b border-zinc-200 dark:border-white/10">Last Updated</p>
+                            <p class="col-span-2 px-6 py-4 border-b content-center border-zinc-200 dark:border-white/10">{{ $course->updated_at != $course->created_at ? $course->updated_at : '' }}</p>
+
+                            <p class="text-center col-span-6 bg-zinc-300 px-6 py-1 border-b border-zinc-200 dark:border-white/10">Clusters</p>
                             <div class="max-h-64 col-span-6 overflow-y-auto border">
-                                <p class="text-center col-span-6 bg-zinc-300 px-6 py-1 border-b border-zinc-200 dark:border-white/10">Clusters</p>
                                 @if (!$course->clusters->isEmpty())
                                     <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                         <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
@@ -78,8 +87,9 @@
                                     <p class="px-2 text-center text-sm">{{ __('Course currently has no clusters.') }}</p>
                                 @endif
                             </div>
+
+                            <p class="text-center col-span-6 bg-zinc-300 px-6 py-1 border-b border-zinc-200 dark:border-white/10">Units</p>
                             <div class="max-h-64 col-span-6 overflow-y-auto border">
-                                <p class="text-center col-span-6 bg-zinc-300 px-6 py-1 border-b border-zinc-200 dark:border-white/10">Units</p>
                                 @if (!$course->units->isEmpty())
                                     <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                         <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">

@@ -54,7 +54,7 @@
                                     </x-input-label>
                                     <x-select id="package_id" name="package_id" required autofocus
                                               class="w-full"
-                                              :selected="old('package_id')"
+                                              {{--:selected="old('package_id')"--}}
                                               :options="$packages"
                                     />
                                     <x-input-error :messages="$errors->get('package_id')" class="mt-2"/>
@@ -157,11 +157,14 @@
                                             @foreach($clusters as $cluster)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
                                                     <td class="pl-2 py-1">
-                                                        <input name="cluster_id[]" type="checkbox"
+                                                        <input name="cluster_id[]" id="cluster_cb{{ $cluster->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($cluster->id, old('cluster_id', [])) ? 'checked' : '' }}
                                                                value="{{ $cluster->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="cluster_cb{{ $cluster->id }}">{{ $cluster->code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
                                                 </tr>
                                             @endforeach
@@ -189,11 +192,14 @@
                                             @foreach($units as $unit)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
                                                     <td class="pl-2 py-1">
-                                                        <input name="unit_id[]" type="checkbox"
+                                                        <input name="unit_id[]" id="unit_cb{{ $unit->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($unit->id, old('unit_id', [])) ? 'checked' : '' }}
                                                                value="{{ $unit->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $unit->national_code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="unit_cb{{ $unit->id }}">{{ $unit->national_code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $unit->title }}</td>
                                                 </tr>
                                             @endforeach

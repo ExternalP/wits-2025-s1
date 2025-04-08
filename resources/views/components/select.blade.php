@@ -24,10 +24,12 @@
 <select @disabled($disabled)
     {{ $attributes->merge(['class' => 'border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm']) }}
 >
-    <option value="{{ old($old) ?? $defaultOption[0] }}" selected hidden>{{ old($old) ?? $defaultOption[1] }}</option>
-
     @if ((old($old) && $old != '') || $defaultOption !== ['', ''])
         {{ $selected = null }}
+    @endif
+
+    @if ($selected === null)
+        <option value="{{ old($old) ?? $defaultOption[0] }}" selected hidden>{{ old($old) ?? $defaultOption[1] }}</option>
     @endif
 
     @foreach($options ?? [] as $value => $displayTxt)

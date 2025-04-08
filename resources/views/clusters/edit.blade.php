@@ -61,7 +61,7 @@
                                     @foreach($cluster->courses as $course)
                                         <tr class="border-b border-zinc-300 dark:border-white/10">
                                             <td class="pl-2 py-1">
-                                                <input name="course_id[]" id="course_{{ $course->id }}" type="checkbox"
+                                                <input name="course_id[]" id="course_cb{{ $course->id }}" type="checkbox"
                                                        class="rounded"
                                                        {{ in_array($course->id, old('course_id',
                                                             $cluster->courses->pluck('id')->toArray() ?? [])
@@ -69,7 +69,7 @@
                                                        value="{{ $course->id }}"/>
                                             </td>
                                             <td class="whitespace-nowrap pl-3 pr-1 py-1">
-                                                <label for="course_{{ $course->id }}">{{ $course->national_code }}</label>
+                                                <label for="course_cb{{ $course->id }}">{{ $course->national_code }}</label>
                                             </td>
                                             <td class="px-5 py-1 w-full">{{ $course->aqf_level .' '. $course->title }}</td>
                                         </tr>
@@ -77,13 +77,13 @@
                                     @foreach($otherCourses as $course)
                                         <tr class="border-b border-zinc-300 dark:border-white/10">
                                             <td class="pl-2 py-1">
-                                                <input name="course_id[]" id="course_{{ $course->id }}" type="checkbox"
+                                                <input name="course_id[]" id="course_cb{{ $course->id }}" type="checkbox"
                                                        class="rounded"
                                                        {{ in_array($course->id, old('course_id', [])) ? 'checked' : '' }}
                                                        value="{{ $course->id }}"/>
                                             </td>
                                             <td class="whitespace-nowrap pl-3 pr-1 py-1">
-                                                <label for="course_{{ $course->id }}">{{ $course->national_code }}</label>
+                                                <label for="course_cb{{ $course->id }}">{{ $course->national_code }}</label>
                                             </td>
                                             <td class="px-5 py-1 w-full">{{ $course->aqf_level .' '. $course->title }}</td>
                                         </tr>
