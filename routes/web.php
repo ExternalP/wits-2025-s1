@@ -17,11 +17,16 @@ Route::get('/', [StaticController::class, 'home'])->name('welcome');
 Route::get('/about', [StaticController::class, 'about'])->name('about');
 Route::get('/contact', [StaticController::class, 'contact'])->name('contact');
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::resource('packages', PackageController::class);
 Route::resource('units', UnitController::class);
 
 Route::resource('users', UserController::class);
@@ -48,9 +53,10 @@ Route::middleware('auth')->group(function () {
         ->except(['index', 'show']);
 });
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
+Route::resource('packages', PackageController::class)
+    ->only(['index', 'edit', 'update', 'destroy', 'show']);
+Route::get('/packages/create', [PackageController::class, 'create'])->name('packages.create');
+Route::get('/packages/search', [PackageController::class, 'search'])->name('packages.search');
+Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
+Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
+Route::get('/packages/edit', [PackageController::class, 'edit'])->name('packages.edit');
