@@ -145,8 +145,8 @@
                                         <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                             <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
                                             <tr>
-                                                <th scope="col" class="pl-2 text-center">#</th>
-                                                <th scope="col" class="pl-3 pr-1">Code</th>
+                                                {{--<th scope="col" class="pl-2 text-center">#</th>--}}
+                                                <th scope="col" class="pl-3 pr-1"><span class="pr-4">#</span>Code</th>
                                                 <th scope="col" class="px-5">Title</th>
                                             </tr>
                                             </thead>
@@ -154,25 +154,33 @@
                                             <tbody>
                                             @foreach($course->clusters as $cluster)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
-                                                    <td class="pl-2 py-1">
-                                                        <input name="cluster_id[]" type="checkbox"
+                                                    <td class="pl-2 py-1 whitespace-nowrap">
+                                                        <label>
+                                                            <input name="cluster_id[]" type="checkbox"
+                                                                   class="mr-2 rounded"
                                                                {{ in_array($cluster->id, old('cluster_id',
                                                                     $course->clusters->pluck('id')->toArray() ?? [])
                                                                   ) ? 'checked' : '' }}
                                                                value="{{ $cluster->id }}"/>
+                                                            {{ $cluster->code }}
+                                                        </label>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                    {{--<td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>--}}
                                                     <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
                                                 </tr>
                                             @endforeach
                                             @foreach($otherClusters as $cluster)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
-                                                    <td class="pl-2 py-1">
-                                                        <input name="cluster_id[]" type="checkbox"
-                                                               {{ in_array($cluster->id, old('cluster_id', [])) ? 'checked' : '' }}
-                                                               value="{{ $cluster->id }}"/>
+                                                    <td class="pl-2 py-1 whitespace-nowrap">
+                                                        <label>
+                                                            <input name="cluster_id[]" type="checkbox"
+                                                                   class="mr-2 rounded"
+                                                                   {{ in_array($cluster->id, old('cluster_id', [])) ? 'checked' : '' }}
+                                                                   value="{{ $cluster->id }}"/>
+                                                            {{ $cluster->code }}
+                                                        </label>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                    {{--<td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>--}}
                                                     <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
                                                 </tr>
                                             @endforeach

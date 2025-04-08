@@ -56,43 +56,51 @@
 
                             <div class="max-h-64 col-span-6 overflow-y-auto border">
                                 <p class="text-center col-span-6 bg-zinc-300 px-6 py-1 border-b border-zinc-200 dark:border-white/10">Clusters</p>
-                                <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
-                                    <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
-                                    <tr>
-                                        <th scope="col" class="pl-3 pr-1">Code</th>
-                                        <th scope="col" class="px-5">Title</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    @foreach($course->clusters as $cluster)
-                                        <tr class="border-b border-zinc-300 dark:border-white/10">
-                                            <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
-                                            <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
+                                @if (!$course->clusters->isEmpty())
+                                    <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
+                                        <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
+                                        <tr>
+                                            <th scope="col" class="pl-3 pr-1">Code</th>
+                                            <th scope="col" class="px-5">Title</th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach ($course->clusters as $cluster)
+                                            <tr class="border-b border-zinc-300 dark:border-white/10">
+                                                <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <p class="px-2 text-center text-sm">{{ __('Course currently has no clusters.') }}</p>
+                                @endif
                             </div>
                             <div class="max-h-64 col-span-6 overflow-y-auto border">
                                 <p class="text-center col-span-6 bg-zinc-300 px-6 py-1 border-b border-zinc-200 dark:border-white/10">Units</p>
-                                <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
-                                    <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
-                                    <tr>
-                                        <th scope="col" class="pl-3 pr-1">Code</th>
-                                        <th scope="col" class="px-5">Title</th>
-                                    </tr>
-                                    </thead>
-
-                                    <tbody>
-                                    @foreach($course->units as $unit)
-                                        <tr class="border-b border-zinc-300 dark:border-white/10">
-                                            <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $unit->national_code }}</td>
-                                            <td class="px-5 py-1 w-full">{{ $unit->title }}</td>
+                                @if (!$course->units->isEmpty())
+                                    <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
+                                        <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
+                                        <tr>
+                                            <th scope="col" class="pl-3 pr-1">Code</th>
+                                            <th scope="col" class="px-5">Title</th>
                                         </tr>
-                                    @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+
+                                        <tbody>
+                                        @foreach ($course->units as $unit)
+                                            <tr class="border-b border-zinc-300 dark:border-white/10">
+                                                <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $unit->national_code }}</td>
+                                                <td class="px-5 py-1 w-full">{{ $unit->title }}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                @else
+                                    <p class="p-2 text-center text-sm">{{ __('Course currently has no units.') }}</p>
+                                @endif
                             </div>
                         </section>
 
