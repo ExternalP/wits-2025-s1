@@ -33,19 +33,6 @@
                             <x-input-error class="mt-2" :messages="$errors->get('title')" />
                         </div>
 
-                        <!-- Course Selection -->
-                        <div>
-                            <x-input-label for="course_id" :value="__('Course')" />
-                            <select id="course_id" name="course_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                                @foreach($courses as $id => $nationalCode)
-                                    <option value="{{ $id }}" {{ $id == old('course_id', $cluster->course_id) ? 'selected' : '' }}>
-                                        {{ $nationalCode }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <x-input-error class="mt-2" :messages="$errors->get('course_id')" />
-                        </div>
-
                         <!-- State Code -->
                         <div>
                             <x-input-label for="state_code" :value="__('State Code')" />
@@ -54,20 +41,85 @@
                             <x-input-error class="mt-2" :messages="$errors->get('state_code')" />
                         </div>
 
+
+                        <!-- Course Selection -->
+                        <div class="flex flex-col my-2 pt-2">
+                            <x-input-label for="course_id" class="!text-lg">
+                                {{ __('Courses') }}
+                            </x-input-label>
+                            <div class="max-h-64 overflow-y-auto border">
+                                <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
+                                    <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
+                                    <tr>
+                                        <th scope="col" class="pl-2 text-center">#</th>
+                                        <th scope="col" class="pl-3 pr-1">Code</th>
+                                        <th scope="col" class="px-5">Title</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    @foreach($cluster->courses as $course)
+                                        <tr class="border-b border-zinc-300 dark:border-white/10">
+                                            <td class="pl-2 py-1">
+                                                <input name="course_id[]" id="course_{{ $course->id }}" type="checkbox"
+                                                       class="rounded"
+                                                       {{ in_array($course->id, old('course_id',
+                                                            $cluster->courses->pluck('id')->toArray() ?? [])
+                                                          ) ? 'checked' : '' }}
+                                                       value="{{ $course->id }}"/>
+                                            </td>
+                                            <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                <label for="course_{{ $course->id }}">{{ $course->national_code }}</label>
+                                            </td>
+                                            <td class="px-5 py-1 w-full">{{ $course->aqf_level .' '. $course->title }}</td>
+                                        </tr>
+                                    @endforeach
+                                    @foreach($otherCourses as $course)
+                                        <tr class="border-b border-zinc-300 dark:border-white/10">
+                                            <td class="pl-2 py-1">
+                                                <input name="course_id[]" id="course_{{ $course->id }}" type="checkbox"
+                                                       class="rounded"
+                                                       {{ in_array($course->id, old('course_id', [])) ? 'checked' : '' }}
+                                                       value="{{ $course->id }}"/>
+                                            </td>
+                                            <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                <label for="course_{{ $course->id }}">{{ $course->national_code }}</label>
+                                            </td>
+                                            <td class="px-5 py-1 w-full">{{ $course->aqf_level .' '. $course->title }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            <x-input-error :messages="$errors->get('course_id')" class="mt-2"/>
+                        </div>
+{{--                        <div>--}}
+{{--                            <x-input-label for="course_id" :value="__('Course')" />--}}
+{{--                            <select id="course_id" name="course_id" class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">--}}
+{{--                                @foreach($courses as $id => $nationalCode)--}}
+{{--                                    <option value="{{ $id }}" {{ $id == old('course_id', $cluster->course_id) ? 'selected' : '' }}>--}}
+{{--                                        {{ $nationalCode }}--}}
+{{--                                    </option>--}}
+{{--                                @endforeach--}}
+{{--                            </select>--}}
+{{--                            <x-input-error class="mt-2" :messages="$errors->get('course_id')" />--}}
+{{--                        </div>--}}
+
+
                         <!-- Units Selection -->
                         <div>
                             <x-input-label :value="__('Units')" />
                             <div class="mt-2 space-y-2">
                                 @foreach($units as $unit)
                                     <label class="inline-flex items-center">
-                                        <input type="checkbox" name="units[]" value="{{ $unit->id }}"
+                                        <input type="checkbox" name="unit_id[]" value="{{ $unit->id }}"
                                                {{ in_array($unit->id, old('units', $selectedUnits)) ? 'checked' : '' }}
                                                class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500">
                                         <span class="ml-2">{{ $unit->national_code }}</span>
                                     </label><br>
                                 @endforeach
                             </div>
-                            <x-input-error class="mt-2" :messages="$errors->get('units')" />
+                            <x-input-error class="mt-2" :messages="$errors->get('unit_id')" />
                         </div>
 
                         <!-- Form Actions -->

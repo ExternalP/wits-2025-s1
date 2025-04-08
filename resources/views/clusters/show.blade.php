@@ -31,7 +31,11 @@
                         <div class="sm:col-span-1">
                             <dt class="text-sm font-medium text-gray-500">Course</dt>
                             <dd class="mt-1 text-sm text-gray-900">
-                                {{ $cluster->course->national_code ?? 'N/A' }}
+                                @forelse($cluster->courses as $course)
+                                    <span class="px-2 py-1 bg-gray-100 rounded">{{ $course->national_code }}</span>
+                                @empty
+                                    <span class="text-gray-500 italic">No courses assigned</span>
+                                @endforelse
                             </dd>
                         </div>
 
