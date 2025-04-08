@@ -1,8 +1,8 @@
 <?php
 /**
  * Seeds (default/initial data) the database with courses.
- * * - Is called by DatabaseSeeder.php
- * * - PackageSeeder.php must be initialized first due to foreign key.
+ * - Is called by DatabaseSeeder.php
+ * - PackageSeeder.php must be initialized first due to foreign key.
  *
  * Filename:        CourseSeeder.php
  * Location:        database/seeders/
@@ -2494,7 +2494,7 @@ class CourseSeeder extends Seeder
                 "title" => "Information Technology",
                 "tga_status" => "Current",
                 "state_code" => "AC07",
-                "nominal_hours" => "",
+                "nominal_hours" => null,
                 "type" => "Qualification"
             ],
             [
@@ -2820,15 +2820,17 @@ class CourseSeeder extends Seeder
 
         /* Example SeedData
         [
-            "package_id" => "1",
-            "national_code" => "BSB10115",
-            "aqf_level" => "Certificate I in",
-            "title" => "Business",
+            "id" => "253",
+            "package_id" => "4",
+            "national_code" => "ICT50220",
+            "aqf_level" => "Diploma of",
+            "title" => "Information Technology (Advanced Programming)",
             "tga_status" => "Current",
-            "state_code" => "AVU7",
-            "nominal_hours" => "150",
+            "state_code" => "AC21",
+            "nominal_hours" => "760",
             "type" => "Qualification"
         ],*/
+
         $numRecords = count($seedData);
         $this->command->getOutput()->progressStart($numRecords);
 
@@ -2838,5 +2840,27 @@ class CourseSeeder extends Seeder
         }
 
         $this->command->getOutput()->progressFinish();
+
+        /*Course::truncate();
+        $filePath = storage_path('/app/private/Course_2_v2.csv');
+        $csvFile = fopen($filePath, 'r');
+        $firstline = true;
+        while (($data = fgetcsv($csvFile, 2000, ',')) !== false) {
+            if (! $firstline) {
+                Course::create([
+                    'id' => $data['0'],
+                    'package_id' => $data['1'],
+                    'national_code' => $data['2'],
+                    'aqf_level' => $data['3'],
+                    'title' => $data['4'],
+                    'tga_status' => $data['5'],
+                    'state_code' => $data['6'],
+                    'nominal_hours' => $data['7'],
+                    'type' => $data['8'],
+                ]);
+            }
+            $firstline = false;
+        }
+        fclose($csvFile);*/
     }
 }

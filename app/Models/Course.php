@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -36,11 +38,15 @@ class Course extends Model
     }
 
     /**
-     * @return HasMany
+     * @return BelongsToMany
      */
-    public function clusters(): HasMany
+    public function clusters(): BelongsToMany
     {
-        return $this->hasMany(Cluster::class, 'course_id', 'id');
+        return $this->belongsToMany(Cluster::class, 'course_cluster',
+            'course_id', 'cluster_id')
+            ->withTimestamps();
+        // ->using(CourseCluster::class);
+        // ->withPivot([]);
     }
 
     /**
@@ -53,13 +59,29 @@ class Course extends Model
             ->withTimestamps();
     }
 
-    /*public function clusters(): BelongsToMany
+    /**
+     * Returns array of the unique aqf_level values.
+     * @return array
+     */
+    public static function uniqueAqfs(): array
     {
-        return $this->belongsToMany(Cluster::class, 'course_cluster',
-            'course_id', 'cluster_id')
-            ->withTimestamps();
-            // ->using(CourseCluster::class);
-            // ->withPivot([]);
+        // return Course::select('aqf_level')->distinct()->get(['aqf_level']);
+        return Course::select('aqf_level')->distinct()->pluck('aqf_level')->toArray();
+    }
+
+    /**
+     * Array of valid TGA Statuses.
+     * - So if it changes I don't have to search everywhere to fix it.
+     * @return string[]
+     */
+    public static function tgaStatuses(): array
+    {
+        return ['Current', 'Expired',  'Replaced'];
+    }
+
+    /*public function clusters(): HasMany
+    {
+        return $this->hasMany(Cluster::class, 'course_id', 'id');
     }*/
 
     /*public function units(): HasMany

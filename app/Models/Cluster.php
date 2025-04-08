@@ -21,15 +21,17 @@ class Cluster extends Model
         'title',
         'qualification',
         'state_code',
-        'course_id',
+        // 'course_id',
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsToMany
      */
-    public function course(): BelongsTo
+    public function courses(): BelongsToMany
     {
-        return $this->belongsTo(Course::class, 'course_id', 'id');
+        return $this->belongsToMany(Course::class, 'course_cluster',
+            'cluster_id', 'course_id')
+            ->withTimestamps();
     }
 
     /**
@@ -42,14 +44,9 @@ class Cluster extends Model
             ->withTimestamps();
     }
 
-
-    /*public function courses(): BelongsToMany
+    /*public function course(): BelongsTo
     {
-        return $this->belongsToMany(Course::class, 'course_cluster',
-            'cluster_id', 'course_id')
-            ->withTimestamps();
-        // ->using(CourseCluster::class);
-        // ->withPivot([]);
+        return $this->belongsTo(Course::class, 'course_id', 'id');
     }*/
 
     /*public function units(): HasMany

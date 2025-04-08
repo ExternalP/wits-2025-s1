@@ -12,7 +12,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // ##################### THIS PIVOT TABLE IS DELETED ###########################################
         Schema::create('course_cluster', function (Blueprint $table) {
             // $table->id();
             $table->foreignId('course_id')->constrained('courses');//->cascadeOnDelete();
