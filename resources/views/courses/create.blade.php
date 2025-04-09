@@ -54,7 +54,7 @@
                                     </x-input-label>
                                     <x-select id="package_id" name="package_id" required autofocus
                                               class="w-full"
-                                              {{--:selected="old('package_id')"--}}
+                                              :selected="old('package_id')"
                                               :options="$packages"
                                     />
                                     <x-input-error :messages="$errors->get('package_id')" class="mt-2"/>
@@ -66,7 +66,6 @@
                                     </x-input-label>
                                     <x-text-input id="national_code" name="national_code" required autofocus
                                                   class="uppercase"
-                                                  {{--pattern="[A-Za-z0-9]{4,10}"--}}
                                                   placeholder="The first 3 characters should be package code"
                                                   value="{{ old('national_code') }}"/>
                                     <x-input-error :messages="$errors->get('national_code')" class="mt-2"/>
@@ -78,8 +77,8 @@
                                             {{ __('AQF Level') }}
                                         </x-input-label>
                                         <x-select id="aqf_level" name="aqf_level" required autofocus
-                                                  old="aqf_level"
-                                                  :valuesAsKeys="true"
+                                                  :selected="old('aqf_level')"
+                                                  :useArrayKeys="false"
                                                   :options="$uniqueAqfs"
                                         />
                                         <x-input-error :messages="$errors->get('aqf_level')" class="mt-2"/>
@@ -102,9 +101,8 @@
                                     </x-input-label>
                                     <x-select id="tga_status" name="tga_status" required autofocus
                                               class="w-full"
-                                              old="tga_status"
-                                              :valuesAsKeys="true"
-                                              selected="Current"
+                                              :selected="old('tga_status', 'Current')"
+                                              :useArrayKeys="false"
                                               :options="\App\Models\Course::tgaStatuses()"
                                     />
                                     <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
@@ -204,7 +202,6 @@
                                                 </tr>
                                             @endforeach
                                             </tbody>
-
                                             <tfoot>
 {{--                                            <tr class="bg-zinc-100">--}}
 {{--                                                <td colspan="6" class="px-3 py-2 my-paginator">--}}
@@ -218,7 +215,6 @@
 {{--                                                </td>--}}
 {{--                                            </tr>--}}
                                             </tfoot>
-
                                         </table>
                                     </div>
                                     <x-input-error :messages="$errors->get('unit_id')" class="mt-2"/>

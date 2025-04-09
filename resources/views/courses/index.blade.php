@@ -43,7 +43,6 @@
                     </x-secondary-link-button>
                 @endif--}}
             </div>
-{{--            <div class="grow"></div>--}}
             <form action="{{ route('courses.index') }}"
                   method="get"
                   class="pl-1 flex flex-row gap-0 items-center"  >
@@ -84,13 +83,11 @@
                         <thead
                             class="border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
                         <tr>
-                            {{--                            <th scope="col" class="px-6 py-4">#</th>--}}
                             <th scope="col" class="px-3 py-4 text-center">National Code</th>
                             <th scope="col" class="px-5 py-4">AQF Level & Title</th>
                             <th scope="col" class="px-2 py-4 text-center">TGA Status</th>
                             <th scope="col" class="px-2 py-4 text-center">State Code</th>
                             <th scope="col" class="px-2 py-4 text-center">Nominal Hours</th>
-{{--                            <th scope="col" class="px-4 py-4">Type</th>--}}
                             <th scope="col" class="pl-6 pr-2 py-4">Actions</th>
                         </tr>
                         </thead>

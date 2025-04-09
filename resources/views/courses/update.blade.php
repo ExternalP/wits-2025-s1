@@ -80,7 +80,7 @@
                                         </x-input-label>
                                         <x-select id="aqf_level" name="aqf_level" required autofocus
                                                   :selected="old('aqf_level', $course->aqf_level)"
-                                                  :valuesAsKeys="true"
+                                                  :useArrayKeys="false"
                                                   :options="$uniqueAqfs"/>
                                         <x-input-error :messages="$errors->get('aqf_level')" class="mt-2"/>
                                     </div>
@@ -103,7 +103,7 @@
                                     <x-select id="tga_status" name="tga_status" required autofocus
                                               class="w-full"
                                               :selected="old('tga_status', $course->tga_status)"
-                                              :valuesAsKeys="true"
+                                              :useArrayKeys="false"
                                               :options="$tgaStatuses"/>
                                     <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
                                 </div>
