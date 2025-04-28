@@ -21,6 +21,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::resource('users', UserController::class)->except(['index', 'show']);  // Remove index, show for user resources
+    Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
 });
 
 Route::get('/dashboard', function () {
@@ -44,9 +48,9 @@ Route::get('courses', [CourseController::class, 'index'])
 Route::get('courses/{id}', [CourseController::class, 'show'])
     ->name('courses.show');
 
-Route::middleware('auth')->group(function () {
-    Route::resource('users', UserController::class)->except(['index', 'show', 'edit', 'update', 'create', 'destroy']);
-});
+// Route::middleware('auth')->group(function () {
+//     Route::resource('users', UserController::class)->except(['index', 'show', 'edit', 'update', 'create', 'destroy']);
+// });
 
 Route::middleware('auth')->group(function () {
     Route::resource('courses', CourseController::class)
@@ -60,3 +64,5 @@ Route::get('/packages/search', [PackageController::class, 'search'])->name('pack
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
 Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
 Route::get('/packages/edit', [PackageController::class, 'edit'])->name('packages.edit');
+
+

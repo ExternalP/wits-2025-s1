@@ -23,9 +23,9 @@
             </x-primary-link-button>
         </header>
 
-        {{-- @auth--}}
-        {{-- <x-flash-message :data="session()"/>--}}
-        {{-- @endauth--}}
+        @auth
+        <x-flash-message :data="session()"/>
+        @endauth
 
         <div class="flex flex-col flex-wrap my-4 mt-8">
             <section class="grid grid-cols-1 gap-4 px-4 mt-4 sm:px-8">
@@ -62,18 +62,18 @@
                                         @method('DELETE')
 
                                         <x-primary-link-button href="{{ route('users.show', $user) }}"
-                                            class="bg-zinc-800">
-                                            <span>Show </span>
+                                        class="bg-zinc-700 hover:bg-indigo-700 pr-2 pl-2">
+                                        {{ __('Show') }}
                                             <i class="fa-solid fa-eye pr-2 order-first"></i>
                                         </x-primary-link-button>
                                         <x-primary-link-button href="{{ route('users.edit', $user) }}"
-                                            class="bg-zinc-800">
-                                            <span>Edit </span>
+                                        class="bg-zinc-500 hover:bg-indigo-700 pr-2 pl-2">
+                                        {{ __('Edit') }}
                                             <i class="fa-solid fa-edit pr-2 order-first"></i>
                                         </x-primary-link-button>
                                         <x-secondary-button type="submit"
-                                            class="bg-zinc-200">
-                                            <span>Delete</span>
+                                            class="!text-gray-700 bg-zinc-200 pr-2 pl-2 hover:bg-red-700 hover:!text-white">
+                                            {{ __('Delete') }}
                                             <i class="fa-solid fa-times pr-2 order-first"></i>
                                         </x-secondary-button>
                                     </form>
