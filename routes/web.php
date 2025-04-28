@@ -9,6 +9,7 @@ use App\Http\Controllers\StaticController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ClusterController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\TimetableController;
 
 require __DIR__.'/auth.php';
 
@@ -60,3 +61,11 @@ Route::get('/packages/search', [PackageController::class, 'search'])->name('pack
 Route::get('/packages', [PackageController::class, 'index'])->name('packages.index');
 Route::get('/packages/{package}', [PackageController::class, 'show'])->name('packages.show');
 Route::get('/packages/edit', [PackageController::class, 'edit'])->name('packages.edit');
+
+
+//Timetables
+
+Route::resource('timetables', TimetableController::class)
+    ->only(['create', 'index',  'store', 'edit', 'update', 'destroy', 'show']);
+
+
