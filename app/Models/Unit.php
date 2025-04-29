@@ -62,4 +62,11 @@ class Unit extends Model
             'unit_id', 'course_id')
             ->withTimestamps();
     }
+
+
+    //A unit can belong to multiple timetables.
+    public function timetables()
+    {
+        return $this->belongsToMany(Timetable::class, 'timetable_unit');
+    }
 }
