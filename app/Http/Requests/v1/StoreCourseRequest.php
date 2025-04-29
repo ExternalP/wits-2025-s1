@@ -35,10 +35,7 @@ class StoreCourseRequest extends FormRequest
      */
     public function rules(): array
     {
-        // $request['national_code'] = strtoupper($request['national_code']);
-        // $request['state_code'] = strtoupper($request['state_code']);
-        // if (!isset($request['cluster_id'])) $request['cluster_id'] = [];
-        // if (!isset($request['unit_id'])) $request['unit_id'] = [];
+        // Make sure to run cleanCourseRequest() before validation.
 
         return [
             'package_id' => ['required', 'integer', 'exists:packages,id',],
