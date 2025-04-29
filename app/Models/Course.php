@@ -12,41 +12,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 /**
- * 
- *
  * @mixin IdeHelperCourse
- * @property int $id
- * @property string $national_code
- * @property string $aqf_level
- * @property string $title
- * @property string $tga_status
- * @property string $state_code
- * @property int|null $nominal_hours
- * @property string $type
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
- * @property int $package_id
- * @property-read Collection<int, \App\Models\Cluster> $clusters
- * @property-read int|null $clusters_count
- * @property-read \App\Models\Package $package
- * @property-read Collection<int, \App\Models\Unit> $units
- * @property-read int|null $units_count
- * @method static \Database\Factories\CourseFactory factory($count = null, $state = [])
- * @method static Builder<static>|Course newModelQuery()
- * @method static Builder<static>|Course newQuery()
- * @method static Builder<static>|Course query()
- * @method static Builder<static>|Course whereAqfLevel($value)
- * @method static Builder<static>|Course whereCreatedAt($value)
- * @method static Builder<static>|Course whereId($value)
- * @method static Builder<static>|Course whereNationalCode($value)
- * @method static Builder<static>|Course whereNominalHours($value)
- * @method static Builder<static>|Course wherePackageId($value)
- * @method static Builder<static>|Course whereStateCode($value)
- * @method static Builder<static>|Course whereTgaStatus($value)
- * @method static Builder<static>|Course whereTitle($value)
- * @method static Builder<static>|Course whereType($value)
- * @method static Builder<static>|Course whereUpdatedAt($value)
- * @mixin \Eloquent
  */
 class Course extends Model
 {
