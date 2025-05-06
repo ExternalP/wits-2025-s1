@@ -16,7 +16,8 @@ class PackageController extends Controller
 
     public function create()
     {
-        return view('packages.create');
+        $tgaStatus = ['Current' => 'Current', 'Deleted' => 'Deleted'];
+        return view('packages.create', compact('tgaStatus'));
     }
 
     public function store(Request $request)
@@ -28,23 +29,31 @@ class PackageController extends Controller
 
         ]);
 
-        $p = new package($validated);
+        $p = new Package($validated);
+        $p->save();
 
 
         return redirect()->route('packages.index')->with('success', 'packages created successfully!');
     }
 
-    public function show(package $package)
+    public function show(Package $package)
     {
         return view('packages.show', compact('package'));
     }
 
-    public function edit(package $package)
+    public function edit(Package $package)
     {
-        return view('packages.edit', compact('package'));
+        $tgaStatuses = [
+            'Current' => 'Current',
+            'Deleted' => 'Deleted',
+            'Suspended' => 'Suspended',
+            'Under Review' => 'Under Review'
+        ];
+        return view('packages.update', compact('package', 'tgaStatuses'));
     }
 
-    public function update(Request $request, package $package)
+
+    public function update(Request $request, Package $package)
     {
         $validated = $request->validate([
             'national_code' => ['required', 'min:1', 'max:255', 'string'],
@@ -54,10 +63,10 @@ class PackageController extends Controller
 
         $package->update($validated);
 
-        return redirect(route('packages.show', $package->id))->with('success', 'packages updated');
+        return redirect()->route('packages.index', $package)->with('success', 'Package updated');
     }
 
-    public function destroy(package $package)
+    public function destroy(Package $package)
     {
         $package->delete();
         return redirect(route('packages.index'))->with('success', 'packages deleted');

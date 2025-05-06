@@ -61,7 +61,7 @@
 
                             <x-slot name="content">
                                 <x-dropdown-link :href="route('packages.index')">
-                                    {{ __('Packages - UNTESTED ROUTE') }}
+                                    {{ __('Packages') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('courses.index')">
                                     {{ __('Courses') }}
@@ -77,12 +77,7 @@
                     </div>
                 </div>
 
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('packages.index')"
-                                :active="request()->routeIs('packages')">
-                        {{ __('Package') }}
-                    </x-nav-link>
-                </div>
+
             </div>
 
             <!-- Settings Dropdown -->
