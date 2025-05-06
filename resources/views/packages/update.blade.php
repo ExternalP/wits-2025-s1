@@ -54,7 +54,7 @@
                                     <x-select id="tga_status" name="tga_status" required
                                               :selected="old('tga_status', $package->tga_status)"
                                               :valuesAsKeys="true"
-                                              :options="$tgaStatuses" />
+                                              :options="$tgaStatus" />
                                     <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
                                 </div>
                             </section>

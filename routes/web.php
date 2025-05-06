@@ -54,6 +54,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('packages', PackageController::class)
-    ->only(['index', 'edit', 'update', 'destroy', 'show']);
-Route::get('/packages/create', [PackageController::class, 'create'])->name('packages.create');
+    ->only(['index', 'create', 'store', 'edit', 'update', 'destroy', 'show']);
 Route::get('/packages/search', [PackageController::class, 'search'])->name('packages.search');

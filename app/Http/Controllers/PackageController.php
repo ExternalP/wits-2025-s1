@@ -16,7 +16,12 @@ class PackageController extends Controller
 
     public function create()
     {
-        $tgaStatus = ['Current' => 'Current', 'Deleted' => 'Deleted'];
+            $tgaStatus = [
+                'Current' => 'Current',
+                'Deleted' => 'Deleted',
+                'Suspended' => 'Suspended',
+            ];
+
         return view('packages.create', compact('tgaStatus'));
     }
 
@@ -43,13 +48,12 @@ class PackageController extends Controller
 
     public function edit(Package $package)
     {
-        $tgaStatuses = [
+        $tgaStatus = [
             'Current' => 'Current',
             'Deleted' => 'Deleted',
             'Suspended' => 'Suspended',
-            'Under Review' => 'Under Review'
         ];
-        return view('packages.update', compact('package', 'tgaStatuses'));
+        return view('packages.update', compact('package', 'tgaStatus'));
     }
 
 
