@@ -34,8 +34,8 @@ class PackageController extends Controller
 
         ]);
 
-        $p = new Package($validated);
-        $p->save();
+        $package = new Package($validated);
+        $package->save();
 
 
         return redirect()->route('packages.index')->with('success', 'packages created successfully!');
@@ -80,11 +80,11 @@ class PackageController extends Controller
     {
         $query = $request->input('query');
 
-        $users = User::where('national_code', 'like', "%{$query}%")
+        $packages = Package::where('national_code', 'like', "%{$query}%")
             ->orWhere('title', 'like', "%{$query}%")
             ->orWhere('tga_status', 'like', "%{$query}%")
             ->paginate(10);
 
-        return view('users.index', compact('users'));
+        return view('package.index', compact('packages'));
     }
 }
