@@ -36,7 +36,9 @@
 
             <!-- Page Content -->
             <main class="{{ $mainClass }}">
+                
                 {{ $slot }}
+                
             </main>
         </div>
     </body>

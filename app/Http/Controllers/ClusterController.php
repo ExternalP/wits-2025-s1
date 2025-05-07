@@ -14,7 +14,7 @@ class ClusterController extends Controller
     public function index(): View
     {
         return view('clusters.index', [
-            'clusters' => Cluster::with(['course', 'units'])
+            'clusters' => Cluster::with(['courses', 'units'])
                 ->latest()
                 ->paginate(10)
         ]);
@@ -23,7 +23,7 @@ class ClusterController extends Controller
     public function create(): View
     {
         return view('clusters.create', [
-            'courses' => Course::pluck('national_code', 'id'),
+            'courses' => Course::all(),
             'units' => Unit::all()
         ]);
     }
@@ -34,11 +34,13 @@ class ClusterController extends Controller
             'code' => 'required|string|max:10|unique:clusters',
             'title' => 'required|string|max:255',
             'state_code' => 'required|string|max:10',
-            'course_id' => 'required|exists:courses,id',
+            'course_id' => 'sometimes|exists:courses,id',
+            'unit_id' => 'sometimes|exists:units,id',
         ]);
 
         $cluster = Cluster::create($validated);
-        $cluster->units()->sync($validated['units'] ?? []);
+        $cluster->courses()->sync($validated['course_id'] ?? []);
+        $cluster->units()->sync($validated['unit_id'] ?? []);
 
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster created successfully.');
@@ -47,7 +49,7 @@ class ClusterController extends Controller
     public function show(Cluster $cluster): View
     {
         return view('clusters.show', [
-            'cluster' => $cluster->load(['course', 'units'])
+            'cluster' => $cluster->load(['courses', 'units'])
         ]);
     }
 
@@ -57,7 +59,9 @@ class ClusterController extends Controller
             'cluster' => $cluster,
             'courses' => Course::pluck('national_code', 'id'),
             'units' => Unit::all(),
-            'selectedUnits' => $cluster->units->pluck('id')->toArray()
+            'selectedUnits' => $cluster->units->pluck('id')->toArray(),
+            'otherCourses' => Course::all()->whereNotIn('id', $cluster->courses->pluck('id')),
+            'otherUnits' => Unit::all()->whereNotIn('id', $cluster->units->pluck('id')),
         ]);
     }
 
@@ -67,11 +71,13 @@ class ClusterController extends Controller
             'code' => 'required|string|max:10|unique:clusters,code,'.$cluster->id,
             'title' => 'required|string|max:255',
             'state_code' => 'required|string|max:10',
-            'course_id' => 'required|exists:courses,id',
+            'course_id' => 'sometimes|exists:courses,id',
+            'unit_id' => 'sometimes|exists:units,id',
         ]);
 
         $cluster->update($validated);
-        $cluster->units()->sync($validated['units'] ?? []);
+        $cluster->courses()->sync($validated['course_id'] ?? []);
+        $cluster->units()->sync($validated['unit_id'] ?? []);
 
         return redirect()->route('clusters.index')
             ->with('success', 'Cluster updated successfully.');
@@ -79,6 +85,7 @@ class ClusterController extends Controller
 
     public function destroy(Cluster $cluster): RedirectResponse
     {
+        $cluster->courses()->detach();
         $cluster->units()->detach();
         $cluster->delete();
 

@@ -44,6 +44,19 @@ class Cluster extends Model
             ->withTimestamps();
     }
 
+    // A cluster can have many timetables.
+    public function timetables()
+    {
+        return $this->hasMany(Timetable::class);
+    }
+
+    //A cluster can share timetables with other clusters (cluster 1, 2,3 can share Monday 1pm- 4pm).
+
+    public function sharedTimetables()
+    {
+        return $this->belongsToMany(Timetable::class, 'timetable_cluster');
+    }
+
     /*public function course(): BelongsTo
     {
         return $this->belongsTo(Course::class, 'course_id', 'id');

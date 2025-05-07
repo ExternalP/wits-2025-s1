@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             ClusterSeeder::class,
             UnitSeeder::class,
+            TimetableSeeder::class,
         ]);
 
         // Seeds pivot tables for testing.

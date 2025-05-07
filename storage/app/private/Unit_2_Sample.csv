@@ -1,0 +1,32 @@
+id,national_code,title,tga_status,state_code,nominal_hours
+1,BSBMKG402,Analyse consumer behaviour for specific markets,Replaced,AUJ44,50
+2,BSBSUS301,Implement and monitor environmentally sustainable work practices,Replaced,AUI33,40
+3,BSBADM101,Use business equipment and resources,Current,AUJ55,20
+4,BSBADM301,Produce texts from shorthand notes,Current,AUL74,100
+5,BSBADM302,Produce texts from notes,Current,AUL71,30
+630,CUAACD101,Use basic drawing techniques,Current,AWK37,40
+631,CUAACD201,Develop drawing skills to communicate ideas,Current,AWK36,70
+632,CUAACD301,Produce drawings to communicate ideas,Current,AWK35,40
+633,CUAACD302,Produce computer-aided drawings,Current,AWK34,60
+634,CUAACD303,Produce technical drawings,Current,AWK33,70
+635,CUAACD304,Make scale models,Current,AWK32,70
+1305,FNSACC301,Process financial transactions and extract interim reports,Current,AUQ00,60
+1306,FNSACC302,Administer subsidiary accounts and ledgers,Current,AUQ09,40
+1307,FNSACC303,Perform financial calculations,Current,AUX26,30
+1308,FNSACC401,Process business tax requirements,Current,AUX05,50
+1309,FNSACC402,Prepare operational budgets,Current,AUQ01,40
+1310,FNSACC403,Make decisions in a legal context,Current,AUW96,60
+1671,ICTDBS401,Identify physical database requirements,Current,AUX21,35
+1672,ICTDBS402,Complete database backup and restore,Current,AUT45,25
+1673,ICTDBS403,Create basic databases,Current,AUT57,40
+1674,ICTDBS404,Identify and resolve common database performance problems,Current,AUT44,25
+1675,ICTDBS407,Monitor physical database implementation,Current,AUT49,20
+1676,ICTDBS408,Link an RFID system to a database,Current,AUT54,25
+2190,ICTSS00186,Civil Works - Installation of Pit and Pipe and FDH Skill Set���,Current,,
+2191,ICTSS00187,Commercial Digital Television Antenna Systems Installation Skill Set���,Current,,
+2192,ICTSS00188,Network Designer and Installation Skill Set���,Current,,
+2193,ICTSS00189,Digital Antenna System and Component Installation Skill Set���,Current,,
+2194,ICTSS00190,Convergence Installation in Small to Medium Networks Skill Set���,Current,,
+2195,ICTSS00191,Wireless LAN and IP Network Installation Skill Set���,Current,,
+2196,ICTICT427,"Identify, evaluate and apply current industry-specific technologies to meet organisational needs",,OAQ08,60
+2197,ICTPRG430,Apply introductory Object-Oriented Language Skills,,OAQ05,60
