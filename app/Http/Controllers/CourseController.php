@@ -1,6 +1,7 @@
 <?php
 /**
  * Course Management Controller.
+ * - Allows unauthenticated users to Browse & Read Courses.
  * - Provides course management functions (BREAD) for administrative users.
  *
  * Filename:        CourseController.php
@@ -92,10 +93,10 @@ class CourseController extends Controller
      */
     public function create(): View|RedirectResponse
     {
-        // if (Auth::user()->cannot('course add')) {
-        //     return back()
-        //         ->with('error', 'You are not authorised to access that page.');
-        // }
+        if (Auth::user()->cannot('course add')) {
+            return back()
+                ->with('error', 'You are not authorised to access that page.');
+        }
 
         $packages = Package::all()->keyBy('id')->map(fn ($i) => $i['national_code'] .': '. $i['title']);
         $uniqueAqfs = Course::uniqueAqfs();
@@ -114,10 +115,10 @@ class CourseController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // if (Auth::user()->cannot('course add')) {
-        //     return back()
-        //         ->with('error', 'You are not authorised to perform that action.');
-        // }
+        if (Auth::user()->cannot('course add')) {
+            return back()
+                ->with('error', 'You are not authorised to perform that action.');
+        }
 
         $validated = $this->validateRequest($request);
 
@@ -172,10 +173,10 @@ class CourseController extends Controller
         }
 
         // Authorisation
-        // if (Auth::user()->cannot('course edit')) {
-        //     return redirect(route('courses.index'))
-        //         ->with('error', 'You are not authorised to edit this course');
-        // }
+        if (Auth::user()->cannot('course edit')) {
+            return redirect(route('courses.index'))
+                ->with('error', 'You are not authorised to edit this course');
+        }
 
         $otherClusters = Cluster::all()->whereNotIn('id', $course->clusters->pluck('id'));
         $otherUnits = Unit::all()->whereNotIn('id', $course->units->pluck('id'));
@@ -209,17 +210,16 @@ class CourseController extends Controller
         }
 
         // Authorisation
-        // if (Auth::user()->cannot('course edit')) {
-        //     return redirect(route('courses.index'))
-        //         ->with('error', 'You are not authorised to edit this course');
-        // }
+        if (Auth::user()->cannot('course edit')) {
+            return redirect(route('courses.index'))
+                ->with('error', 'You are not authorised to edit this course');
+        }
 
         $validated = $this->validateRequest($request);
 
         $course->fill($validated);
 
         $course->save();
-
         $course->clusters()->sync($validated['cluster_id']);
         $course->units()->sync($validated['unit_id']);
 
@@ -241,10 +241,10 @@ class CourseController extends Controller
                 ->with('warning', 'Course not found');
         }
 
-        /*if (Auth::user()->cannot('course delete')) {
+        if (Auth::user()->cannot('course delete')) {
             return back()
-                ->with('error', 'You are not authorized to delete this joke');
-        }*/
+                ->with('error', 'You are not authorised to delete this course');
+        }
 
         $course->clusters()->detach();
         $course->units()->detach();
@@ -264,6 +264,8 @@ class CourseController extends Controller
     {
         $request['national_code'] = strtoupper($request['national_code']);
         $request['state_code'] = strtoupper($request['state_code']);
+        if (!isset($request['cluster_id'])) $request['cluster_id'] = [];
+        if (!isset($request['unit_id'])) $request['unit_id'] = [];
 
         $validated = $request->validate([
             'package_id' => ['required', 'integer', 'exists:packages,id',],

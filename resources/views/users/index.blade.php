@@ -24,6 +24,7 @@
                 </x-primary-link-button>
             </header>
 
+
             <div class="flex flex-col flex-wrap my-4 mt-8">
                 <section class="grid grid-cols-1 gap-4 px-4 mt-4 sm:px-8">
 
@@ -58,6 +59,7 @@
                                             @csrf
                                             @method('DELETE')
 
+
                                             <x-primary-link-button href="{{ route('users.show', $user) }}"
                                                                    class="bg-zinc-800">
                                                 <span>Show </span>
@@ -76,6 +78,7 @@
                                         </form>
                                     </td>
                                 </tr>
+
                             @endforeach
                             </tbody>
 

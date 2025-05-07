@@ -27,15 +27,19 @@
 
                         <table class="w-full text-left text-sm font-light text-surface dark:text-white">
                             <thead class="border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
+
                             <tr>
                                 <th scope="col" class="px-6 py-4">#</th>
                                 <th scope="col" class="px-6 py-4">National Code</th>
                                 <th scope="col" class="px-6 py-4">Title</th>
                                 <th scope="col" class="px-6 py-4">TGA Status</th>
+
                                 <th scope="col" class="px-6 py-4 text-center" colspan="2">Actions</th>
+
 
                             </tr>
                             </thead>
+
 
                             <tbody>
                             @foreach($packages as $package)
@@ -45,6 +49,7 @@
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $package->title }}</td>
                                     <td class="whitespace-nowrap px-6 py-4 w-full">{{ $package->tga_status }}</td>
                                     <td class="whitespace-nowrap px-6 py-4">
+
 
                                     </td>
                                     <td class="whitespace-nowrap px-6 py-4">

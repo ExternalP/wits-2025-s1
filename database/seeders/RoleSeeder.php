@@ -19,9 +19,9 @@ class RoleSeeder extends Seeder
         $staff = Role::create(['name' => 'Staff']);
         $student = Role::create(['name' => 'Student']);
 
-        $superAdmin->givePermissionTo(Permission::all());
+        $superAdmin->syncPermissions(Permission::all());
 
-        $admin->givePermissionTo([
+        $admin->syncPermissions([
             'manage domains',
             'user management',
             'backup management',
@@ -32,19 +32,22 @@ class RoleSeeder extends Seeder
             'view own class sessions',
             'edit own profile',
             'request changes',
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
         ]);
 
-        $staff->givePermissionTo([
+        $staff->syncPermissions([
             'class session management',
             'approve changes',
             'view own class sessions',
             'edit own profile',
             'request changes',
+            'course browse', 'course read', 'course add',
         ]);
 
-        $student->givePermissionTo([
+        $student->syncPermissions([
             'edit own profile',
             'request changes',
+            'course browse', 'course read',
         ]);
 
     }
