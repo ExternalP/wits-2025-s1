@@ -16,34 +16,29 @@
                 <div class="order-first">
                     <i class="fa-solid fa-user min-w-8 text-white"></i>
                 </div>
-                <x-primary-link-button href="{{ route('packages.create') }}"
-                                       class="bg-zinc-200 hover:bg-zinc-900 text-zinc-800 hover:text-white">
-                    <i class="fa-solid fa-user-plus "></i>
-                    <span class="pl-4">Add Package</span>
+                <x-primary-link-button :href="route('packages.create')" class="bg-zinc-800">
+                    ADD PACKAGE
                 </x-primary-link-button>
             </header>
 
-            {{--            @auth--}}
-            {{--                <x-flash-message :data="session()"/>--}}
-            {{--            @endauth--}}
-
             <div class="flex flex-col flex-wrap my-4 mt-8">
                 <section class="grid grid-cols-1 gap-4 px-4 mt-4 sm:px-8">
+                    <section class="w-full items-center bg-zinc-50 border border-zinc-600 rounded overflow-hidden">
 
-                    <section class="min-w-full items-center bg-zinc-50 border border-zinc-600 rounded overflow-hidden">
+                        <table class="w-full text-left text-sm font-light text-surface dark:text-white">
+                            <thead class="border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
 
-                        <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
-                            <thead
-                                class="border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
                             <tr>
                                 <th scope="col" class="px-6 py-4">#</th>
                                 <th scope="col" class="px-6 py-4">National Code</th>
                                 <th scope="col" class="px-6 py-4">Title</th>
                                 <th scope="col" class="px-6 py-4">TGA Status</th>
 
+                                <th scope="col" class="px-6 py-4 text-center" colspan="2">Actions</th>
+
+
                             </tr>
                             </thead>
-
 
 
                             <tbody>
