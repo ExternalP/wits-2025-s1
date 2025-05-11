@@ -15,10 +15,10 @@
                 <h2 class="float-left">Course - {{ $course->aqf_level .' '. $course->title }}</h2>
             </div>
             <h2 class="grow"></h2>
-            <x-primary-link-button :href="route('courses.update', $course)"
+            <x-primary-link-button :href="route('courses.edit', $course)"
                                    class="bg-zinc-200 hover:bg-zinc-900 text-zinc-800 hover:text-white">
                 <i class="fa-solid fa-graduation-cap"></i>
-                <span class="pl-4">{{ __('Clear Fields') }}</span>
+                <span class="pl-4">{{ __('Reset Fields') }}</span>
             </x-primary-link-button>
         </header>
 
@@ -80,7 +80,7 @@
                                         </x-input-label>
                                         <x-select id="aqf_level" name="aqf_level" required autofocus
                                                   :selected="old('aqf_level', $course->aqf_level)"
-                                                  :valuesAsKeys="true"
+                                                  :useArrayKeys="false"
                                                   :options="$uniqueAqfs"/>
                                         <x-input-error :messages="$errors->get('aqf_level')" class="mt-2"/>
                                     </div>
@@ -103,7 +103,7 @@
                                     <x-select id="tga_status" name="tga_status" required autofocus
                                               class="w-full"
                                               :selected="old('tga_status', $course->tga_status)"
-                                              :valuesAsKeys="true"
+                                              :useArrayKeys="false"
                                               :options="$tgaStatuses"/>
                                     <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
                                 </div>
@@ -145,7 +145,7 @@
                                         <table class="min-w-full text-left text-sm font-light text-surface dark:text-white">
                                             <thead class="sticky top-0 border-b border-neutral-200 bg-zinc-800 font-medium text-white dark:border-white/10">
                                             <tr>
-                                                <th scope="col" class="pl-2 text-center">#</th>
+                                                <th scope="col" class="pl-1 text-center">#</th>
                                                 <th scope="col" class="pl-3 pr-1">Code</th>
                                                 <th scope="col" class="px-5">Title</th>
                                             </tr>
@@ -154,25 +154,31 @@
                                             <tbody>
                                             @foreach($course->clusters as $cluster)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
-                                                    <td class="pl-2 py-1">
-                                                        <input name="cluster_id[]" type="checkbox"
-                                                               {{ in_array($cluster->id, old('cluster_id',
-                                                                    $course->clusters->pluck('id')->toArray() ?? [])
-                                                                  ) ? 'checked' : '' }}
-                                                               value="{{ $cluster->id }}"/>
+                                                    <td class="pl-2 py-1 whitespace-nowrap">
+                                                        <input name="cluster_id[]" id="cluster_cb{{ $cluster->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
+                                                           {{ in_array($cluster->id, old('cluster_id',
+                                                                $course->clusters->pluck('id')->toArray() ?? [])
+                                                              ) ? 'checked' : '' }}
+                                                           value="{{ $cluster->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="cluster_cb{{ $cluster->id }}">{{ $cluster->code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
                                                 </tr>
                                             @endforeach
                                             @foreach($otherClusters as $cluster)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
-                                                    <td class="pl-2 py-1">
-                                                        <input name="cluster_id[]" type="checkbox"
+                                                    <td class="pl-2 py-1 whitespace-nowrap">
+                                                        <input name="cluster_id[]" id="cluster_cb{{ $cluster->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($cluster->id, old('cluster_id', [])) ? 'checked' : '' }}
                                                                value="{{ $cluster->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="cluster_cb{{ $cluster->id }}">{{ $cluster->code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
                                                 </tr>
                                             @endforeach
@@ -200,24 +206,30 @@
                                             @foreach($course->units as $unit)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
                                                     <td class="pl-2 py-1">
-                                                        <input name="unit_id[]" type="checkbox"
+                                                        <input name="unit_id[]" id="unit_cb{{ $unit->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($unit->id, old('unit_id',
                                                                     $course->units->pluck('id')->toArray() ?? [])
                                                                   ) ? 'checked' : '' }}
                                                                value="{{ $unit->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $unit->national_code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="unit_cb{{ $unit->id }}">{{ $unit->national_code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $unit->title }}</td>
                                                 </tr>
                                             @endforeach
                                             @foreach($otherUnits as $unit)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
                                                     <td class="pl-2 py-1">
-                                                        <input name="unit_id[]" type="checkbox"
+                                                        <input name="unit_id[]" id="unit_cb{{ $unit->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($unit->id, old('unit_id', [])) ? 'checked' : '' }}
                                                                value="{{ $unit->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $unit->national_code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="unit_cb{{ $unit->id }}">{{ $unit->national_code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $unit->title }}</td>
                                                 </tr>
                                             @endforeach

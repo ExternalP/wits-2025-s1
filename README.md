@@ -49,6 +49,18 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
 - Collaborative development via GitHub repository
 - Project management through GitHub Projects and Issues
 
+
+### Team Members
+
+- Adrian Gould [AdyGCode](https://github.com/AdyGCode) (Consulting Senior Dev)
+- Corin Little [ExternalP](https://github.com/ExternalP) (Developer)
+- Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
+- Yunjeong Gu [Chloe23077](https://github.com/Chloe23077) (Developer)
+- Luis Alvarez [luis199521](https://github.com/luis199521) (Developer)
+- Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
+- Given Name [GITHUB USERNAME](https://github.com/GITHUB_USERNAME) (Developer)
+
+
 ## Development Requirements
 - Version Control:
     - GitHub repository

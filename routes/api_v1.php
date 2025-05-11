@@ -20,6 +20,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\PackageController;
 use App\Http\Controllers\Api\v1\CourseController;
@@ -30,6 +31,27 @@ use App\Http\Controllers\Api\v1\TimetableController;
 
 /** User API Routes */
 Route::apiResource('users', UserController::class);
+use App\Http\Controllers\AuthController;
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    })->middleware('auth:sanctum');
+    Route::post('/register', [AuthController::class, 'register']);
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+});
+
+/** User API Routes */
+Route::apiResource('users', UserController::class);
+// Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
+//     Route::apiResource('users', UserController::class);
+//     Route::get('/users', [UserController::class, 'index']);
+//     Route::get('/users/{id}', [UserController::class, 'show']);
+//     Route::get('/users', [UserController::class, 'store']);
+//     Route::get('/users/{id}', [UserController::class, 'update']);
+//     Route::get('/users/{id}', [UserController::class, 'destroy']);
+// });
 
 /** Packages API Routes */
 Route::apiResource('packages', PackageController::class);

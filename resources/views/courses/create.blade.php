@@ -66,7 +66,6 @@
                                     </x-input-label>
                                     <x-text-input id="national_code" name="national_code" required autofocus
                                                   class="uppercase"
-                                                  {{--pattern="[A-Za-z0-9]{4,10}"--}}
                                                   placeholder="The first 3 characters should be package code"
                                                   value="{{ old('national_code') }}"/>
                                     <x-input-error :messages="$errors->get('national_code')" class="mt-2"/>
@@ -78,8 +77,8 @@
                                             {{ __('AQF Level') }}
                                         </x-input-label>
                                         <x-select id="aqf_level" name="aqf_level" required autofocus
-                                                  old="aqf_level"
-                                                  :valuesAsKeys="true"
+                                                  :selected="old('aqf_level')"
+                                                  :useArrayKeys="false"
                                                   :options="$uniqueAqfs"
                                         />
                                         <x-input-error :messages="$errors->get('aqf_level')" class="mt-2"/>
@@ -102,9 +101,8 @@
                                     </x-input-label>
                                     <x-select id="tga_status" name="tga_status" required autofocus
                                               class="w-full"
-                                              old="tga_status"
-                                              :valuesAsKeys="true"
-                                              selected="Current"
+                                              :selected="old('tga_status', 'Current')"
+                                              :useArrayKeys="false"
                                               :options="\App\Models\Course::tgaStatuses()"
                                     />
                                     <x-input-error :messages="$errors->get('tga_status')" class="mt-2"/>
@@ -157,11 +155,14 @@
                                             @foreach($clusters as $cluster)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
                                                     <td class="pl-2 py-1">
-                                                        <input name="cluster_id[]" type="checkbox"
+                                                        <input name="cluster_id[]" id="cluster_cb{{ $cluster->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($cluster->id, old('cluster_id', [])) ? 'checked' : '' }}
                                                                value="{{ $cluster->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $cluster->code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="cluster_cb{{ $cluster->id }}">{{ $cluster->code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $cluster->title }}</td>
                                                 </tr>
                                             @endforeach
@@ -189,16 +190,18 @@
                                             @foreach($units as $unit)
                                                 <tr class="border-b border-zinc-300 dark:border-white/10">
                                                     <td class="pl-2 py-1">
-                                                        <input name="unit_id[]" type="checkbox"
+                                                        <input name="unit_id[]" id="unit_cb{{ $unit->id }}"
+                                                               type="checkbox" class="mr-2 rounded"
                                                                {{ in_array($unit->id, old('unit_id', [])) ? 'checked' : '' }}
                                                                value="{{ $unit->id }}"/>
                                                     </td>
-                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">{{ $unit->national_code }}</td>
+                                                    <td class="whitespace-nowrap pl-3 pr-1 py-1">
+                                                        <label for="unit_cb{{ $unit->id }}">{{ $unit->national_code }}</label>
+                                                    </td>
                                                     <td class="px-5 py-1 w-full">{{ $unit->title }}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
-
                                             <tfoot>
 {{--                                            <tr class="bg-zinc-100">--}}
 {{--                                                <td colspan="6" class="px-3 py-2 my-paginator">--}}
@@ -212,7 +215,6 @@
 {{--                                                </td>--}}
 {{--                                            </tr>--}}
                                             </tfoot>
-
                                         </table>
                                     </div>
                                     <x-input-error :messages="$errors->get('unit_id')" class="mt-2"/>
