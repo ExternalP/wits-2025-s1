@@ -12,7 +12,7 @@
         "php": "^8.2",
         "dedoc/scramble": "^0.12.19",
         "laravel/framework": "^11.31",
-        "laravel/sanctum": "^4.0",
+        "laravel/sanctum": "^4.1",
         "laravel/tinker": "^2.9",
         "spatie/laravel-permission": "^6.17"
     },
