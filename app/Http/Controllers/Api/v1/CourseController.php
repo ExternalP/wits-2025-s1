@@ -44,11 +44,9 @@ class CourseController extends Controller
     {
         $validated = $request->validate([
             'search' => ['nullable', 'string', 'max:100'],
-            // 'package' => ['nullable', 'integer'],
         ]);
 
         $search = $validated['search'] ?? null;
-        // $package = $validated['package'] ?? null;
 
         $msg = 'Found all '. Course::count() .' courses';
 
@@ -58,13 +56,6 @@ class CourseController extends Controller
                 ->get();
 
             $msg = "Search results for: '$search' [". $courses->count() ." of ". Course::count() ." course(s) found]";
-        // } elseif ($package) {
-        //     $packageIds = Package::select('package.*')
-        //         ->whereAny(['national_code','title','tga_status',], 'like', "%$search%")
-        //         ->get('id');
-        //     $courses = Course::select('courses.*')->where('package_id', '=', $packageIds)->get();
-        //
-        //     $msg = "Courses filtered based on packages with: '$package' [". $courses->count() ." of ". Course::count() ."course(s) found]";
         } else {
             $courses = Course::all();
         }
