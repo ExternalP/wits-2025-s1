@@ -48,7 +48,7 @@ class CourseController extends Controller
      *  with search & filter functionality.
      *
      * @param  Request  $request
-     * @return View
+     * @return View|RedirectResponse
      */
     public function index(Request $request): View|RedirectResponse
     {

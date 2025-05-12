@@ -14,6 +14,7 @@
  *
  */
 
+use App\Http\Requests\v1\StoreCourseRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -22,10 +23,10 @@ use Spatie\Permission\Models\Role;
 
 /**
  * Cleans the API request for Course.
- * @param  Request  $request
- * @return Request
+ * @param  array  $request
+ * @return array
  */
-function cleanCourseRequest(Request $request): Request
+function cleanCourseRequest(array $request): array
 {
     $request['national_code'] = strtoupper($request['national_code']);
     $request['state_code'] = strtoupper($request['state_code']);

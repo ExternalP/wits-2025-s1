@@ -11,9 +11,9 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $role = $request->validate([
-            'role' => 'required|string'
-        ]);
+        // $role = $request->validate([
+        //     'role' => ['required', 'string', 'exists:roles,name',],
+        // ]);
         $validated = $request->validate([
             'given_name' => ['required', 'min:1', 'max:255', 'string',],
             'family_name' => ['required', 'min:1', 'max:255', 'string',],
@@ -21,12 +21,14 @@ class AuthController extends Controller
             'preferred_pronouns' => ['nullable','required',],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class,],
             'password' => ['required', 'confirmed', 'min:4', 'max:255'],
-            'roles' => ['required', 'array'],
+            'role' => ['required', 'string', 'exists:roles,name', ]
+            // 'roles' => ['required', 'array', 'exists:roles,name', ],
         ]);
 
         $user = User::create($validated);
 
-        $user->assginRole($validated['role']);
+        // $user->assignRole($validated['roles']);
+        $user->assignRole($validated['role']);
 
         $token = $user->createToken($request->email);
 
@@ -64,7 +66,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-        
+
         return [
             'message' => 'You are logged out.'
         ];
