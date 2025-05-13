@@ -19,12 +19,18 @@
  */
 
 use Illuminate\Support\Facades\Route;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\PackageController;
 use App\Http\Controllers\Api\v1\CourseController;
 use App\Http\Controllers\Api\v1\ClusterController;
 use App\Http\Controllers\Api\v1\UnitController;
+use App\Http\Controllers\Api\v1\TimetableController;
+
+
+/** User API Routes */
+Route::apiResource('users', UserController::class);
 use App\Http\Controllers\AuthController;
 
 Route::group(['prefix' => 'auth'], function () {
@@ -37,7 +43,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 /** User API Routes */
-Route::apiResource('users', UserController::class);
+//Route::apiResource('users', UserController::class);
 // Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 //     Route::apiResource('users', UserController::class);
 //     Route::get('/users', [UserController::class, 'index']);
@@ -58,6 +64,13 @@ Route::apiResource('clusters', ClusterController::class);
 
 /** Units API Routes */
 Route::apiResource('units', UnitController::class);
+
+/** Timetables API Routes */
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('timetables', TimetableController::class);
+});
+
+
 
 
 
