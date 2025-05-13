@@ -19,6 +19,7 @@
  */
 
 use Illuminate\Support\Facades\Route;
+
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\UserController;
@@ -26,6 +27,8 @@ use App\Http\Controllers\Api\v1\PackageController;
 use App\Http\Controllers\Api\v1\CourseController;
 use App\Http\Controllers\Api\v1\ClusterController;
 use App\Http\Controllers\Api\v1\UnitController;
+use App\Http\Controllers\Api\v1\TimetableController;
+
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/user', function (Request $request) {
@@ -68,6 +71,13 @@ Route::apiResource('clusters', ClusterController::class);
 
 /** Units API Routes */
 Route::apiResource('units', UnitController::class);
+
+/** Timetables API Routes */
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('timetables', TimetableController::class);
+});
+
+
 
 
 

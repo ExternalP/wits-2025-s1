@@ -13,12 +13,12 @@ class TimetableSeeder extends Seeder
 {
     public function run()
     {
-        // Asegúrate de que tengas al menos 1 curso, cluster y docente para la referencia
-        $course = Course::first(); // Asume que ya hay cursos en la base de datos
-        $cluster = Cluster::first(); // Asume que ya hay clusters en la base de datos
-        $lecturer = User::first(); // Asume que ya hay docentes en la base de datos
+        
+        $course = Course::first(); 
+        $cluster = Cluster::first(); 
+        $lecturer = User::first(); 
 
-        // Insertar datos de ejemplo en la tabla timetables
+        
         Timetable::create([
             'course_id' => $course->id,
             'cluster_id' => $cluster->id,
@@ -26,7 +26,7 @@ class TimetableSeeder extends Seeder
             'start_date' => '2025-05-01',
             'end_date' => '2025-05-31',
             'start_time' => '09:00:00',
-            'session_duration' => 90, // Duración de la sesión en minutos
+            'session_duration' => 90, 
         ]);
 
        
