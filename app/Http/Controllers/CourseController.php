@@ -215,7 +215,7 @@ class CourseController extends Controller
                 ->with('error', 'You are not authorised to edit this course');
         }
 
-        $validated = $this->validateRequest($request);
+        $validated = $this->validateRequest($request, $id);
 
         $course->fill($validated);
 
@@ -258,9 +258,10 @@ class CourseController extends Controller
     /**
      * Validation for Course inputs.
      * @param  Request  $request
+     * @param  int|null  $id
      * @return array
      */
-    private function validateRequest(Request $request): array
+    private function validateRequest(Request $request, int $id = null): array
     {
         $request['national_code'] = strtoupper($request['national_code']);
         $request['state_code'] = strtoupper($request['state_code']);
@@ -269,7 +270,15 @@ class CourseController extends Controller
 
         $validated = $request->validate([
             'package_id' => ['required', 'integer', 'exists:packages,id',],
-            'national_code' => ['required', 'string', 'min:4', 'max:10', 'uppercase', 'alpha_num', /*Rule::unique('courses', 'national_code')*/],
+            'national_code' => [
+                'required', 'string', 'min:4', 'max:10', 'uppercase', 'alpha_num',
+                Rule::unique('courses', 'national_code')
+                    ->where('aqf_level', $request['aqf_level'])
+                    ->where('title', $request['title'])
+                    ->where('tga_status', $request['tga_status'] ?: 'Current')
+                    ->where('state_code', $request['state_code'])
+                    ->ignore($id),
+            ],
             'aqf_level' => ['required', 'string', 'min:1', 'max:100',],
             'title' => ['required', 'string', 'min:1', 'max:255',],
             'tga_status' => ['sometimes', 'nullable', 'string', Rule::in(Course::tgaStatuses())],
@@ -278,6 +287,9 @@ class CourseController extends Controller
             'type' => ['sometimes', 'nullable', 'string', 'min:1', 'max:50',],
             'cluster_id' => ['sometimes', 'exists:clusters,id',],
             'unit_id' => ['sometimes', 'exists:units,id',],
+        ],
+        [
+            'national_code.unique' => 'Courses must be unique. Another record has the same values for its National Code, AQF Level, Title, TGA Status & State Code.',
         ]);
 
         return $validated;

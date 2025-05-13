@@ -20,12 +20,12 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\PackageController;
 use App\Http\Controllers\Api\v1\CourseController;
 use App\Http\Controllers\Api\v1\ClusterController;
 use App\Http\Controllers\Api\v1\UnitController;
-use App\Http\Controllers\AuthController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/user', function (Request $request) {

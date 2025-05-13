@@ -29,6 +29,9 @@ return new class extends Migration
             $table->string('type')->default('Qualification');
             $table->timestamps();
             $table->foreignId('package_id')->constrained('packages');
+
+            // The combination of the columns must be unique not individual columns
+            $table->unique(['national_code', 'aqf_level', 'title', 'tga_status', 'state_code']);
         });
     }
 

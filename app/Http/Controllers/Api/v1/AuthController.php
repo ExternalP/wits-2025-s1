@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,9 +12,6 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        // $role = $request->validate([
-        //     'role' => ['required', 'string', 'exists:roles,name',],
-        // ]);
         $validated = $request->validate([
             'given_name' => ['required', 'min:1', 'max:255', 'string',],
             'family_name' => ['required', 'min:1', 'max:255', 'string',],
@@ -21,16 +19,13 @@ class AuthController extends Controller
             'preferred_pronouns' => ['nullable',],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class,],
             'password' => ['required', 'confirmed', 'min:4', 'max:255'],
-            // 'role' => ['required', 'string', 'exists:roles,name', ],
             'roles' => ['required', 'array', 'exists:roles,name', ],
         ]);
 
         $user = User::create($validated);
 
         $user->assignRole($validated['roles']);
-        // $user->assignRole($validated['role']);
 
-        // $token = $user->createToken($request->email);
         $token = $user->createToken($validated['email']);
 
         return [

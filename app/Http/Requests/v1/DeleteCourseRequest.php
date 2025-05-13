@@ -1,6 +1,6 @@
 <?php
 /**
- * DESCRIPTION_BUT_EACH_LINE_HAS_MAX_LENGTH_OF_96_CHARACTERS
+ * Request class for the API Course delete function.
  *
  * Filename:        DeleteCourseRequest.php
  * Location:        app/Http/Requests/v1/
