@@ -18,19 +18,20 @@ class AuthController extends Controller
             'given_name' => ['required', 'min:1', 'max:255', 'string',],
             'family_name' => ['required', 'min:1', 'max:255', 'string',],
             'preferred_name' => ['nullable', 'min:1', 'max:255', 'string',],
-            'preferred_pronouns' => ['nullable','required',],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class,],
+            'preferred_pronouns' => ['nullable',],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class,],
             'password' => ['required', 'confirmed', 'min:4', 'max:255'],
-            'role' => ['required', 'string', 'exists:roles,name', ]
-            // 'roles' => ['required', 'array', 'exists:roles,name', ],
+            // 'role' => ['required', 'string', 'exists:roles,name', ],
+            'roles' => ['required', 'array', 'exists:roles,name', ],
         ]);
 
         $user = User::create($validated);
 
-        // $user->assignRole($validated['roles']);
-        $user->assignRole($validated['role']);
+        $user->assignRole($validated['roles']);
+        // $user->assignRole($validated['role']);
 
-        $token = $user->createToken($request->email);
+        // $token = $user->createToken($request->email);
+        $token = $user->createToken($validated['email']);
 
         return [
             'user' => $user,
