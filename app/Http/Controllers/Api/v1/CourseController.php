@@ -23,6 +23,7 @@ namespace App\Http\Controllers\Api\v1;
 
 use App\Classes\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\v1\DeleteCourseRequest;
 use App\Http\Requests\v1\StoreCourseRequest;
 use App\Http\Requests\v1\UpdateCourseRequest;
 use App\Models\Course;
@@ -83,7 +84,7 @@ class CourseController extends Controller
         if (!empty($course)) {
             return ApiResponse::success(Course::find($course->id), "Course added", 201);
         }
-        return ApiResponse::error($course, "Course creation failed", code: 404);
+        return ApiResponse::error($course, "Course creation failed", 404);
     }
 
     /**
@@ -95,11 +96,11 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
 
-        if ($course) {
-            return ApiResponse::success($course, "Course found");
+        if (!$course) {
+            return ApiResponse::error([], "Course not found", 404);
         }
 
-        return ApiResponse::error([], "Course not found", 404);
+        return ApiResponse::success($course, "Course found");
     }
 
     /**
@@ -112,6 +113,10 @@ class CourseController extends Controller
     {
         $course = Course::find($id);
 
+        if (!$course) {
+            return ApiResponse::error([], "Course not found", 404);
+        }
+
         $validated =  cleanCourseRequest($request->validated());
         $updateBool = $course->update($validated);
 
@@ -122,15 +127,16 @@ class CourseController extends Controller
         if ($updateBool) {
             return ApiResponse::success($course, "Course updated", 201);
         }
-        return ApiResponse::error($course, "Course update failed", code: 404);
+        return ApiResponse::error($course, "Course update failed", 404);
     }
 
     /**
      * Remove the specified course from the database.
+     * @param  DeleteCourseRequest  $request
      * @param  string  $id
      * @return JsonResponse
      */
-    public function destroy(string $id): JsonResponse
+    public function destroy(DeleteCourseRequest $request, string $id): JsonResponse
     {
         $course = Course::find($id);
 
