@@ -3,7 +3,7 @@
  * My custom helper functions.
  *  - Paste line below in file to use:
  *  require base_path("app/helpers/helpers.php");
- *  Functions: assignableRoles(), assignableRolesNames().
+ *  Functions: cleanCourseRequest().
  *
  *  Filename:        helpers.php
  *  Location:        app/helpers/
@@ -14,41 +14,25 @@
  *
  */
 
+use App\Http\Requests\v1\StoreCourseRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Spatie\Permission\Models\Role;
 
 
-// /**
-//  * Returns array of names of roles that the current user can create/edit/delete.
-//  *  - Gets any role whose name is listed in the permission of the current user's role.
-//  * @return array
-//  */
-// function assignableRolesNames(): array
-// {
-//     // Get all permissions of current user's role.
-//     $currentPermissions = Auth::user()->roles()->first()->permissions()->pluck('name')->toArray();
-//     // Gets the names of all roles.
-//     $allRoles = Role::all()->pluck('name')->toArray();
-//     //$allRoles = ['Administrator', 'Staff', 'Client'];
-//
-//     // Gets any role whose name is listed in the permission of the current user's role.
-//     return array_intersect($allRoles, $currentPermissions);
-// }
-//
-// /**
-//  * Returns array of Role objects that the current user can create/edit/delete.
-//  *  - Calls assignableRolesNames().
-//  * @return array
-//  */
-// function assignableRoles(): array
-// {
-//     $roleNames = assignableRolesNames();
-//
-//     $validRoles = [];
-//     foreach ($roleNames as $roleName) {
-//         $validRoles[] = Role::findByName($roleName, 'web');
-//     }
-//
-//     return $validRoles;
-// }
+/**
+ * Cleans the API request for Course.
+ * @param  array  $request
+ * @return array
+ */
+function cleanCourseRequest(array $request): array
+{
+    $request['national_code'] = strtoupper($request['national_code']);
+    $request['state_code'] = strtoupper($request['state_code']);
+    if (!isset($request['cluster_id'])) $request['cluster_id'] = [];
+    if (!isset($request['unit_id'])) $request['unit_id'] = [];
+
+    return $request;
+}
 

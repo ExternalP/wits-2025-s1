@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\v1;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,24 +12,21 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $role = $request->validate([
-            'role' => 'required|string'
-        ]);
         $validated = $request->validate([
             'given_name' => ['required', 'min:1', 'max:255', 'string',],
             'family_name' => ['required', 'min:1', 'max:255', 'string',],
             'preferred_name' => ['nullable', 'min:1', 'max:255', 'string',],
-            'preferred_pronouns' => ['nullable','required',],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class,],
+            'preferred_pronouns' => ['nullable',],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class,],
             'password' => ['required', 'confirmed', 'min:4', 'max:255'],
-            'roles' => ['required', 'array'],
+            'roles' => ['required', 'array', 'exists:roles,name', ],
         ]);
 
         $user = User::create($validated);
 
-        $user->assginRole($validated['role']);
+        $user->assignRole($validated['roles']);
 
-        $token = $user->createToken($request->email);
+        $token = $user->createToken($validated['email']);
 
         return [
             'user' => $user,
@@ -64,7 +62,7 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         $request->user()->tokens()->delete();
-        
+
         return [
             'message' => 'You are logged out.'
         ];

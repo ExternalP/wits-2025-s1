@@ -21,6 +21,7 @@
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Api\v1\AuthController;
 use App\Http\Controllers\Api\v1\UserController;
 use App\Http\Controllers\Api\v1\PackageController;
 use App\Http\Controllers\Api\v1\CourseController;
@@ -28,10 +29,6 @@ use App\Http\Controllers\Api\v1\ClusterController;
 use App\Http\Controllers\Api\v1\UnitController;
 use App\Http\Controllers\Api\v1\TimetableController;
 
-
-/** User API Routes */
-Route::apiResource('users', UserController::class);
-use App\Http\Controllers\AuthController;
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('/user', function (Request $request) {
@@ -43,7 +40,7 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 /** User API Routes */
-//Route::apiResource('users', UserController::class);
+Route::apiResource('users', UserController::class);
 // Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 //     Route::apiResource('users', UserController::class);
 //     Route::get('/users', [UserController::class, 'index']);
@@ -57,7 +54,17 @@ Route::group(['prefix' => 'auth'], function () {
 Route::apiResource('packages', PackageController::class);
 
 /** Courses API Routes */
-Route::apiResource('courses', CourseController::class);
+// No Auth: browse, show.
+Route::name("api.v1.")->group(function () {
+    Route::apiResource('courses', CourseController::class)
+        ->only(['index', 'show']);
+});
+// Auth Required: store, update, destroy.
+Route::name("api.v1.")->middleware('auth:sanctum')->group(function () {
+    Route::apiResource('courses', CourseController::class)
+        ->except(['index', 'show']);
+});
+// Route::apiResource('courses', CourseController::class);
 
 /** Clusters API Routes */
 Route::apiResource('clusters', ClusterController::class);

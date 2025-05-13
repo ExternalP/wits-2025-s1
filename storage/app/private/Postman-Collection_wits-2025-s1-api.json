@@ -1,0 +1,782 @@
+{
+    "info": {
+        "_postman_id": "b8952faa-5160-4099-9bbc-a0dd333af3dc",
+        "name": "wits-2025-s1 API",
+        "description": "Description: Postman API testing for wits-2025-s1.\n\nAuthor: Corin Little",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "26111136"
+    },
+    "item": [
+        {
+            "name": "Courses",
+            "item": [
+                {
+                    "name": "Browse /courses",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/courses",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "courses"
+                            ],
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "Banking",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "search",
+                                    "value": "test",
+                                    "disabled": true
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show /courses/id",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/courses/254",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "courses",
+                                "254"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Store /courses",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST1111\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing\",\r\n    \"state_code\": \"T1111\",\r\n    \"package_id\": 1\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/courses",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "courses"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Store /courses",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST2\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing2\",\r\n    \"state_code\": \"T2222\",\r\n    \"package_id\": 1\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/courses",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "courses"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update /courses/id",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"national_code\": \"QQQQQQQQ\",\r\n    \"aqf_level\": \"Diploma in\",\r\n    \"title\": \"Testing\",\r\n    // \"tga_status\": \"Current\",\r\n    \"state_code\": \"T1111\",\r\n    \"nominal_hours\": 999,\r\n    \"package_id\": 1,\r\n    \"cluster_id\": [1],\r\n    \"unit_id\": []\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/courses/254",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "courses",
+                                "254"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Update /courses/id",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST2\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing2\",\r\n    \"state_code\": \"T2222\",\r\n    \"package_id\": 1\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/courses/254",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "courses",
+                                        "254"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        },
+                        {
+                            "name": "Update /courses/id",
+                            "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST1111\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing\",\r\n    \"state_code\": \"T1111\",\r\n    \"package_id\": 1\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/courses/254",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "courses",
+                                        "254"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Destroy /courses/id",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/courses/254",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "courses",
+                                "254"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Auth",
+            "item": [
+                {
+                    "name": "Current User /auth/user",
+                    "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                    },
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/user",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "user"
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Register /auth/register",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n    \"given_name\": \"Testy\",\r\n    \"family_name\": \"Tester\",\r\n    // \"preferred_name\": \"Testing Testy Tester\",\r\n    // \"preferred_pronouns\": \"him\",\r\n    \"email\": \"test0@example.com\",\r\n    \"password\": \"Password1\",\r\n    \"password_confirmation\": \"Password1\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/register",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "register"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Register /auth/register",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"given_name\": \"asd\",\r\n    \"family_name\": \"dsa\",\r\n    // \"preferred_name\": \"AAASSSDDD\",\r\n    \"preferred_pronouns\": \"him\",\r\n    \"email\": \"asd@mail.com\",\r\n    \"password\": \"asdasd\",\r\n    \"password_confirmation\": \"asdasd\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/register",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "auth",
+                                        "register"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json",
+                                    "description": "",
+                                    "type": "text"
+                                }
+                            ],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        },
+                        {
+                            "name": "Register /auth/register",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"given_name\": \"456\",\r\n    \"family_name\": \"654\",\r\n    // \"preferred_name\": \"FourFiveSix\",\r\n    \"preferred_pronouns\": \"him\",\r\n    \"email\": \"456@example.com\",\r\n    \"password\": \"Password1\",\r\n    \"password_confirmation\": \"Password1\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/register",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "auth",
+                                        "register"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        },
+                        {
+                            "name": "Register /auth/register",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n    \"given_name\": \"456\",\r\n    \"family_name\": \"654\",\r\n    // \"preferred_name\": \"FourFiveSix\",\r\n    // \"preferred_pronouns\": \"him\",\r\n    \"email\": \"456@mail.com\",\r\n    \"password\": \"456456\",\r\n    \"password_confirmation\": \"456456\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/register",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "auth",
+                                        "register"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Login /auth/login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\r\n  \"email\": \"chloe@example.com\",\r\n  \"password\": \"Password1\"\r\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/login",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "login"
+                            ]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Login /auth/login",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n  \"email\": \"test0@example.com\",\r\n  \"password\": \"Password1\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/login",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "auth",
+                                        "login"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        },
+                        {
+                            "name": "Login /auth/login",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json",
+                                        "type": "text"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\r\n  \"email\": \"123@123.com\",\r\n  \"password\": \"123123123\"\r\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/auth/login",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "auth",
+                                        "login"
+                                    ]
+                                }
+                            },
+                            "_postman_previewlanguage": "",
+                            "header": [],
+                            "cookie": [
+                                {
+                                    "expires": "Invalid Date"
+                                }
+                            ],
+                            "body": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout /auth/logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json",
+                                "type": "text"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/auth/logout",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "auth",
+                                "logout"
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Get /",
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Accept",
+                        "value": "application/json",
+                        "type": "text"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "{{baseUrl}}/",
+                    "host": [
+                        "{{baseUrl}}"
+                    ],
+                    "path": [
+                        ""
+                    ]
+                }
+            },
+            "response": []
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "token",
+                "value": "{{authToken}}",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "packages": {},
+                "exec": [
+                    ""
+                ]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "http://127.0.0.1:8000/api/v1",
+            "type": "string"
+        },
+        {
+            "key": "authToken",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "apiVersion",
+            "value": "/api/v1",
+            "type": "string",
+            "disabled": true
+        },
+        {
+            "key": "rootUrl",
+            "value": "http://127.0.0.1:8000",
+            "type": "string",
+            "disabled": true
+        },
+        {
+            "key": "baseUrl",
+            "value": "{{rootUrl}}{{apiVersion}}",
+            "type": "string",
+            "disabled": true
+        },
+        {
+            "key": "baseUrl",
+            "value": "http://wits-2025-s1.test/api/v1",
+            "type": "string",
+            "disabled": true
+        },
+        {
+            "key": "baseUrl",
+            "value": "http://127.0.0.1:8002/api/v1",
+            "type": "string",
+            "disabled": true
+        },
+        {
+            "key": "baseUrl",
+            "value": "http://127.0.0.1:8004/api/v1",
+            "type": "string",
+            "disabled": true
+        }
+    ]
+}
