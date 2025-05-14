@@ -25,7 +25,7 @@
         {{-- <x-flash-message :data="session()"/>--}}
 
         <div class="flex justify-center my-6">
-            <img src="{{ asset($user->profile_photo ?? 'images/default-profile.png') }}" alt="Profile Photo" style="width:120px; height:120px; border-radius:50%; border:2px solid #ccc;" />
+            <img src="{{ asset($user->profile_photo ?? 'images/default-profile.jpg') }}" alt="Profile Photo" style="width:150px; height:150px; border-radius:50%; border:2px solid #ccc;" />
         </div>
 
         <div class="flex flex-col flex-wrap my-4 mt-8">

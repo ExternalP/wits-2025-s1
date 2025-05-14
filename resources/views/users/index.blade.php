@@ -1,12 +1,11 @@
 <x-app-layout>
 
-    <x-slot name="header">\\
+    <x-slot name="header">
 
         <h2 class="font-semibold text-xl leading-tight">
             {{ __('User Management') }}
         </h2>
     </x-slot>
-\
     @auth
         <article class="-mx-4 mt-6">
             <header
