@@ -35,6 +35,14 @@
                         @csrf
                         @method('PATCH')
 
+                        <form action="{{ route('users.updatePhoto', $user->id) }}" method="POST" enctype="multipart/form-data" class="mb-4">
+                            @csrf
+                            @method('PUT')
+                            <label for="profile_photo" class="block mb-2 font-medium">Profile Photo</label>
+                            <input type="file" name="profile_photo" id="profile_photo" accept="image/png, image/jpeg, image/jpg" class="mb-2">
+                            <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded">Upload</button>
+                            <p class="text-xs text-gray-500 mt-1">Acceptable formats: JPG, JPEG, PNG. Max size: 50KB</p>
+                        </form>
 
                         <div class="w-full text-left text-sm font-light text-surface dark:text-white">
                             <header

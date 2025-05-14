@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class)->except(['index', 'show']);  // Remove index, show for user resources
     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
-
+    Route::put('users/{id}/update-photo', [UserController::class, 'updatePhoto'])->name('users.updatePhoto');
 });
 
 Route::get('/dashboard', function () {

@@ -24,6 +24,10 @@
 
         {{-- <x-flash-message :data="session()"/>--}}
 
+        <div class="flex justify-center my-6">
+            <img src="{{ asset($user->profile_photo ?? 'images/default-profile.png') }}" alt="Profile Photo" style="width:120px; height:120px; border-radius:50%; border:2px solid #ccc;" />
+        </div>
+
         <div class="flex flex-col flex-wrap my-4 mt-8">
             <section class="grid grid-cols-1 gap-4 px-4 mt-4 sm:px-8">
 
