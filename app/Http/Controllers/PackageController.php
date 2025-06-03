@@ -35,8 +35,8 @@ class PackageController extends Controller
             'tga_status' => ['sometimes', 'nullable', 'max:255', 'string'],
         ]);
 
-        $p = new Package($validated);
-        $p->save();
+        $package = new Package($validated);
+        $package->save();
 
 
 
@@ -88,11 +88,11 @@ class PackageController extends Controller
     {
         $query = $request->input('query');
 
-        $users = User::where('national_code', 'like', "%{$query}%")
+        $packages = Package::where('national_code', 'like', "%{$query}%")
             ->orWhere('title', 'like', "%{$query}%")
             ->orWhere('tga_status', 'like', "%{$query}%")
             ->paginate(10);
 
-        return view('users.index', compact('users'));
+        return view('package.index', compact('packages'));
     }
 }
