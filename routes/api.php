@@ -38,3 +38,5 @@ Route::fallback(static function(){
         404
     );
 });
+
+
