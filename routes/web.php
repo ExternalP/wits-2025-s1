@@ -66,7 +66,8 @@ Route::get('/packages/search', [PackageController::class, 'search'])->name('pack
 
 //Timetables
 
-Route::resource('timetables', TimetableController::class)
-    ->only(['create', 'index',  'store', 'edit', 'update', 'destroy', 'show']);
 
-
+Route::middleware('auth')->group(function () {
+    Route::resource('timetables', TimetableController::class)
+        ->only(['create', 'index',  'store', 'edit', 'update', 'destroy', 'show']);
+});

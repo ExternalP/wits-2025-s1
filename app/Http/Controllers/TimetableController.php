@@ -1,5 +1,24 @@
 <?php
 
+/**
+ * Timetable Management  Controller.
+ * - Allows  users to interact with timetable module.
+ * 
+ * Filename:        TimetableController.php
+ * Location:        app/Http/Controllers
+ * Project:         wits-2025-s1
+ * Date Created:    22/04/2025
+ *
+ * Author:          Luis Alvarez<20114831@tafe.wa.edu.au>
+ * Student ID:      20114831
+ *
+ * Assessment:      WITS-2025-S1
+ * Cluster:         SaaS: Part 2 – Back End Development
+ * Qualification:   ICT50220 Diploma of Information Technology (Back End Web Development)
+ * Year/Semester:   2025/S1
+ *
+ */
+
 namespace App\Http\Controllers;
 
 use App\Models\Timetable;
@@ -7,6 +26,7 @@ use App\Models\Course;
 use App\Models\User;
 use App\Models\Cluster;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
@@ -16,6 +36,9 @@ class TimetableController extends Controller
     //Prepares data for index view, it also filters by course and clusters and returns timetable's index page.
     public function index(Request $request)
     {
+         if (Auth::user()->cannot('timetable browse')) {
+            return back()->with('error', 'You are not authorized to view timetables.');
+        }
         $search = $request->input('search');
         $filter = $request->input('filter');
 
@@ -66,6 +89,9 @@ class TimetableController extends Controller
 
     public function show(Timetable $timetable)
     {
+        if (Auth::user()->cannot('timetable read')) {
+            return back()->with('error', 'You are not authorized to view this timetable.');
+        }
 
         $timetable->load([
             'course.package',
@@ -100,6 +126,10 @@ class TimetableController extends Controller
     public function create()
     {
 
+        if (Auth::user()->cannot('timetable add')) {
+            return back()->with('error', 'You are not authorized to create timetables.');
+        }
+
         $courses = Course::select(DB::raw(" aqf_level || ' - ' || title as title_aqf"), 'id')->get();
         $lecturers = User::pluck('given_name', 'id');
         $clusters = Cluster::pluck('title', 'id');
@@ -116,6 +146,10 @@ class TimetableController extends Controller
     // Gets data sent from the creation form, validate it and save it on the database.
     public function store(Request $request)
     {
+
+        if (Auth::user()->cannot('timetable add')) {
+            return back()->with('error', 'You are not authorized to add timetables.');
+        }
 
         $request->validate([
             'course_id' => 'required|exists:courses,id',
@@ -152,6 +186,10 @@ class TimetableController extends Controller
     public function edit(Timetable $timetable)
     {
 
+        if (Auth::user()->cannot('timetable edit')) {
+            return back()->with('error', 'You are not authorized to edit timetables.');
+        }
+
         $courses = Course::select(DB::raw("aqf_level || ' - ' || title as title_aqf"), 'id')->get();
         $lecturers = User::pluck('given_name', 'id');
         $clusters = Cluster::pluck('title', 'id');
@@ -167,6 +205,10 @@ class TimetableController extends Controller
     // Gets data sent from the update form, validate it and save it on the database.
     public function update(Request $request, Timetable $timetable)
     {
+
+        if (Auth::user()->cannot('timetable edit')) {
+            return back()->with('error', 'You are not authorized to update timetables.');
+        }
         $validated = $request->validate([
             'course_id' => 'required|exists:courses,id',
             'cluster_id' => 'required|exists:clusters,id',
@@ -188,6 +230,10 @@ class TimetableController extends Controller
     //Deletes desired data and redirects to timetable's index.
     public function destroy(Timetable $timetable)
     {
+
+        if (Auth::user()->cannot('timetable delete')) {
+            return back()->with('error', 'You are not authorized to delete timetables.');
+        }
         $timetable->delete();
 
         return redirect()
