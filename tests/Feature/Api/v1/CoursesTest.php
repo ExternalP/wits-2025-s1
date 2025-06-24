@@ -14,6 +14,8 @@
 namespace Api\v1;
 
 // use PHPUnit\Framework\TestCase;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\Course;
@@ -29,6 +31,7 @@ class CoursesTest extends TestCase
 
     private $courses, $package, $user, $cluster, $unit;
 
+
     /**
      * Seeds the database with some initial data for testing.
      * - Isn't a constructor so can test with an empty database.
@@ -36,12 +39,16 @@ class CoursesTest extends TestCase
      */
     private function initializeTestDatabase(): void
     {
+        $this->initializeRolesPermissions();
+
         $this->user = User::create([
             'given_name' => 'Corin',
             'family_name' => 'Little',
             'email' => 'corin@example.com',
             'password' => bcrypt('Password1'),
         ]);
+
+        $this->user->assignRole('Admin');
 
         $this->package = Package::create([
             'national_code' => 'PAC123',
@@ -133,6 +140,77 @@ class CoursesTest extends TestCase
         $this->courses[0]->units()->attach([1]);
         $this->courses[2]->clusters()->attach([1]);
         $this->courses[3]->units()->attach([1]);
+    }
+
+    private function initializeRolesPermissions(): void {
+        $permissions = [
+            // User Permissions
+            'system configuration', 'manage roles', 'manage domains', 'user management',
+            'backup management', 'import/export',
+            'class session management', 'approve changes', 'view all class sessions', 'view own class sessions',
+            'edit own profile', 'request changes',
+
+            // Course Permissions
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
+            //'course browseTrash', 'course restore', 'course permanentDelete',
+
+            // TODO: Add permissions for Package, Cluster, Unit, Timetable & etc
+            // Package Permissions
+
+            // Cluster Permissions
+
+            // Unit Permissions
+
+            // Timetable Permissions
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $superAdmin = Role::create(['name' => 'SuperAdmin']);
+        $admin = Role::create(['name' => 'Admin']);
+        $staff = Role::create(['name' => 'Staff']);
+        $student = Role::create(['name' => 'Student']);
+
+        $superAdmin->syncPermissions(Permission::all());
+
+        $admin->syncPermissions([
+            'manage domains',
+            'user management',
+            'backup management',
+            'import/export',
+            'class session management',
+            'approve changes',
+            'view all class sessions',
+            'view own class sessions',
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete'
+        ]);
+
+        $staff->syncPermissions([
+            'class session management',
+            'approve changes',
+            'view own class sessions',
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read', 'course add',
+            'timetable browse','timetable read', 'timetable add'
+
+        ]);
+
+        $student->syncPermissions([
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read',
+            'timetable browse','timetable read'
+        ]);
+
+        // $user->assignRole(Role::where('name', 'Admin')->first());
+        // $user->assignRole('Admin');
     }
 
     /**

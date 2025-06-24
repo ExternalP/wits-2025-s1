@@ -3,7 +3,7 @@
 /**
  * Timetable Management  Controller.
  * - Allows  users to interact with timetable module.
- * 
+ *
  * Filename:        TimetableController.php
  * Location:        app/Http/Controllers
  * Project:         wits-2025-s1
