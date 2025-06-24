@@ -27,29 +27,90 @@ use App\Models\Course;
 use App\Models\Cluster;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class TimetableAddTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_adding_timetable()
-    {
-        
-        $package = Package::create([
-            'national_code' => 'ABC123',
-            'title' => 'Test Package',
-            'tga_status' => 'Current',
+    private function initializeRolesPermissions(): void {
+        $permissions = [
+            // User Permissions
+            'system configuration', 'manage roles', 'manage domains', 'user management',
+            'backup management', 'import/export',
+            'class session management', 'approve changes', 'view all class sessions', 'view own class sessions',
+            'edit own profile', 'request changes',
+
+            // Course Permissions
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
+
+            // Timetable Permissions
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $superAdmin = Role::create(['name' => 'SuperAdmin']);
+        $admin = Role::create(['name' => 'Admin']);
+        $staff = Role::create(['name' => 'Staff']);
+        $student = Role::create(['name' => 'Student']);
+
+        $superAdmin->syncPermissions(Permission::all());
+
+        $admin->syncPermissions([
+            'manage domains',
+            'user management',
+            'backup management',
+            'import/export',
+            'class session management',
+            'approve changes',
+            'view all class sessions',
+            'view own class sessions',
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete'
         ]);
 
-        
+        $staff->syncPermissions([
+            'class session management',
+            'approve changes',
+            'view own class sessions',
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read', 'course add',
+            'timetable browse', 'timetable read', 'timetable add'
+        ]);
+
+        $student->syncPermissions([
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read',
+            'timetable browse', 'timetable read'
+        ]);
+    }
+
+    public function test_adding_timetable()
+    {
+        $this->initializeRolesPermissions();
+
         $user = User::create([
             'given_name' => 'Luis',
             'family_name' => 'Alvarez',
             'email' => 'luis.alvarez@example.org',
             'password' => bcrypt('password'),
         ]);
+        $user->assignRole('Admin');
 
-       
+        $package = Package::create([
+            'national_code' => 'ABC123',
+            'title' => 'Test Package',
+            'tga_status' => 'Current',
+        ]);
+
         $course = Course::create([
             'national_code' => 'A123',
             'aqf_level' => '5',
@@ -60,7 +121,6 @@ class TimetableAddTest extends TestCase
             'package_id' => $package->id,
         ]);
 
-        
         $cluster = Cluster::create([
             'code' => 'ADVPROG',
             'title' => 'Advanced Programming',
@@ -68,7 +128,6 @@ class TimetableAddTest extends TestCase
             'state_code' => 'AC21',
         ]);
 
-        
         $timetableData = [
             'course_id' => $course->id,
             'cluster_id' => $cluster->id,
@@ -78,9 +137,7 @@ class TimetableAddTest extends TestCase
             'lecturer_id' => $user->id,
         ];
 
-       
         $response = $this->actingAs($user, 'sanctum')->post('/api/v1/timetables', $timetableData);
-
 
         $response->assertStatus(201);
         $response->assertJson(['message' => 'Timetable created successfully.']);
