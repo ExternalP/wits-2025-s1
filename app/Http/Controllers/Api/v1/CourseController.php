@@ -74,6 +74,10 @@ class CourseController extends Controller
      */
     public function store(StoreCourseRequest $request): JsonResponse
     {
+        if (Auth::user()->cannot('course add')) {
+            return ApiResponse::error([], "You are not authorised to add new courses.", 403);
+        }
+
         $validated =  cleanCourseRequest($request->all());
 
         $course = Course::create($validated);
@@ -111,6 +115,10 @@ class CourseController extends Controller
      */
     public function update(UpdateCourseRequest $request, string $id): JsonResponse
     {
+        if (Auth::user()->cannot('course edit')) {
+            return ApiResponse::error([], "You are not authorised to update this course.", 403);
+        }
+
         $course = Course::find($id);
 
         if (!$course) {
@@ -138,6 +146,10 @@ class CourseController extends Controller
      */
     public function destroy(DeleteCourseRequest $request, string $id): JsonResponse
     {
+        if (Auth::user()->cannot('course delete')) {
+            return ApiResponse::error([], "You are not authorised to delete this course.", 403);
+        }
+
         $course = Course::find($id);
 
         if (!$course) {
