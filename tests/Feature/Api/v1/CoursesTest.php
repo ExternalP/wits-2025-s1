@@ -246,4 +246,27 @@ class CoursesTest extends TestCase
         //     'start_time' => '10:30',
         // ]);
     }
+
+    /**
+     * Remove the specified course from the database.
+     * @return void
+     */
+    public function test_destroy_course()
+    {
+        $this->initializeTestDatabase();
+
+        $course = Course::first();
+
+        $response = $this->actingAs($this->user, 'sanctum')->delete('/api/v1/courses/'.$course->id);
+
+        $response->assertStatus(200);
+        $response->assertJsonFragment([
+            'success' => true,
+            'message' => "Course '$course->aqf_level $course->title' deleted",
+        ]);
+        $response->assertJsonStructure([
+            'data' => ['id', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours'],
+        ]);
+        $this->assertDatabaseMissing('courses', ['id' => $course->id]);
+    }
 }
