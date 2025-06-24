@@ -32,6 +32,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use Illuminate\Support\Facades\Storage;
 
 
 
@@ -158,6 +159,7 @@ class UserController extends Controller
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class,],
             'password' => ['required', 'confirmed', 'min:4', 'max:255'],
             'roles' => ['required', 'array'],
+            'profile_photo' => ['nullable', 'image', 'mimes:jpg,jpeg,png', 'max:50'],
         ]);
 
         if (empty($validated['preferred_name'])) {
@@ -166,6 +168,15 @@ class UserController extends Controller
 
         $validated['preferred_pronouns'] = implode(',', $validated['preferred_pronouns']);
         $validated['id'] = Auth::id();
+
+        // Handle profile photo upload
+        if ($request->hasFile('profile_photo')) {
+            $file = $request->file('profile_photo');
+            $path = $file->store('profile_photos', 'public');
+            $validated['profile_photo'] = 'storage/' . $path;
+        } else {
+            $validated['profile_photo'] = 'images/default-profile.png';
+        }
 
         $user = User::create($validated);
 
@@ -314,5 +325,29 @@ class UserController extends Controller
 
         $user->restore();
         return redirect()->route('users.home')->with('success', 'User restored successfully.');
+    }
+
+    public function updatePhoto(Request $request, $id)
+    {
+        $request->validate([
+            'profile_photo' => 'required|image|mimes:jpg,jpeg,png|max:50', // 50KB
+        ]);
+
+        $user = User::findOrFail($id);
+
+        if ($request->hasFile('profile_photo')) {
+            // Delete old photo if not default
+            if ($user->profile_photo && $user->profile_photo !== 'images/default-profile.png') {
+                Storage::disk('public')->delete(str_replace('storage/', '', $user->profile_photo));
+            }
+
+            $file = $request->file('profile_photo');
+            $path = $file->store('profile_photos', 'public');
+            $user->profile_photo = 'storage/' . $path;
+        }
+
+        $user->save();
+
+        return back()->with('success', 'Profile photo updated!');
     }
 }
