@@ -28,6 +28,7 @@ class PermissionSeeder extends Seeder
         // Unit Permissions
         
         // Timetable Permissions
+        'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
     ];
 
     /**

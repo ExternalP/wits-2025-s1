@@ -33,6 +33,7 @@ class RoleSeeder extends Seeder
             'edit own profile',
             'request changes',
             'course browse', 'course read', 'course add', 'course edit', 'course delete',
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete'
         ]);
 
         $staff->syncPermissions([
@@ -42,12 +43,15 @@ class RoleSeeder extends Seeder
             'edit own profile',
             'request changes',
             'course browse', 'course read', 'course add',
+            'timetable browse','timetable read', 'timetable add'
+            
         ]);
 
         $student->syncPermissions([
             'edit own profile',
             'request changes',
             'course browse', 'course read',
+            'timetable browse','timetable read'
         ]);
 
     }
