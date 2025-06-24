@@ -18,7 +18,6 @@ class PermissionSeeder extends Seeder
 
         // Course Permissions
         'course browse', 'course read', 'course add', 'course edit', 'course delete',
-        //'course browseTrash', 'course restore', 'course permanentDelete',
 
         // TODO: Add permissions for Package, Cluster, Unit, Timetable & etc
         // Package Permissions
@@ -26,7 +25,7 @@ class PermissionSeeder extends Seeder
         // Cluster Permissions
 
         // Unit Permissions
-        
+
         // Timetable Permissions
         'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
     ];
@@ -40,20 +39,5 @@ class PermissionSeeder extends Seeder
         foreach ($this->permissions as $permission) {
             Permission::firstOrCreate(['name' => $permission]);
         }
-
-        // Permission::create(['name' => 'system configuration']);
-        // Permission::create(['name' => 'manage roles']);
-        // Permission::create(['name' => 'manage domains']);
-        // Permission::create(['name' => 'user management']);
-        // Permission::create(['name' => 'backup management']);
-        // Permission::create(['name' => 'import/export']);
-        //
-        // Permission::create(['name' => 'class session management']);
-        // Permission::create(['name' => 'approve changes']);
-        // Permission::create(['name' => 'view all class sessions']);
-        // Permission::create(['name' => 'view own class sessions']);
-        //
-        // Permission::create(['name' => 'edit own profile']);
-        // Permission::create(['name' => 'request changes']);
     }
 }
