@@ -45,6 +45,15 @@
                                 class="py-4 px-6 border-b border-neutral-200 bg-white font-medium text-zinc-800 dark:border-white/10">
 
                                 <div class="flex flex-col my-2">
+                                    <x-input-label for="profile_photo">
+                                        Profile Photo
+                                    </x-input-label>
+                                    <input type="file" name="profile_photo" id="profile_photo" accept="image/png, image/jpeg, image/jpg" class="mb-2">
+                                    <p class="text-xs text-gray-500 mt-1">Acceptable formats: JPG, JPEG, PNG. Max size: 50KB</p>
+                                    <x-input-error :messages="$errors->get('profile_photo')" class="mt-2" />
+                                </div>
+
+                                <div class="flex flex-col my-2">
                                     <x-input-label for="given_name">
                                         Given Name
                                     </x-input-label>

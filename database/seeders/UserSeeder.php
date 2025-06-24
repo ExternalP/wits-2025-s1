@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
                 'preferred_pronouns' => 'he/him',
                 'email'=>'admin@example.com',
                 'password'=>Hash::make('Password1'),
-                'profile_photo' => null,
+                'profile_photo' => 'images/default-profile.png',
                 'email_verified_at'=>now(),
 
 
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'preferred_pronouns' => 'he/him',
                 'email'=>'adrain@example.com',
                 'password'=>Hash::make('Password1'),
-                'profile_photo' => null,
+                'profile_photo' => 'images/default-profile.png',
                 'email_verified_at'=>now(),
 
             ],
@@ -51,7 +51,7 @@ class UserSeeder extends Seeder
                 'preferred_pronouns' => 'she/her',
                 'email'=>'chloe@example.com',
                 'password'=>Hash::make('Password1'),
-                'profile_photo' => null,
+                'profile_photo' => 'images/default-profile.png',
                 'email_verified_at'=>now(),
 
 
@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
                 'preferred_pronouns' => 'he/him',
                 'email'=>'jacques@example.com',
                 'password'=>Hash::make('Password1'),
-                'profile_photo' => null,
+                'profile_photo' => 'images/default-profile.png',
                 'email_verified_at'=>now(),
             ],
 
@@ -77,7 +77,7 @@ class UserSeeder extends Seeder
                 'preferred_pronouns' => 'he/him',
                 'email'=>'eileen@example.com',
                 'password'=>Hash::make('Password1'),
-                'profile_photo' => null,
+                'profile_photo' => 'images/default-profile.png',
                 'email_verified_at'=>now(),
             ],
 
@@ -89,7 +89,7 @@ class UserSeeder extends Seeder
                 'preferred_pronouns' => 'he/him',
                 'email'=>'robyn@example.com',
                 'password'=>Hash::make('Password1'),
-                'profile_photo' => null,
+                'profile_photo' => 'images/default-profile.png',
                 'email_verified_at'=>now(),
             ],
         ];
