@@ -1,9 +1,10 @@
 <?php
 /**
- * DESCRIPTION_BUT_EACH_LINE_HAS_MAX_LENGTH_OF_96_CHARACTERS
+ * Testing for Courses BREAD functionality and roles/permissions authentication.
+ * - php artisan test --filter=CoursesTest
  *
  * Filename:        CoursesTest.php
- * Location:        FILE_LOCATION
+ * Location:        tests/Feature/Api/v1/
  * Project:         wits-2025-s1
  * Date Created:    17/6/2025
  *
@@ -13,7 +14,6 @@
 
 namespace Api\v1;
 
-// use PHPUnit\Framework\TestCase;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Tests\TestCase;
@@ -29,8 +29,7 @@ class CoursesTest extends TestCase
     // Clears/empties the database;
     use RefreshDatabase;
 
-    private $courses, $package, $user, $cluster, $unit;
-
+    private $courses, $package, $user, $user2, $cluster, $unit;
 
     /**
      * Seeds the database with some initial data for testing.
@@ -47,8 +46,15 @@ class CoursesTest extends TestCase
             'email' => 'corin@example.com',
             'password' => bcrypt('Password1'),
         ]);
-
         $this->user->assignRole('Admin');
+
+        $this->user2 = User::create([
+            'given_name' => 'Adrian',
+            'family_name' => 'Gould',
+            'email' => 'adrian@example.com',
+            'password' => bcrypt('Password1'),
+        ]);
+        $this->user2->assignRole('Student');
 
         $this->package = Package::create([
             'national_code' => 'PAC123',
@@ -58,67 +64,6 @@ class CoursesTest extends TestCase
 
         // Creates 10 courses.
         $this->courses = Course::factory()->count(10)->create();
-        // Data for 5 courses.
-        $courseData = [
-            [
-                // "id" => "10001",
-                "package_id" => $this->package->id,
-                "national_code" => "TEST0115",
-                "aqf_level" => "Certificate I in",
-                "title" => "Testing",
-                "tga_status" => "Current",
-                "state_code" => "TTT7",
-                "nominal_hours" => "150",
-                "type" => "Qualification"
-            ],
-            [
-                // "id" => "10002",
-                "package_id" => $this->package->id,
-                "national_code" => "TEST0115",
-                "aqf_level" => "Certificate II in",
-                "title" => "Testing",
-                "tga_status" => "Current",
-                "state_code" => "TTT8",
-                "nominal_hours" => "325",
-                "type" => "Qualification"
-            ],
-            [
-                // "id" => "10003",
-                "package_id" => $this->package->id,
-                "national_code" => "TEST0215",
-                "aqf_level" => "Certificate III in",
-                "title" => "Testing",
-                "tga_status" => "Current",
-                "state_code" => "TTT9",
-                "nominal_hours" => "385",
-                "type" => "Qualification"
-            ],
-            [
-                // "id" => "10004",
-                "package_id" => $this->package->id,
-                "national_code" => "TEST0115",
-                "aqf_level" => "Certificate IV in",
-                "title" => "Testing",
-                "tga_status" => "Current",
-                "state_code" => "TTT7",
-                "nominal_hours" => "420",
-                "type" => "Qualification"
-            ],
-            [
-                // "id" => "10005",
-                "package_id" => $this->package->id,
-                "national_code" => "TEST0215",
-                "aqf_level" => "Advanced Diploma of",
-                "title" => "Testing",
-                "tga_status" => "Current",
-                "state_code" => "TTT6",
-                "nominal_hours" => "385",
-                "type" => "Qualification"
-            ],
-        ];
-        // foreach ( $courseData as $newCourse) {
-        //     $this->courses[] = Course::create($newCourse);
-        // }
 
         $this->cluster = Cluster::create([
             'code' => 'CLUSTER',
@@ -142,27 +87,15 @@ class CoursesTest extends TestCase
         $this->courses[3]->units()->attach([1]);
     }
 
+    /**
+     * Initializes roles and permissions for courses.
+     * - Is called in initializeTestDatabase() for assigning roles to the test users.
+     * @return void
+     */
     private function initializeRolesPermissions(): void {
+        // Course Permissions
         $permissions = [
-            // User Permissions
-            'system configuration', 'manage roles', 'manage domains', 'user management',
-            'backup management', 'import/export',
-            'class session management', 'approve changes', 'view all class sessions', 'view own class sessions',
-            'edit own profile', 'request changes',
-
-            // Course Permissions
             'course browse', 'course read', 'course add', 'course edit', 'course delete',
-            //'course browseTrash', 'course restore', 'course permanentDelete',
-
-            // TODO: Add permissions for Package, Cluster, Unit, Timetable & etc
-            // Package Permissions
-
-            // Cluster Permissions
-
-            // Unit Permissions
-
-            // Timetable Permissions
-            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
         ];
 
         foreach ($permissions as $permission) {
@@ -177,36 +110,16 @@ class CoursesTest extends TestCase
         $superAdmin->syncPermissions(Permission::all());
 
         $admin->syncPermissions([
-            'manage domains',
-            'user management',
-            'backup management',
-            'import/export',
-            'class session management',
-            'approve changes',
-            'view all class sessions',
-            'view own class sessions',
-            'edit own profile',
-            'request changes',
             'course browse', 'course read', 'course add', 'course edit', 'course delete',
-            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete'
         ]);
 
         $staff->syncPermissions([
-            'class session management',
-            'approve changes',
-            'view own class sessions',
-            'edit own profile',
-            'request changes',
             'course browse', 'course read', 'course add',
-            'timetable browse','timetable read', 'timetable add'
 
         ]);
 
         $student->syncPermissions([
-            'edit own profile',
-            'request changes',
             'course browse', 'course read',
-            'timetable browse','timetable read'
         ]);
 
         // $user->assignRole(Role::where('name', 'Admin')->first());
@@ -326,7 +239,7 @@ class CoursesTest extends TestCase
     }
 
     /**
-     * Remove the specified course from the database.
+     * Remove a course from the database.
      * @return void
      */
     public function test_destroy_course()
@@ -346,5 +259,25 @@ class CoursesTest extends TestCase
             'data' => ['id', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours'],
         ]);
         $this->assertDatabaseMissing('courses', ['id' => $course->id]);
+    }
+
+    /**
+     * Stops user without the correct permissions from removing a course from the database.
+     * @return void
+     */
+    public function test_course_permissions()
+    {
+        $this->initializeTestDatabase();
+
+        $course = Course::first();
+
+        $response = $this->actingAs($this->user2, 'sanctum')->delete('/api/v1/courses/'.$course->id);
+
+        $response->assertStatus(403);
+        $response->assertJsonFragment([
+            'success' => false,
+            'message' => "You are not authorised to delete this course.",
+        ]);
+        $this->assertDatabaseHas('courses', ['id' => $course->id]);
     }
 }
