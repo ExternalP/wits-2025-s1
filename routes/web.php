@@ -59,7 +59,6 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('packages', PackageController::class)
-
     ->only(['index', 'create', 'store', 'edit', 'update', 'destroy', 'show']);
 Route::get('/packages/search', [PackageController::class, 'search'])->name('packages.search');
 
@@ -67,7 +66,8 @@ Route::get('/packages/search', [PackageController::class, 'search'])->name('pack
 
 //Timetables
 
-Route::resource('timetables', TimetableController::class)
-    ->only(['create', 'index',  'store', 'edit', 'update', 'destroy', 'show']);
 
-
+Route::middleware('auth')->group(function () {
+    Route::resource('timetables', TimetableController::class)
+        ->only(['create', 'index',  'store', 'edit', 'update', 'destroy', 'show']);
+});
