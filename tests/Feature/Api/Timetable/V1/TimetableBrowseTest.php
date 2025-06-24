@@ -3,7 +3,7 @@
 /**
  * Timetable Browse Test.
  * - Creates a test for browsing timetables.
- * 
+ *
  * Filename:        TimetableBrowseTest.php
  * Location:        tests/Feature/Api/Timetable/V1
  * Project:         wits-2025-s1
@@ -28,24 +28,100 @@ use App\Models\Cluster;
 use App\Models\Timetable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class TimetableBrowseTest extends TestCase
 {
     use RefreshDatabase;
 
+    private function initializeRolesPermissions(): void {
+        $permissions = [
+            // User Permissions
+            'system configuration', 'manage roles', 'manage domains', 'user management',
+            'backup management', 'import/export',
+            'class session management', 'approve changes', 'view all class sessions', 'view own class sessions',
+            'edit own profile', 'request changes',
+
+            // Course Permissions
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
+            //'course browseTrash', 'course restore', 'course permanentDelete',
+
+            // TODO: Add permissions for Package, Cluster, Unit, Timetable & etc
+            // Package Permissions
+
+            // Cluster Permissions
+
+            // Unit Permissions
+
+            // Timetable Permissions
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $superAdmin = Role::create(['name' => 'SuperAdmin']);
+        $admin = Role::create(['name' => 'Admin']);
+        $staff = Role::create(['name' => 'Staff']);
+        $student = Role::create(['name' => 'Student']);
+
+        $superAdmin->syncPermissions(Permission::all());
+
+        $admin->syncPermissions([
+            'manage domains',
+            'user management',
+            'backup management',
+            'import/export',
+            'class session management',
+            'approve changes',
+            'view all class sessions',
+            'view own class sessions',
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read', 'course add', 'course edit', 'course delete',
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete'
+        ]);
+
+        $staff->syncPermissions([
+            'class session management',
+            'approve changes',
+            'view own class sessions',
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read', 'course add',
+            'timetable browse','timetable read', 'timetable add'
+
+        ]);
+
+        $student->syncPermissions([
+            'edit own profile',
+            'request changes',
+            'course browse', 'course read',
+            'timetable browse','timetable read'
+        ]);
+
+        // $user->assignRole(Role::where('name', 'Admin')->first());
+        // $user->assignRole('Admin');
+    }
+
     public function test_browsing_timetables()
     {
-        $package = Package::create([
-            'national_code' => 'ABC123',
-            'title' => 'Test Package',
-            'tga_status' => 'Current',
-        ]);
+        $this->initializeRolesPermissions();
 
         $user = User::create([
             'given_name' => 'Luis',
             'family_name' => 'Alvarez',
             'email' => 'luis.alvarez@example.org',
             'password' => bcrypt('password'),
+        ]);
+        $user->assignRole('Admin');
+
+        $package = Package::create([
+            'national_code' => 'ABC123',
+            'title' => 'Test Package',
+            'tga_status' => 'Current',
         ]);
 
         $course = Course::create([
@@ -73,6 +149,7 @@ class TimetableBrowseTest extends TestCase
             'session_duration' => 90,
             'lecturer_id' => $user->id,
         ]);
+
 
         $response = $this->actingAs($user, 'sanctum')->get('/api/v1/timetables');
 
