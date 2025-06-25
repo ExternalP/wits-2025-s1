@@ -16,7 +16,7 @@ class UnitSeeder extends Seeder
     {
         $this->command->getOutput()->progressStart();
 
-        Unit::truncate();
+        // Unit::truncate();
         // $filePath = storage_path('/app/private/Unit_2_Sample.csv');
         $filePath = storage_path('/app/private/Unit_2.csv');
         $csvFile = fopen($filePath, 'r');

@@ -34,7 +34,7 @@ class CourseSeeder extends Seeder
     {
         $this->command->getOutput()->progressStart();
 
-        Course::truncate();
+        // Course::truncate();
 
         // $filePath = storage_path('/app/private/Course_2_v2.csv');
         $filePath = storage_path('/app/private/Course_2_Duplicates_Removed.csv');
@@ -52,7 +52,7 @@ class CourseSeeder extends Seeder
                     'title' => $data['4'],
                     'tga_status' => $data['5'],
                     'state_code' => $data['6'],
-                    'nominal_hours' => $data['7'],
+                    'nominal_hours' => $data['7'] ?: null,
                     'type' => $data['8'],
                 ]);
             }
