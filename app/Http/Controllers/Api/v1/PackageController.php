@@ -58,7 +58,7 @@ class PackageController extends Controller
      */
     public function update(UpdatePackageRequest $request, string $id)
     {
-        if (Auth::user()->cannot('package add')) {
+        if (Auth::user()->cannot('package edit')) {
             return ApiResponse::error([], "You are not authorised to update this package.", 403);
         }
         $package = Package::find($id);
@@ -79,7 +79,7 @@ class PackageController extends Controller
      */
     public function destroy(string $id)
     {
-        if (Auth::user()->cannot('package add')) {
+        if (Auth::user()->cannot('package delete')) {
             return ApiResponse::error([], "You are not authorised to delete these packages", 403);
         }
         $package = Package::find($id);

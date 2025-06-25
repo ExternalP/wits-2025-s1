@@ -31,12 +31,9 @@ class PackagesTest extends TestCase
 
     private $course, $packages, $user, $user2, $cluster, $unit;
 
-    /**
-     * Seeds the database with some initial data for testing.
-     * - Isn't a constructor so can test with an empty database.
-     * @return void
-     */
     private function initializeTestDatabase(): void
+
+
     {
         $this->initializeRolesPermissions();
 
@@ -82,11 +79,7 @@ class PackagesTest extends TestCase
 
     }
 
-    /**
-     * Initializes roles and permissions for packages.
-     * - Is called in initializeTestDatabase() for assigning roles to the test users.
-     * @return void
-     */
+
     private function initializeRolesPermissions(): void {
         // Package Permissions
         $permissions = [
