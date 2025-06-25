@@ -17,7 +17,9 @@ class PackageFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'national_code' => $this->faker->unique()->regexify('[A-Z]{3}'),
+            'title' => $this->faker->jobTitle(),
+            'tga_status' => $this->faker->randomElement(['Current', 'Replaced', 'Expired']),
         ];
     }
 }

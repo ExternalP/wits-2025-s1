@@ -32,6 +32,7 @@ class RoleSeeder extends Seeder
             'view own class sessions',
             'edit own profile',
             'request changes',
+            'package browse', 'package read', 'package add', 'package edit', 'package delete',
             'course browse', 'course read', 'course add', 'course edit', 'course delete',
             'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete'
         ]);
@@ -42,14 +43,16 @@ class RoleSeeder extends Seeder
             'view own class sessions',
             'edit own profile',
             'request changes',
+            'package browse', 'package read', 'package add',
             'course browse', 'course read', 'course add',
             'timetable browse','timetable read', 'timetable add'
-            
+
         ]);
 
         $student->syncPermissions([
             'edit own profile',
             'request changes',
+            'package browse', 'package read',
             'course browse', 'course read',
             'timetable browse','timetable read'
         ]);
