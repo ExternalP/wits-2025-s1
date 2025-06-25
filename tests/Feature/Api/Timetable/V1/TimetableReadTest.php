@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Timetable Read Test.
  * - Creates a test for reading timetables.
@@ -27,13 +28,30 @@ use App\Models\Cluster;
 use App\Models\Timetable;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class TimetableReadTest extends TestCase
 {
     use RefreshDatabase;
 
+    private function initializeRolesPermissions(): void {
+        $permissions = [
+            'timetable browse', 'timetable read', 'timetable add', 'timetable edit', 'timetable delete',
+        ];
+
+        foreach ($permissions as $permission) {
+            Permission::firstOrCreate(['name' => $permission]);
+        }
+
+        $admin = Role::create(['name' => 'Admin']);
+        $admin->syncPermissions($permissions);
+    }
+
     public function test_reading_timetable()
     {
+        $this->initializeRolesPermissions();
+
         $package = Package::create([
             'national_code' => 'ABC123',
             'title' => 'Test Package',
@@ -46,6 +64,7 @@ class TimetableReadTest extends TestCase
             'email' => 'luis.alvarez@example.org',
             'password' => bcrypt('password'),
         ]);
+        $user->assignRole('Admin');
 
         $course = Course::create([
             'national_code' => 'A123',
