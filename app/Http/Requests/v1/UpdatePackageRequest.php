@@ -22,9 +22,9 @@ class UpdatePackageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'national_code' => 'required|string|max:255',
-            'title' => 'required|string|max:255',
-            'tga_status' => 'nullable|string|max:255',
+            'national_code' => 'sometimes|string|max:255|min:3',
+            'title' => 'sometimes|string|max:255|min:3',
+            'tga_status' => 'sometimes|nullable|string|max:255|min:3',
         ];
     }
 }

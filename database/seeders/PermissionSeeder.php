@@ -21,6 +21,7 @@ class PermissionSeeder extends Seeder
 
         // TODO: Add permissions for Package, Cluster, Unit, Timetable & etc
         // Package Permissions
+        'package browse', 'package read', 'package add', 'package edit', 'package delete',
 
         // Cluster Permissions
 
