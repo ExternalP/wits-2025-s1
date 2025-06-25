@@ -149,7 +149,7 @@ class UserSeeder extends Seeder
                     'given_name' => '123',
                     'family_name' => '123',
                     'email' => '123@123.com',
-                    'password' => '123123123',
+                    'password' => Hash::make('123123123'),
                     'email_verified_at' => now(),
                 ],
                 // [
@@ -191,7 +191,7 @@ class UserSeeder extends Seeder
                     'given_name' => 'staff',
                     'family_name' => 'staff',
                     'email' => 'staff@mail.com',
-                    'password' => '123123123',
+                    'password' => Hash::make('123123123'),
                     'email_verified_at' => now(),
                 ],
                 [
@@ -201,7 +201,7 @@ class UserSeeder extends Seeder
                     'family_name' => 'Little',
                     'preferred_pronouns' => 'he/him',
                     'email' => 'corin@gmail.com',
-                    'password' => 'Password1',
+                    'password' => Hash::make('Password1'),
                     'email_verified_at' => now(),
                 ],
                 [
@@ -210,7 +210,7 @@ class UserSeeder extends Seeder
                     'given_name' => 'Good bye',
                     'family_name' => 'Cruel world',
                     'email' => 'del_100@iinet.com',
-                    'password' => '123123123',
+                    'password' => Hash::make('123123123'),
                 ],
                 // [
                 //     'id'=>1001,
@@ -231,7 +231,7 @@ class UserSeeder extends Seeder
                     'given_name' => 'student',
                     'family_name' => 'study',
                     'email' => 'student@mail.com',
-                    'password' => '123123123',
+                    'password' => Hash::make('123123123'),
                 ],
                 [
                     'id' => 1003,
@@ -239,7 +239,7 @@ class UserSeeder extends Seeder
                     'given_name' => 'Firsty',
                     'family_name' => 'Lasty',
                     'email' => 'firsty_1@mail.com',
-                    'password' => '123123123',
+                    'password' => Hash::make('123123123'),
                     'email_verified_at' => now(),
                 ],
                 // [
