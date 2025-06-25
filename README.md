@@ -278,4 +278,8 @@ The project does NOT need a timetabling capability. It acts as a cheat sheet for
   (helps with laravel autocompletion)
 - 
 
+# Useful Resources
+- https://github.com/michaelgatuma/laravel-deploy-on-shared-hosting \
+  (Good cPanel github walkthrough for public, .htaccess & index.php)
+- 
 
