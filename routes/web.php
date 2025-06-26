@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('units', UnitController::class);
 
-// Route::resource('users', UserController::class);
+
 Route::resource('clusters', ClusterController::class);
 
 Route::get('/clusters', [ClusterController::class, 'index'])->name('clusters.index');
