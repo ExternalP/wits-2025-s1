@@ -51,7 +51,20 @@ Route::apiResource('users', UserController::class);
 // });
 
 /** Packages API Routes */
-Route::apiResource('packages', PackageController::class);
+//Route::apiResource('packages', PackageController::class);
+
+/** Package API Routes */
+// No Auth: browse, show.
+Route::name("api.v1.")->group(function () {
+    Route::apiResource('packages', PackageController::class)
+        ->only(['index', 'show']);
+});
+// Auth Required: store, update, destroy.
+Route::name("api.v1.")->middleware('auth:sanctum')->group(function () {
+    Route::apiResource('packages', PackageController::class)
+        ->except(['index', 'show']);
+});
+
 
 /** Courses API Routes */
 // No Auth: browse, show.
@@ -68,6 +81,13 @@ Route::name("api.v1.")->middleware('auth:sanctum')->group(function () {
 
 /** Clusters API Routes */
 Route::apiResource('clusters', ClusterController::class);
+
+/** Packages API Routes */
+/**Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('packages', PackageController::class);
+});**/
+
+
 
 /** Units API Routes */
 Route::apiResource('units', UnitController::class);

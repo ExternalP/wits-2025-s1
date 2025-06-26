@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Api\v1;
 
+use App\Classes\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Package;
 use App\Http\Requests\v1\StorePackageRequest;
 use App\Http\Requests\v1\UpdatePackageRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PackageController extends Controller
 {
@@ -14,7 +16,13 @@ class PackageController extends Controller
      */
     public function index()
     {
-        return Package::all();
+        /*return Package::all();*/
+        $message = 'Found all '. Package::count() .' packages';
+        $packages = Package::all();
+        if ($packages->count() > 0) {
+            return ApiResponse::success($packages, $message);
+        }
+        return ApiResponse::error([], 'No packages found', 404);
     }
 
     /**
@@ -22,6 +30,9 @@ class PackageController extends Controller
      */
     public function store(StorePackageRequest $request)
     {
+        if (Auth::user()->cannot('package add')) {
+            return ApiResponse::error([], "You are not authorised to add new packages.", 403);
+        }
         $package = Package::create($request->validated());
 
         return response()->json([
@@ -47,14 +58,20 @@ class PackageController extends Controller
      */
     public function update(UpdatePackageRequest $request, string $id)
     {
+        if (Auth::user()->cannot('package edit')) {
+            return ApiResponse::error([], "You are not authorised to update this package.", 403);
+        }
         $package = Package::find($id);
         if (!$package) {
             return response()->json(['message' => 'Package not found'], 404);
         }
 
         $package->update($request->validated());
-        return response()->json([
-            'message' => 'Package updated successfully', 'data' => $package]);
+        return response()->json(
+            ['message' => 'Package updated successfully', 'data' => $package],
+            201
+        );
+
     }
 
     /**
@@ -62,6 +79,9 @@ class PackageController extends Controller
      */
     public function destroy(string $id)
     {
+        if (Auth::user()->cannot('package delete')) {
+            return ApiResponse::error([], "You are not authorised to delete these packages", 403);
+        }
         $package = Package::find($id);
 
         if (!$package) {
