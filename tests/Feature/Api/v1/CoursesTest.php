@@ -29,7 +29,7 @@ class CoursesTest extends TestCase
     // Clears/empties the database;
     use RefreshDatabase;
 
-    private $courses, $package, $user, $user2, $cluster, $unit;
+    private $courses, $package, $users, $cluster, $unit;
 
     /**
      * Seeds the database with some initial data for testing.
@@ -40,21 +40,21 @@ class CoursesTest extends TestCase
     {
         $this->initializeRolesPermissions();
 
-        $this->user = User::create([
+        $this->users[] = User::create([
             'given_name' => 'Corin',
             'family_name' => 'Little',
             'email' => 'corin@example.com',
             'password' => bcrypt('Password1'),
         ]);
-        $this->user->assignRole('Admin');
+        $this->users[0]->assignRole('Admin');
 
-        $this->user2 = User::create([
+        $this->users[] = User::create([
             'given_name' => 'Adrian',
             'family_name' => 'Gould',
             'email' => 'adrian@example.com',
             'password' => bcrypt('Password1'),
         ]);
-        $this->user2->assignRole('Student');
+        $this->users[1]->assignRole('Student');
 
         $this->package = Package::create([
             'national_code' => 'PAC123',
@@ -122,8 +122,8 @@ class CoursesTest extends TestCase
             'course browse', 'course read',
         ]);
 
-        // $user->assignRole(Role::where('name', 'Admin')->first());
-        // $user->assignRole('Admin');
+        // $users[0]->assignRole(Role::where('name', 'Admin')->first());
+        // $users[0]->assignRole('Admin');
     }
 
     /**
@@ -134,7 +134,7 @@ class CoursesTest extends TestCase
     {
         $this->initializeTestDatabase();
 
-        $response = $this->actingAs($this->user, 'sanctum')->get('/api/v1/courses');
+        $response = $this->actingAs($this->users[0], 'sanctum')->get('/api/v1/courses');
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -156,7 +156,7 @@ class CoursesTest extends TestCase
     {
         $this->initializeTestDatabase();
 
-        $response = $this->actingAs($this->user, 'sanctum')->get('/api/v1/courses/'.$id);
+        $response = $this->actingAs($this->users[0], 'sanctum')->get('/api/v1/courses/'.$id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -176,7 +176,6 @@ class CoursesTest extends TestCase
     {
         $this->initializeTestDatabase();
 
-        // $this->courses[] = Course::create([
         $newCourse = [
             "package_id" => $this->package->id,
             "national_code" => "TEST9999",
@@ -185,7 +184,7 @@ class CoursesTest extends TestCase
             "state_code" => "TTT9",
         ];
 
-        $response = $this->actingAs($this->user, 'sanctum')->post('/api/v1/courses/', $newCourse);
+        $response = $this->actingAs($this->users[0], 'sanctum')->post('/api/v1/courses/', $newCourse);
 
         $response->assertStatus(201);
         $response->assertJsonFragment([
@@ -194,6 +193,13 @@ class CoursesTest extends TestCase
         ]);
         $response->assertJsonStructure([
             'data' => ['id', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours'],
+        ]);
+        $this->assertDatabaseHas('courses', [
+            "package_id" => $this->package->id,
+            "national_code" => "TEST9999",
+            "aqf_level" => "Graduate Certificate In",
+            "title" => "Tested",
+            "state_code" => "TTT9",
         ]);
     }
 
@@ -205,9 +211,9 @@ class CoursesTest extends TestCase
     {
         $this->initializeTestDatabase();
 
-        $updateCourse = Course::latest()->first();
+        $course = Course::latest()->first();
 
-        $newCourse = [
+        $updateFields = [
             // "package_id" => $this->package->id,
             "national_code" => "NOT00000",
             // "aqf_level" => "Graduate Certificate In",
@@ -217,7 +223,7 @@ class CoursesTest extends TestCase
             "unit_id" => [1],
         ];
 
-        $response = $this->actingAs($this->user, 'sanctum')->patch('/api/v1/courses/'.$updateCourse->id, $newCourse);
+        $response = $this->actingAs($this->users[0], 'sanctum')->patch('/api/v1/courses/'.$course->id, $updateFields);
 
         $response->assertStatus(201);
         $response->assertJsonFragment([
@@ -227,15 +233,22 @@ class CoursesTest extends TestCase
         $response->assertJsonStructure([
             'data' => ['id', 'national_code', 'aqf_level', 'title', 'tga_status', 'state_code', 'nominal_hours'],
         ]);
-
-        // $response = $this->actingAs($user, 'sanctum')->put("/api/v1/timetables/{$timetable->id}", $updatedData);
-        //
-        // $response->assertStatus(200);
-        // $response->assertJson(['message' => 'Timetable updated successfully.']);
-        // $this->assertDatabaseHas('timetables', [
-        //     'id' => $timetable->id,
-        //     'start_time' => '10:30',
-        // ]);
+        $this->assertDatabaseHas('courses', [
+            'id' => $course->id,
+            // "package_id" => $this->package->id,
+            "national_code" => "NOT00000",
+            // "aqf_level" => "Graduate Certificate In",
+            "title" => "Not Testing",
+            // "state_code" => "NOT0",
+        ]);
+        $this->assertDatabaseHas('course_cluster', [
+            'course_id' => $course->id,
+            "cluster_id" => 1,
+        ]);
+        $this->assertDatabaseHas('course_unit', [
+            'course_id' => $course->id,
+            "unit_id" => 1,
+        ]);
     }
 
     /**
@@ -248,7 +261,7 @@ class CoursesTest extends TestCase
 
         $course = Course::first();
 
-        $response = $this->actingAs($this->user, 'sanctum')->delete('/api/v1/courses/'.$course->id);
+        $response = $this->actingAs($this->users[0], 'sanctum')->delete('/api/v1/courses/'.$course->id);
 
         $response->assertStatus(200);
         $response->assertJsonFragment([
@@ -271,7 +284,8 @@ class CoursesTest extends TestCase
 
         $course = Course::first();
 
-        $response = $this->actingAs($this->user2, 'sanctum')->delete('/api/v1/courses/'.$course->id);
+        // user[1] is a student and doesn't have permission to delete courses.
+        $response = $this->actingAs($this->users[1], 'sanctum')->delete('/api/v1/courses/'.$course->id);
 
         $response->assertStatus(403);
         $response->assertJsonFragment([
