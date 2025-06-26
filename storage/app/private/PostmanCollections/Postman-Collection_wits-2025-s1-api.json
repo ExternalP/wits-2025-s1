@@ -739,7 +739,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"given_name\" : \"new\",\n    \"family_name\" : \"test\",\n    \"email\" : \"newtest@gmail.com\",\n    \"password\" : \"Password1\",\n    \"password_confirmation\": \"Password1\",\n    \"preferred_pronouns\": [\"she\", \"her\"],\n    \"roles\" : [\"Admin\"]\n}",
+							"raw": "{\n    \"given_name\" : \"new2\",\n    \"family_name\" : \"test\",\n    \"email\" : \"new2test@gmail.com\",\n    \"password\" : \"Password1\",\n    \"password_confirmation\": \"Password1\",\n    \"preferred_pronouns\": [\"she\", \"her\"],\n    \"roles\" : [\"Admin\"]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
