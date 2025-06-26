@@ -22,10 +22,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::resource('users', UserController::class)->except(['index', 'show']);  // Remove index, show for user resources
-    Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
+
+    Route::resource('users', UserController::class); 
+    // Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    // Route::resource('users', UserController::class)->except(['index', 'show']); 
+    // Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    // Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
+    // Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::put('users/{id}/update-photo', [UserController::class, 'updatePhoto'])->name('users.updatePhoto');
+
 });
 
 Route::get('/dashboard', function () {
@@ -34,7 +39,7 @@ Route::get('/dashboard', function () {
 
 Route::resource('units', UnitController::class);
 
-Route::resource('users', UserController::class);
+// Route::resource('users', UserController::class);
 Route::resource('clusters', ClusterController::class);
 
 Route::get('/clusters', [ClusterController::class, 'index'])->name('clusters.index');
