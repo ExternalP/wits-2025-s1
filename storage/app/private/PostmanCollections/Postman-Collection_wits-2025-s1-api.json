@@ -872,7 +872,7 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "1fd3b1f4-89de-4330-bbd5-27fbba2f7ef0",
+				"id": "01e8b338-b14e-4a76-94b2-6341d57e71ec",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -883,7 +883,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "32bdda10-5f27-4317-b86e-10dbad72040b",
+				"id": "ed5ace16-4b47-4ba8-ac63-e414989f05fd",
 				"type": "text/javascript",
 				"packages": {},
 				"exec": [
@@ -896,13 +896,13 @@
 		{
 			"key": "baseUrl",
 			"value": "http://127.0.0.1:8000/api/v1",
-			"type": "string",
-			"disabled": true
+			"type": "string"
 		},
 		{
 			"key": "baseUrl",
 			"value": "https://www.wits.screencraft.net.au/api/v1",
-			"type": "string"
+			"type": "string",
+			"disabled": true
 		},
 		{
 			"key": "authToken",
