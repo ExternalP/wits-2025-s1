@@ -23,15 +23,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::resource('users', UserController::class); 
-    // Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    // Route::resource('users', UserController::class)->except(['index', 'show']); 
-    // Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    // Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
-    // Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::resource('users', UserController::class)->except(['index', 'show']);
     Route::put('users/{id}/update-photo', [UserController::class, 'updatePhoto'])->name('users.updatePhoto');
-
 });
+
+Route::get('users', [UserController::class, 'index'])
+    ->name('users.index');
+Route::get('users/{id}', [UserController::class, 'show'])
+    ->name('users.show');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -53,10 +52,6 @@ Route::get('courses', [CourseController::class, 'index'])
 // Wild card {id} is constrained in AppServiceProvider.boot()
 Route::get('courses/{id}', [CourseController::class, 'show'])
     ->name('courses.show');
-
-// Route::middleware('auth')->group(function () {
-//     Route::resource('users', UserController::class)->except(['index', 'show', 'edit', 'update', 'create', 'destroy']);
-// });
 
 Route::middleware('auth')->group(function () {
     Route::resource('courses', CourseController::class)
