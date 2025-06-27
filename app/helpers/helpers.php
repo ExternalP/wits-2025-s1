@@ -23,18 +23,25 @@ use Spatie\Permission\Models\Role;
 
 /**
  * Cleans the API request for Course.
- * @param  array  $request
+ * @param array $request
  * @return array
  */
 function cleanCourseRequest(array $request): array
 {
     // $request['national_code'] = strtoupper($request['national_code']);
     // $request['state_code'] = strtoupper($request['state_code']);
-    if (isset($request['national_code'])) $request['national_code'] = strtoupper($request['national_code']);
-    if (isset($request['state_code'])) $request['state_code'] = strtoupper($request['state_code']);
-    if (!isset($request['cluster_id'])) $request['cluster_id'] = [];
-    if (!isset($request['unit_id'])) $request['unit_id'] = [];
+    if (isset($request['national_code'])) {
+        $request['national_code'] = strtoupper($request['national_code']);
+    }
+    if (isset($request['state_code'])) {
+        $request['state_code'] = strtoupper($request['state_code']);
+    }
+    if (!isset($request['cluster_id'])) {
+        $request['cluster_id'] = [];
+    }
+    if (!isset($request['unit_id'])) {
+        $request['unit_id'] = [];
+    }
 
     return $request;
 }
-
