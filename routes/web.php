@@ -22,8 +22,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    Route::resource('users', UserController::class); 
+    Route::resource('users', UserController::class)->except(['index', 'show']);  // Remove index, show for user resources
+    //duplicated-------------------------------------------------------------------------
+    // Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    // Route::patch('users/{user}', [UserController::class, 'update'])->name('users.update');
+    //------------------------------------------------------------------------------------
+    
     Route::put('users/{id}/update-photo', [UserController::class, 'updatePhoto'])->name('users.updatePhoto');
 });
 
@@ -31,16 +35,24 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+
+Route::get('users', [UserController::class, 'index'])
+    ->name('users.index');
+Route::get('users/{id}', [UserController::class, 'show'])
+    ->name('users.show');
+
 Route::resource('units', UnitController::class);
-
-
+ //duplicated-------------------------------------------------------------------------
+//Route::resource('users', UserController::class);
+  //------------------------------------------------------------------------------------
 Route::resource('clusters', ClusterController::class);
 
-Route::get('/clusters', [ClusterController::class, 'index'])->name('clusters.index');
-Route::get('/clusters/{id}', [ClusterController::class, 'show'])->name('clusters.show');
-Route::get('/clusters/{id}/edit', [ClusterController::class, 'edit'])->name('clusters.edit');
-Route::delete('/clusters/{id}', [UserController::class, 'destroy'])->name('clusters.destroy');
-
+ //duplicated-------------------------------------------------------------------------
+// Route::get('/clusters', [ClusterController::class, 'index'])->name('clusters.index');
+// Route::get('/clusters/{id}', [ClusterController::class, 'show'])->name('clusters.show');
+// Route::get('/clusters/{id}/edit', [ClusterController::class, 'edit'])->name('clusters.edit');
+// Route::delete('/clusters/{id}', [UserController::class, 'destroy'])->name('clusters.destroy');
+ //------------------------------------------------------------------------------------
 // Course routes for browse, show
 Route::get('courses', [CourseController::class, 'index'])
     ->name('courses.index');
@@ -48,6 +60,9 @@ Route::get('courses', [CourseController::class, 'index'])
 Route::get('courses/{id}', [CourseController::class, 'show'])
     ->name('courses.show');
 
+// Route::middleware('auth')->group(function () {
+//     Route::resource('users', UserController::class)->except(['index', 'show', 'edit', 'update', 'create', 'destroy']);
+// });
 
 Route::middleware('auth')->group(function () {
     Route::resource('courses', CourseController::class)
