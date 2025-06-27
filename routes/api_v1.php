@@ -93,9 +93,13 @@ Route::apiResource('clusters', ClusterController::class);
 Route::apiResource('units', UnitController::class);
 
 /** Timetables API Routes */
-Route::middleware('auth:sanctum')->group(function () {
+/*Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('timetables', TimetableController::class);
+});*/
+Route::name('api.v1.')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('timetables', TimetableController::class);
 });
+
 
 
 
