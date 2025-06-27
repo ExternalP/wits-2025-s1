@@ -40,18 +40,10 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 /** User API Routes */
-Route::apiResource('users', UserController::class);
-// Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
-//     Route::apiResource('users', UserController::class);
-//     Route::get('/users', [UserController::class, 'index']);
-//     Route::get('/users/{id}', [UserController::class, 'show']);
-//     Route::get('/users', [UserController::class, 'store']);
-//     Route::get('/users/{id}', [UserController::class, 'update']);
-//     Route::get('/users/{id}', [UserController::class, 'destroy']);
-// });
+Route::name('api.v1.')->group(function () {
+    Route::apiResource('users', UserController::class);
+});
 
-/** Packages API Routes */
-//Route::apiResource('packages', PackageController::class);
 
 /** Package API Routes */
 // No Auth: browse, show.
@@ -77,25 +69,15 @@ Route::name("api.v1.")->middleware('auth:sanctum')->group(function () {
     Route::apiResource('courses', CourseController::class)
         ->except(['index', 'show']);
 });
-// Route::apiResource('courses', CourseController::class);
 
 /** Clusters API Routes */
 Route::apiResource('clusters', ClusterController::class);
-
-/** Packages API Routes */
-/**Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('packages', PackageController::class);
-});**/
-
 
 
 /** Units API Routes */
 Route::apiResource('units', UnitController::class);
 
 /** Timetables API Routes */
-/*Route::middleware('auth:sanctum')->group(function () {
-    Route::apiResource('timetables', TimetableController::class);
-});*/
 Route::name('api.v1.')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('timetables', TimetableController::class);
 });
