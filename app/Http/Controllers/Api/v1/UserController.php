@@ -24,8 +24,25 @@ class UserController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        $users = User::orderByDesc('id')->get();
-        return ApiResponse::sendResponse($users, 'Users retrieved successfully.', 200);
+        $users = User::with('roles')->orderByDesc('id')->get();
+        $transformed = $users->map(function ($user) {
+            return [
+                'id' => $user->id,
+                'given_name' => $user->given_name,
+                'family_name' => $user->family_name,
+                'preferred_name' => $user->preferred_name,
+                'preferred_pronouns' => $user->preferred_pronouns,
+                'email' => $user->email,
+                'email_verified_at' => $user->email_verified_at,
+                'profile_photo' => $user->profile_photo,
+                'created_at' => $user->created_at,
+                'updated_at' => $user->updated_at,
+                'roles' => $user->roles->pluck('name')->toArray() 
+            ];
+        });
+        return ApiResponse::sendResponse($transformed, 'Users retrieved successfully.', 200);
+        // $users = User::orderByDesc('id')->get();
+        // return ApiResponse::sendResponse($users, 'Users retrieved successfully.', 200);
     }
 
     /**

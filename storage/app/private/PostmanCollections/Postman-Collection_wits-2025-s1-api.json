@@ -1,0 +1,949 @@
+{
+	"info": {
+		"_postman_id": "b8952faa-5160-4099-9bbc-a0dd333af3dc",
+		"name": "wits-2025-s1 API",
+		"description": "Description: Postman API testing for wits-2025-s1.\n\nAuthor: Corin Little",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Courses",
+			"item": [
+				{
+					"name": "Browse /courses",
+					"id": "d5c09192-9be4-4a8c-84e7-b97c54518337",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/courses",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"courses"
+							],
+							"query": [
+								{
+									"key": "search",
+									"value": "Banking",
+									"disabled": true
+								},
+								{
+									"key": "search",
+									"value": "test",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Show /courses/id",
+					"id": "88fea652-70d1-40c4-8570-9cd0b3b1ca7b",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/courses/254"
+					},
+					"response": []
+				},
+				{
+					"name": "Store /courses",
+					"id": "8cab0faf-e114-4364-a52e-35e3c9b35ab1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST1111\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing\",\r\n    \"state_code\": \"T1111\",\r\n    \"package_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/courses"
+					},
+					"response": [
+						{
+							"id": "bcf1343c-b3b4-4bc1-8722-5e19fcf2ec00",
+							"name": "Store /courses",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST2\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing2\",\r\n    \"state_code\": \"T2222\",\r\n    \"package_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/courses"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "69b36099-6cfe-43ad-9cc7-918b094646fd",
+							"name": "Store /courses",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST1111\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing\",\r\n    \"state_code\": \"T1111\",\r\n    \"package_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/courses"
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.3.16"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 25 Jun 2025 03:32:57 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"success\": true,\n    \"message\": \"Course added\",\n    \"data\": {\n        \"id\": 254,\n        \"national_code\": \"TEST1111\",\n        \"aqf_level\": \"Certificate I in\",\n        \"title\": \"Testing\",\n        \"tga_status\": \"Current\",\n        \"state_code\": \"T1111\",\n        \"nominal_hours\": null,\n        \"type\": \"Qualification\",\n        \"created_at\": \"2025-06-25T03:32:57.000000Z\",\n        \"updated_at\": \"2025-06-25T03:32:57.000000Z\",\n        \"package_id\": 1\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Update /courses/id",
+					"id": "c6ce7a4e-8a4c-4a50-a21d-9d3a3c90e154",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"national_code\": \"QQQQQQQQ\",\r\n    \"aqf_level\": \"Diploma in\",\r\n    \"title\": \"Testing\",\r\n    // \"tga_status\": \"Current\",\r\n    \"state_code\": \"T1111\",\r\n    \"nominal_hours\": 999,\r\n    \"package_id\": 1,\r\n    \"cluster_id\": [1],\r\n    \"unit_id\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/courses/254"
+					},
+					"response": [
+						{
+							"id": "183f0c2c-ea7d-460a-b0e1-1bd40233fe2c",
+							"name": "Update /courses/id",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST2\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing2\",\r\n    \"state_code\": \"T2222\",\r\n    \"package_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/courses/254"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "defa9892-4555-4edf-bbf4-ad8310810e1a",
+							"name": "Update /courses/id",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    // \"tga_status\": \"Expired\",\r\n    // \"nominal_hours\": 999,\r\n    // \"type\": \"Qualification\",\r\n    // \"cluster_id\": [1],\r\n    // \"unit_id\": [1,2,3],\r\n    \"national_code\": \"TEST1111\",\r\n    \"aqf_level\": \"Certificate I in\",\r\n    \"title\": \"Testing\",\r\n    \"state_code\": \"T1111\",\r\n    \"package_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/courses/254"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Destroy /courses/id",
+					"id": "3ceeb801-cc75-433a-bcca-204e7743ee7d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/courses/254"
+					},
+					"response": []
+				}
+			],
+			"id": "f3fcb9bd-d28a-409d-a4a6-b343dd8cc6ad"
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Current User /auth/user",
+					"id": "67d0f5b4-1cc5-454e-87ce-1e49b020be00",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/auth/user"
+					},
+					"response": []
+				},
+				{
+					"name": "Register /auth/register",
+					"id": "1942ca9a-2919-4b5f-bde1-68214b854b49",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"given_name\": \"Testy\",\r\n    \"family_name\": \"Tester\",\r\n    // \"preferred_name\": \"Testing Testy Tester\",\r\n    // \"preferred_pronouns\": \"him\",\r\n    \"email\": \"test0@example.com\",\r\n    \"password\": \"Password1\",\r\n    \"password_confirmation\": \"Password1\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/auth/register"
+					},
+					"response": [
+						{
+							"id": "217cc86c-6f09-4753-95c5-92c30453e906",
+							"name": "Register /auth/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"given_name\": \"asd\",\r\n    \"family_name\": \"dsa\",\r\n    // \"preferred_name\": \"AAASSSDDD\",\r\n    \"preferred_pronouns\": \"him\",\r\n    \"email\": \"asd@mail.com\",\r\n    \"password\": \"asdasd\",\r\n    \"password_confirmation\": \"asdasd\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/register"
+							},
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"description": "",
+									"type": "text"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "1a036936-e6ec-4c4c-82e4-3d06a9bc434b",
+							"name": "Register /auth/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"given_name\": \"456\",\r\n    \"family_name\": \"654\",\r\n    // \"preferred_name\": \"FourFiveSix\",\r\n    \"preferred_pronouns\": \"him\",\r\n    \"email\": \"456@example.com\",\r\n    \"password\": \"Password1\",\r\n    \"password_confirmation\": \"Password1\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/register"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "5eb3d764-36e6-4559-93ef-8402e76ee680",
+							"name": "Register /auth/register",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"given_name\": \"456\",\r\n    \"family_name\": \"654\",\r\n    // \"preferred_name\": \"FourFiveSix\",\r\n    // \"preferred_pronouns\": \"him\",\r\n    \"email\": \"456@mail.com\",\r\n    \"password\": \"456456\",\r\n    \"password_confirmation\": \"456456\",\r\n    // \"role\": \"Admin\"\r\n    \"roles\": [\"Admin\"]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/register"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Login /auth/login",
+					"id": "bec050aa-c669-435e-a4c1-dc6718927d82",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"chloe@example.com\",\r\n  \"password\": \"Password1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/auth/login"
+					},
+					"response": [
+						{
+							"id": "cef9743c-f526-43e8-8195-283ac74a59c9",
+							"name": "Login /auth/login - test0",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"test0@example.com\",\r\n  \"password\": \"Password1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/login"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "e1338075-64d3-464f-9cbb-dfe80c3ebefb",
+							"name": "Login /auth/login - 123",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"123@123.com\",\r\n  \"password\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/login"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						},
+						{
+							"id": "c9fe4278-9044-4233-a378-a6a0863131ee",
+							"name": "Login /auth/login - student",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"student@mail.com\",\r\n  \"password\": \"123123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/auth/login"
+							},
+							"_postman_previewlanguage": "",
+							"header": [],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"responseTime": null,
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Logout /auth/logout",
+					"id": "e3ac1d9d-80ae-4b41-8725-1e688e812483",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/auth/logout"
+					},
+					"response": []
+				}
+			],
+			"id": "205e7b9f-61aa-4c97-b2b7-272d9057c912"
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Browse",
+					"id": "9211472e-9a94-4326-97cd-caefe52199fc",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "3|g7OStnxN2q3Z52pmrs7CNgeCaJqsqj8JwEExj3ra27b8829e"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": "{{baseUrl}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"id": "3c63c10f-f9a5-4a61-9dea-dce92e16b34c",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|E7Os2v9Azrm7fFw7HfOZeQE4b8h9LU1rXwHaZyJi212dd35b"
+							}
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"given_name\" : \"Chloe\",\r\n    \"family_name\" : \"Gu\",\r\n    \"email\" : \"chloe@example.com\",\r\n    \"password\" : \"Password1\",\r\n    \"roles\" : \"Admin\"\r\n}"
+						},
+						"url": "{{baseUrl}}/users/202"
+					},
+					"response": []
+				},
+				{
+					"name": "Store/ user",
+					"id": "ef09b8a6-7477-4e5b-b4ee-7c5563201c05",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|E7Os2v9Azrm7fFw7HfOZeQE4b8h9LU1rXwHaZyJi212dd35b"
+							}
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"given_name\" : \"new2\",\n    \"family_name\" : \"test\",\n    \"email\" : \"new2test@gmail.com\",\n    \"password\" : \"Password1\",\n    \"password_confirmation\": \"Password1\",\n    \"preferred_pronouns\": [\"she\", \"her\"],\n    \"roles\" : [\"Admin\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users"
+					},
+					"response": []
+				},
+				{
+					"name": "Update/user/id",
+					"id": "eb0b8e74-d5be-49af-b4f9-93111ac42ff4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|E7Os2v9Azrm7fFw7HfOZeQE4b8h9LU1rXwHaZyJi212dd35b"
+							}
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"given_name\" : \"change\",\n    \"family_name\" : \"test\",\n    \"email\" : \"newtest@gmail.com\",\n    // if you want to change password as well \n    // \"password\" : \"Password1\",\n    // \"password_confirmation\": \"Password1\",\n    \"preferred_pronouns\": [\"she\", \"her\"],\n    \"roles\" : [\"Admin\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users/1006"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete/user/id",
+					"id": "91f9c19f-7f97-48ab-b230-06caf3006418",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "2|E7Os2v9Azrm7fFw7HfOZeQE4b8h9LU1rXwHaZyJi212dd35b"
+							}
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"given_name\" : \"change\",\n    \"family_name\" : \"test\",\n    \"email\" : \"newtest@gmail.com\",\n    // if you want to change password as well \n    // \"password\" : \"Password1\",\n    // \"password_confirmation\": \"Password1\",\n    \"preferred_pronouns\": [\"she\", \"her\"],\n    \"roles\" : [\"Admin\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}/users/1006"
+					},
+					"response": []
+				}
+			],
+			"id": "715b4bf9-edd5-4acb-ba2a-a1d7a80dcbcd"
+		},
+		{
+			"name": "Get /",
+			"id": "839c2cc5-8f68-40ef-8875-7281d4699c07",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/"
+			},
+			"response": []
+		},
+		{
+			"name": "APP_DEBUG=false ############",
+			"id": "df2d161f-5eb1-400f-9a45-8c7522efa4ce",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "{{authToken}}"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "3a3613c2-6251-491c-963a-51d023076def",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "66ebb6b9-38f6-40d8-9f6c-04ff81a8482c",
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8000/api/v1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "https://www.wits.screencraft.net.au/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "authToken",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "apiVersion",
+			"value": "/api/v1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "rootUrl",
+			"value": "http://127.0.0.1:8000",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "{{rootUrl}}{{apiVersion}}",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://wits-2025-s1.test/api/v1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8002/api/v1",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8004/api/v1",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}
