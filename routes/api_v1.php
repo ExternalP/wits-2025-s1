@@ -40,7 +40,18 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 /** User API Routes */
-Route::apiResource('users', UserController::class);
+// Route::apiResource('users', UserController::class);
+
+//use this Prefix api.v1
+Route::name('api.v1.')->group(function () {
+    Route::apiResource('users', UserController::class);
+});
+
+
+
+
+
+
 // Route::prefix('v1')->middleware('auth:sanctum')->group(function () {
 //     Route::apiResource('users', UserController::class);
 //     Route::get('/users', [UserController::class, 'index']);
@@ -79,24 +90,40 @@ Route::name("api.v1.")->middleware('auth:sanctum')->group(function () {
 });
 // Route::apiResource('courses', CourseController::class);
 
+//use this Prefix api.v1
+
 /** Clusters API Routes */
-Route::apiResource('clusters', ClusterController::class);
+// Route::apiResource('clusters', ClusterController::class);
+Route::name('api.v1.')->group(function () {
+    Route::apiResource('clusters', ClusterController::class);
+    
+});
+
 
 /** Packages API Routes */
 /**Route::middleware('auth:sanctum')->group(function () {
     Route::apiResource('packages', PackageController::class);
 });**/
 
-
+//use this Prefix api.v1
 
 /** Units API Routes */
-Route::apiResource('units', UnitController::class);
+// Route::apiResource('units', UnitController::class);
+
+Route::name('api.v1.')->group(function () {
+    Route::apiResource('units', UnitController::class);
+});
+
 
 /** Timetables API Routes */
-Route::middleware('auth:sanctum')->group(function () {
+Route::name('api.v1.')->middleware('auth:sanctum')->group(function () {
     Route::apiResource('timetables', TimetableController::class);
 });
 
+//use this Prefix api.v1
+/*Route::name('api.v1.')->group(function () {
+    Route::apiResource('timetables', TimetableController::class);
+});*/
 
 
 
